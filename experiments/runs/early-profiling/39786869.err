@@ -1,0 +1,151 @@
+load CUDA/12.8 (PATH, MANPATH, LD_LIBRARY_PATH, LIBRARY_PATH, C_INCLUDE_PATH,
+CPLUS_INCLUDE_PATH, CUDA_HOME, CUDA_VERSION, CUDA_INC, CUDA_INSTALL_PATH) 
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+Error executing job with overrides: ['system.slurm_job_id=39786869']
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 428, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 424, in main
+    trainer.run()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 340, in run
+    self.load_data(self.cfg.data.train_land_index_path, self.cfg.data.val_land_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 143, in load_data
+    train_ds = MultiZarrDataset(dp, land_index_path=train_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/combined_loader.py", line 53, in __init__
+    self._init_time()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/combined_loader.py", line 181, in _init_time
+    raise ValueError(
+ValueError: Not enough luh2 data for the time range of predictions. We need years [1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973
+ 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987
+ 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001
+ 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015
+ 2016] and the dataset has years ['1960-01-01T00:00:00.000000000' '1961-01-01T00:00:00.000000000'
+ '1962-01-01T00:00:00.000000000' '1963-01-01T00:00:00.000000000'
+ '1964-01-01T00:00:00.000000000' '1965-01-01T00:00:00.000000000'
+ '1966-01-01T00:00:00.000000000' '1967-01-01T00:00:00.000000000'
+ '1968-01-01T00:00:00.000000000' '1969-01-01T00:00:00.000000000'
+ '1970-01-01T00:00:00.000000000' '1971-01-01T00:00:00.000000000'
+ '1972-01-01T00:00:00.000000000' '1973-01-01T00:00:00.000000000'
+ '1974-01-01T00:00:00.000000000' '1975-01-01T00:00:00.000000000'
+ '1976-01-01T00:00:00.000000000' '1977-01-01T00:00:00.000000000'
+ '1978-01-01T00:00:00.000000000' '1979-01-01T00:00:00.000000000'
+ '1980-01-01T00:00:00.000000000' '1981-01-01T00:00:00.000000000'
+ '1982-01-01T00:00:00.000000000' '1983-01-01T00:00:00.000000000'
+ '1984-01-01T00:00:00.000000000' '1985-01-01T00:00:00.000000000'
+ '1986-01-01T00:00:00.000000000' '1987-01-01T00:00:00.000000000'
+ '1988-01-01T00:00:00.000000000' '1989-01-01T00:00:00.000000000'
+ '1990-01-01T00:00:00.000000000' '1991-01-01T00:00:00.000000000'
+ '1992-01-01T00:00:00.000000000' '1993-01-01T00:00:00.000000000'
+ '1994-01-01T00:00:00.000000000' '1995-01-01T00:00:00.000000000'
+ '1996-01-01T00:00:00.000000000' '1997-01-01T00:00:00.000000000'
+ '1998-01-01T00:00:00.000000000' '1999-01-01T00:00:00.000000000'
+ '2000-01-01T00:00:00.000000000' '2001-01-01T00:00:00.000000000'
+ '2002-01-01T00:00:00.000000000' '2003-01-01T00:00:00.000000000'
+ '2004-01-01T00:00:00.000000000' '2005-01-01T00:00:00.000000000'
+ '2006-01-01T00:00:00.000000000' '2007-01-01T00:00:00.000000000'
+ '2008-01-01T00:00:00.000000000' '2009-01-01T00:00:00.000000000'
+ '2010-01-01T00:00:00.000000000' '2011-01-01T00:00:00.000000000'
+ '2012-01-01T00:00:00.000000000' '2013-01-01T00:00:00.000000000'
+ '2014-01-01T00:00:00.000000000' '2015-01-01T00:00:00.000000000'].
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 428, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 424, in main
+    trainer.run()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 340, in run
+    self.load_data(self.cfg.data.train_land_index_path, self.cfg.data.val_land_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 143, in load_data
+    train_ds = MultiZarrDataset(dp, land_index_path=train_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/combined_loader.py", line 53, in __init__
+    self._init_time()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/combined_loader.py", line 181, in _init_time
+    raise ValueError(
+ValueError: Not enough luh2 data for the time range of predictions. We need years [1960 1961 1962 1963 1964 1965 1966 1967 1968 1969 1970 1971 1972 1973
+ 1974 1975 1976 1977 1978 1979 1980 1981 1982 1983 1984 1985 1986 1987
+ 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001
+ 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015
+ 2016] and the dataset has years ['1960-01-01T00:00:00.000000000' '1961-01-01T00:00:00.000000000'
+ '1962-01-01T00:00:00.000000000' '1963-01-01T00:00:00.000000000'
+ '1964-01-01T00:00:00.000000000' '1965-01-01T00:00:00.000000000'
+ '1966-01-01T00:00:00.000000000' '1967-01-01T00:00:00.000000000'
+ '1968-01-01T00:00:00.000000000' '1969-01-01T00:00:00.000000000'
+ '1970-01-01T00:00:00.000000000' '1971-01-01T00:00:00.000000000'
+ '1972-01-01T00:00:00.000000000' '1973-01-01T00:00:00.000000000'
+ '1974-01-01T00:00:00.000000000' '1975-01-01T00:00:00.000000000'
+ '1976-01-01T00:00:00.000000000' '1977-01-01T00:00:00.000000000'
+ '1978-01-01T00:00:00.000000000' '1979-01-01T00:00:00.000000000'
+ '1980-01-01T00:00:00.000000000' '1981-01-01T00:00:00.000000000'
+ '1982-01-01T00:00:00.000000000' '1983-01-01T00:00:00.000000000'
+ '1984-01-01T00:00:00.000000000' '1985-01-01T00:00:00.000000000'
+ '1986-01-01T00:00:00.000000000' '1987-01-01T00:00:00.000000000'
+ '1988-01-01T00:00:00.000000000' '1989-01-01T00:00:00.000000000'
+ '1990-01-01T00:00:00.000000000' '1991-01-01T00:00:00.000000000'
+ '1992-01-01T00:00:00.000000000' '1993-01-01T00:00:00.000000000'
+ '1994-01-01T00:00:00.000000000' '1995-01-01T00:00:00.000000000'
+ '1996-01-01T00:00:00.000000000' '1997-01-01T00:00:00.000000000'
+ '1998-01-01T00:00:00.000000000' '1999-01-01T00:00:00.000000000'
+ '2000-01-01T00:00:00.000000000' '2001-01-01T00:00:00.000000000'
+ '2002-01-01T00:00:00.000000000' '2003-01-01T00:00:00.000000000'
+ '2004-01-01T00:00:00.000000000' '2005-01-01T00:00:00.000000000'
+ '2006-01-01T00:00:00.000000000' '2007-01-01T00:00:00.000000000'
+ '2008-01-01T00:00:00.000000000' '2009-01-01T00:00:00.000000000'
+ '2010-01-01T00:00:00.000000000' '2011-01-01T00:00:00.000000000'
+ '2012-01-01T00:00:00.000000000' '2013-01-01T00:00:00.000000000'
+ '2014-01-01T00:00:00.000000000' '2015-01-01T00:00:00.000000000'].
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/accelerate", line 10, in <module>
+    sys.exit(main())
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1405, in launch_command
+    simple_launcher(args)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/accelerate/commands/launch.py", line 993, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3', '/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py', '--config-name', 'profiling', 'system.slurm_job_id=39786869']' returned non-zero exit status 1.
+srun: error: as01r1b20: task 0: Exited with exit code 1
+srun: Terminating StepId=39786869.0

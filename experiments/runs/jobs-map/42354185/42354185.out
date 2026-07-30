@@ -1,0 +1,12 @@
+START TIME: Tue Jun 23 19:53:35 CEST 2026
+size_on_disk,store
+66G	/gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+435G	/gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-1901-2015.zarr
+59G	/gpfs/scratch/ehpc736/data/AI4LAND_merged-NON_preprocessed-data-2000-2015.zarr
+387G	/gpfs/scratch/ehpc736/data/AI4LAND_merged_NON_preprocessed-data-1901-2015.zarr
+606G	/gpfs/scratch/ehpc606/ai4land/CONCERTO/luh2_1850-2015_cube_512.zarr
+4.5G	/gpfs/projects/ehpc606/ai4land/CONCERTO/hilda_1899-2020_cube_512_single_channel_8_class_clean.zarr
+4.1G	/gpfs/projects/ehpc606/ai4land/CONCERTO/static_cube_processed.zarr
+4.4G	/gpfs/projects/ehpc606/ai4land/CONCERTO/koppen_geiger_annual_cube_1901-2020_512.zarr
+61G	/gpfs/projects/ehpc606/ai4land/CONCERTO/population_histsoc_cube_1850-2020_512.zarr
+END TIME: Tue Jun 23 20:01:18 CEST 2026

@@ -1,0 +1,41 @@
+START TIME: Thu May 14 15:28:50 CEST 2026
+
+========================================================================================
+1) data_vars per store
+========================================================================================
+NEW (single zarr): /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+  data_vars: ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+
+LEGACY [luh2]: /gpfs/scratch/ehpc606/ai4land/CONCERTO/luh2_1850-2015_cube_512.zarr
+  data_vars: ['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban']
+
+LEGACY [hilda]: /gpfs/projects/ehpc606/ai4land/CONCERTO/hilda_1899-2020_cube_512_single_channel_8_class_clean.zarr
+  data_vars: ['hilda_labels']
+
+LEGACY [static]: /gpfs/projects/ehpc606/ai4land/CONCERTO/static_cube_processed.zarr
+  data_vars: ['aspect', 'elevation', 'slope', 'weighted_organic', 'weighted_pct_clay', 'weighted_pct_sand']
+
+LEGACY [koppen_geiger]: /gpfs/projects/ehpc606/ai4land/CONCERTO/koppen_geiger_annual_cube_1901-2020_512.zarr
+  data_vars: ['kg_class']
+
+LEGACY [population]: /gpfs/projects/ehpc606/ai4land/CONCERTO/population_histsoc_cube_1850-2020_512.zarr
+  data_vars: ['number_of_people']
+
+lock_dir: /scratch/tmp/40519123/ai4land_parity_lock_7sy2uq0w
+
+Building NEW ZarrDataset ...
+Building LEGACY MultiZarrDataset ...
+
+========================================================================================
+2) Sanity
+========================================================================================
+  [OK] len match: 4480000
+  [OK] valid_time_indices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  [OK] land_pixel_coords: shape=(448000, 2)
+  new.height/width=18000/36000
+  legacy.height/width=18000/36000
+
+========================================================================================
+4) hilda_target value audit (idx=3810796)
+========================================================================================
+END TIME: Thu May 14 15:30:17 CEST 2026

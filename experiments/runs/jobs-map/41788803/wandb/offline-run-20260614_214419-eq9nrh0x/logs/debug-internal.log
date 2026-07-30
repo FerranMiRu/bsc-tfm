@@ -1,0 +1,8 @@
+{"time":"2026-06-14T21:44:19.272936692+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T21:44:19.272996635+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788803/wandb/offline-run-20260614_214419-eq9nrh0x/logs/debug-core.log"}
+{"time":"2026-06-14T21:44:19.479083706+02:00","level":"INFO","msg":"created new stream","id":"eq9nrh0x"}
+{"time":"2026-06-14T21:44:19.479129335+02:00","level":"INFO","msg":"stream: started","id":"eq9nrh0x"}
+{"time":"2026-06-14T21:44:19.479189516+02:00","level":"INFO","msg":"handler: started","stream_id":"eq9nrh0x"}
+{"time":"2026-06-14T21:44:19.479216542+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"eq9nrh0x"}
+{"time":"2026-06-14T21:44:19.479227605+02:00","level":"INFO","msg":"sender: started","stream_id":"eq9nrh0x"}
+{"time":"2026-06-14T21:44:19.485872068+02:00","level":"INFO","msg":"Starting system monitor"}

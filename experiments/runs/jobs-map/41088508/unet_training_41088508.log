@@ -1,0 +1,6 @@
+2026-05-26 16:45:29,426 - INFO - Recurrent UNet Model Successfully Configured and Initialized.
+2026-05-26 16:45:29,444 - INFO - Starting from scratch (no valid checkpoint provided).
+2026-05-26 16:45:38,030 - INFO - Train: 6272000 samples, Val: 896000 samples
+2026-05-26 16:45:38,033 - INFO - Starting training from epoch 1
+2026-05-26 16:49:28,028 - INFO - [profiling] 5 active batches (host-side, approx): wall=80.741s, dataloader stall=79.976s (99.1% of wall). For exact GPU timing see nsys stats output.
+2026-05-26 16:49:29,123 - INFO - Profiling capture complete — exiting before validation.

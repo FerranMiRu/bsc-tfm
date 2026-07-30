@@ -1,0 +1,16 @@
+{"time":"2026-06-15T04:32:35.472471955+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T04:32:35.472539625+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799697/wandb/offline-run-20260615_043235-3znusvyi/logs/debug-core.log"}
+{"time":"2026-06-15T04:32:35.644454618+02:00","level":"INFO","msg":"created new stream","id":"3znusvyi"}
+{"time":"2026-06-15T04:32:35.644515311+02:00","level":"INFO","msg":"stream: started","id":"3znusvyi"}
+{"time":"2026-06-15T04:32:35.644610829+02:00","level":"INFO","msg":"handler: started","stream_id":"3znusvyi"}
+{"time":"2026-06-15T04:32:35.644636147+02:00","level":"INFO","msg":"sender: started","stream_id":"3znusvyi"}
+{"time":"2026-06-15T04:32:35.644623068+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"3znusvyi"}
+{"time":"2026-06-15T04:32:35.652114043+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T05:05:46.776414943+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T05:05:46.89497271+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T05:05:46.896120887+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T05:05:47.956243446+02:00","level":"INFO","msg":"stream: closing","id":"3znusvyi"}
+{"time":"2026-06-15T05:05:47.956263232+02:00","level":"INFO","msg":"handler: closed","stream_id":"3znusvyi"}
+{"time":"2026-06-15T05:05:47.956271794+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"3znusvyi"}
+{"time":"2026-06-15T05:05:47.956417531+02:00","level":"INFO","msg":"sender: closed","stream_id":"3znusvyi"}
+{"time":"2026-06-15T05:05:48.005618719+02:00","level":"INFO","msg":"stream: closed","id":"3znusvyi"}

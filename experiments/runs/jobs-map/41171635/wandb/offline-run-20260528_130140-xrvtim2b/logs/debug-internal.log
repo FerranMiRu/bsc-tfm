@@ -1,0 +1,16 @@
+{"time":"2026-05-28T13:01:40.457552613+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-05-28T13:01:40.457614889+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41171635/wandb/offline-run-20260528_130140-xrvtim2b/logs/debug-core.log"}
+{"time":"2026-05-28T13:01:40.6238325+02:00","level":"INFO","msg":"created new stream","id":"xrvtim2b"}
+{"time":"2026-05-28T13:01:40.62388377+02:00","level":"INFO","msg":"stream: started","id":"xrvtim2b"}
+{"time":"2026-05-28T13:01:40.623948511+02:00","level":"INFO","msg":"handler: started","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:01:40.623958454+02:00","level":"INFO","msg":"sender: started","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:01:40.623989155+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:01:40.631626807+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-05-28T13:03:54.042998168+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-05-28T13:03:54.083817527+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-05-28T13:03:54.084940461+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-05-28T13:03:55.097753181+02:00","level":"INFO","msg":"stream: closing","id":"xrvtim2b"}
+{"time":"2026-05-28T13:03:55.097780506+02:00","level":"INFO","msg":"handler: closed","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:03:55.097789713+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:03:55.09792461+02:00","level":"INFO","msg":"sender: closed","stream_id":"xrvtim2b"}
+{"time":"2026-05-28T13:03:55.105395831+02:00","level":"INFO","msg":"stream: closed","id":"xrvtim2b"}

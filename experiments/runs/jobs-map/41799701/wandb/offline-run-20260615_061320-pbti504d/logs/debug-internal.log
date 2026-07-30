@@ -1,0 +1,16 @@
+{"time":"2026-06-15T06:13:20.13376802+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T06:13:20.133835347+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799701/wandb/offline-run-20260615_061320-pbti504d/logs/debug-core.log"}
+{"time":"2026-06-15T06:13:20.289562308+02:00","level":"INFO","msg":"created new stream","id":"pbti504d"}
+{"time":"2026-06-15T06:13:20.289615765+02:00","level":"INFO","msg":"stream: started","id":"pbti504d"}
+{"time":"2026-06-15T06:13:20.289638976+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:13:20.289654006+02:00","level":"INFO","msg":"sender: started","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:13:20.289645272+02:00","level":"INFO","msg":"handler: started","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:13:20.295498062+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T06:42:48.719061819+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T06:42:48.72044199+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T06:42:48.721477331+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T06:42:49.728124005+02:00","level":"INFO","msg":"stream: closing","id":"pbti504d"}
+{"time":"2026-06-15T06:42:49.728138538+02:00","level":"INFO","msg":"handler: closed","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:42:49.728146631+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:42:49.728180047+02:00","level":"INFO","msg":"sender: closed","stream_id":"pbti504d"}
+{"time":"2026-06-15T06:42:49.728410786+02:00","level":"INFO","msg":"stream: closed","id":"pbti504d"}

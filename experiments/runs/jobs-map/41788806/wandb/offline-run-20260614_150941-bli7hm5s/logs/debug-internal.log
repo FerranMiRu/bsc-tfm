@@ -1,0 +1,16 @@
+{"time":"2026-06-14T15:09:41.964632861+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T15:09:41.96469373+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788806/wandb/offline-run-20260614_150941-bli7hm5s/logs/debug-core.log"}
+{"time":"2026-06-14T15:09:42.148332059+02:00","level":"INFO","msg":"created new stream","id":"bli7hm5s"}
+{"time":"2026-06-14T15:09:42.148385286+02:00","level":"INFO","msg":"stream: started","id":"bli7hm5s"}
+{"time":"2026-06-14T15:09:42.148451248+02:00","level":"INFO","msg":"handler: started","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:09:42.148457132+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:09:42.148474489+02:00","level":"INFO","msg":"sender: started","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:09:42.155588537+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-14T15:14:26.965095431+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-14T15:14:26.995988921+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-14T15:14:26.997194235+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-14T15:14:28.077405584+02:00","level":"INFO","msg":"stream: closing","id":"bli7hm5s"}
+{"time":"2026-06-14T15:14:28.077417701+02:00","level":"INFO","msg":"handler: closed","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:14:28.077424921+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:14:28.077431013+02:00","level":"INFO","msg":"sender: closed","stream_id":"bli7hm5s"}
+{"time":"2026-06-14T15:14:28.084711866+02:00","level":"INFO","msg":"stream: closed","id":"bli7hm5s"}

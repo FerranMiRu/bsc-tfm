@@ -1,0 +1,151 @@
+defaults:
+  - _self_
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: False
+
+# --- System & Environment ---
+system:
+  user: "${oc.env:USER}"
+  slurm_job_id: "${oc.env:SLURM_JOB_ID,00000}"
+  save_dir: "${oc.env:AI4LAND_SAVE_DIR}"
+  log_dir: "${oc.env:AI4LAND_LOG_DIR}"
+  wandb_mode: "offline"
+
+# --- Data Configuration ---
+data:
+  lock_dir: "${oc.env:AI4LAND_LOCK_DIR}"
+  use_synchronizer: true
+  patch_size: 256
+  time_range: [2001, 2014]
+  prediction_mode: "forward"
+  exclude_feature: null
+  n_hilda_classes: 8
+  n_kg_classes: 31
+
+  # stores: "/gpfs/scratch/ehpc736/data/AI4LAND_preprocessed_new-data-2000-2015.zarr"
+  stores: "/gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr"
+  # stores:
+  #   luh2: "/gpfs/scratch/ehpc606/ai4land/CONCERTO/luh2_1850-2015_cube_512.zarr"
+  #   hilda: "/gpfs/projects/ehpc606/ai4land/CONCERTO/hilda_1899-2020_cube_512_single_channel_8_class_clean.zarr"
+  #   static: "/gpfs/projects/ehpc606/ai4land/CONCERTO/static_cube_processed.zarr"
+  #   koppen_geiger: "/gpfs/projects/ehpc606/ai4land/CONCERTO/koppen_geiger_annual_cube_1901-2020_512.zarr"
+  #   population: "/gpfs/projects/ehpc606/ai4land/CONCERTO/population_histsoc_cube_1850-2020_512.zarr"
+
+  feature_names:
+    luh2:
+      [
+        "c3ann",
+        "c3nfx",
+        "c3per",
+        "c4ann",
+        "c4per",
+        "pastr",
+        "primf",
+        "primn",
+        "range",
+        "secdf",
+        "secdn",
+        "secma",
+        "secmb",
+        "urban",
+      ]
+    hilda: ["lulc_states"]
+    static:
+      ["aspect", "elevation", "slope", "weighted_organic", "weighted_pct_clay", "weighted_pct_sand"]
+    koppen_geiger: ["kg_class"]
+    population: ["number_of_people"]
+
+  norm_stats_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/normalization_stats.json"
+  land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/land_pixel_index_nc_u16.npy"
+  train_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/land_pixel_index_sample.npy"
+  val_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/val_land_pixel_index_sample.npy"
+  test_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/test_land_pixel_index_sample.npy"
+
+  autoregression:
+    enable: true
+    timesteps_dynamic: [0]
+    timesteps_hilda: [1]
+    noise_prob: 0.1
+
+  timesteps_target: [0, 1]
+
+# --- Model Configuration ---
+model:
+  type: "unet"
+
+  unet:
+    teacher_forcings:
+      start_prob: 1.0
+      end_prob: 0.0
+      decay_steps: 5000
+
+  terramind:
+    name: "terramind_v1_base"
+    freeze_backbone: true
+
+  adapter:
+    type: "conv"
+    hidden_dim: 64
+    depth: 8
+    nhead: 4
+    patch_stride: 16
+
+  embedding:
+    hilda_dim: 2
+    kg_dim: 5
+
+  masking:
+    patch_size: 16
+    start_prob: 0.6
+    enable_dynamic: true
+    end_prob: 0.99
+    hold_steps: 100
+    warmup_steps: 100
+
+# --- Training Parameters ---
+training:
+  mixed_precision: "bf16"
+  epochs: 1
+  batch_size: 8
+  accumulation_steps: 4
+  learning_rate: 0.0005
+  num_workers: 12
+  save_freq: 1
+  train_steps_per_epoch: 50
+  val_steps_per_epoch: 1
+  test_steps_per_epoch: 1
+  debug_sample_count: 0
+  verbose_loader: false
+  log_loss_every_batch: true
+
+  loss:
+    overall_weight: 0.5
+    change_weight: 0.5
+
+  compile: false
+  compile_mode: "default"
+
+  distributed_strategy: "ddp"
+
+  fsdp:
+    sharding_strategy: "full"
+    min_params_to_wrap: 1000000
+
+  resume:
+    path: null
+
+  profiling:
+    enable: false
+    active_batches: 5
+    warmup_batches: 5
+
+# --- WandB ---
+wandb:
+  project: "ai4land_lu"
+  entity: "bsclsv"
+  group: "unet_training_runs"

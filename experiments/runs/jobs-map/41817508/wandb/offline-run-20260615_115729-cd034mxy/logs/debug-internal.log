@@ -1,0 +1,15 @@
+{"time":"2026-06-15T11:57:29.775178568+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T11:57:29.775233247+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41817508/wandb/offline-run-20260615_115729-cd034mxy/logs/debug-core.log"}
+{"time":"2026-06-15T11:57:29.958353083+02:00","level":"INFO","msg":"created new stream","id":"cd034mxy"}
+{"time":"2026-06-15T11:57:29.958387403+02:00","level":"INFO","msg":"stream: started","id":"cd034mxy"}
+{"time":"2026-06-15T11:57:29.958438494+02:00","level":"INFO","msg":"handler: started","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:57:29.958438627+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:57:29.958453652+02:00","level":"INFO","msg":"sender: started","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:57:29.966168622+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T11:59:14.503694523+02:00","level":"INFO","msg":"stream: closing","id":"cd034mxy"}
+{"time":"2026-06-15T11:59:14.503775018+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T11:59:14.504404706+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T11:59:14.50459442+02:00","level":"INFO","msg":"handler: closed","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:59:14.504604769+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:59:14.504608247+02:00","level":"INFO","msg":"sender: closed","stream_id":"cd034mxy"}
+{"time":"2026-06-15T11:59:14.50493175+02:00","level":"INFO","msg":"stream: closed","id":"cd034mxy"}

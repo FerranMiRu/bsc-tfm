@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/profile_loader_throughput.py", line 113, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/profile_loader_throughput.py", line 109, in main
+    measure(label, store_path, num_workers)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/profile_loader_throughput.py", line 64, in measure
+    dataset = build_dataset(store_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/profile_loader_throughput.py", line 60, in build_dataset
+    return MergedZarrDataset(cfg=dp, land_index_path=dp.train_land_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/datasets.py", line 663, in __init__
+    self._init_time()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/datasets.py", line 763, in _init_time
+    raise ValueError("Not enough dynamic data for the time range of predictions.")
+ValueError: Not enough dynamic data for the time range of predictions.

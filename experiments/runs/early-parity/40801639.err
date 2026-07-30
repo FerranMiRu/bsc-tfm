@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 218, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 196, in main
+    new_ds = build_single_zarr(raw_data, lock_dir, raw_data["store"], False, "new")
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 72, in build_single_zarr
+    dp = DataParams(**cfg_data)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for DataParams
+stores
+  Field required [type=missing, input_value={'lock_dir': PosixPath('/...bug_sample_count': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing

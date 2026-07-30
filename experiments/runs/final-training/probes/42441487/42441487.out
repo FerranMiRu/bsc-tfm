@@ -1,0 +1,15 @@
+START TIME: Fri Jun 26 08:15:30 CEST 2026
+--- DataLoader throughput (batch=8, prefetch=4) ---
+  merged_w12         workers=12  sps=   39.3 (target 53, ~  34.6 at 4-rank) [BELOW TARGET]
+      per-batch ms: p50=    0.1 p95=  1104.5 max=  2124.3  stalls(>1s)=14
+  raw_w12            workers=12  sps=   60.4 (target 53, ~  53.1 at 4-rank) [OK]
+      per-batch ms: p50=    0.2 p95=   985.6 max=  1973.7  stalls(>1s)=11
+  merged_w16         workers=16  sps=   50.4 (target 53, ~  44.4 at 4-rank) [BELOW TARGET]
+      per-batch ms: p50=    0.1 p95=  1622.0 max=  2805.7  stalls(>1s)=15
+  raw_w16            workers=16  sps=  100.2 (target 53, ~  88.2 at 4-rank) [OK]
+      per-batch ms: p50=    0.2 p95=   619.9 max=  1370.7  stalls(>1s)=3
+  merged_w20         workers=20  sps=   61.8 (target 53, ~  54.4 at 4-rank) [OK]
+      per-batch ms: p50=    0.1 p95=  1063.6 max=  2266.5  stalls(>1s)=13
+  raw_w20            workers=20  sps=  143.5 (target 53, ~ 126.3 at 4-rank) [OK]
+      per-batch ms: p50=    0.1 p95=   366.4 max=  1595.6  stalls(>1s)=6
+END TIME: Fri Jun 26 08:19:45 CEST 2026

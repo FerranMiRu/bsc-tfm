@@ -1,0 +1,604 @@
+START TIME: Fri May 15 08:36:43 CEST 2026
+
+========================================================================================
+1) data_vars per store
+========================================================================================
+new (NON_preprocessed): /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+  data_vars: ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+
+preprocessed: /gpfs/scratch/ehpc736/data/AI4LAND_preprocessed-data-2000-2015.zarr
+  data_vars: ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+
+legacy[luh2]: /gpfs/scratch/ehpc606/ai4land/CONCERTO/luh2_1850-2015_cube_512.zarr
+  data_vars: ['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban']
+
+legacy[hilda]: /gpfs/projects/ehpc606/ai4land/CONCERTO/hilda_1899-2020_cube_512_single_channel_8_class_clean.zarr
+  data_vars: ['hilda_labels']
+
+legacy[static]: /gpfs/projects/ehpc606/ai4land/CONCERTO/static_cube_processed.zarr
+  data_vars: ['aspect', 'elevation', 'slope', 'weighted_organic', 'weighted_pct_clay', 'weighted_pct_sand']
+
+legacy[koppen_geiger]: /gpfs/projects/ehpc606/ai4land/CONCERTO/koppen_geiger_annual_cube_1901-2020_512.zarr
+  data_vars: ['kg_class']
+
+legacy[population]: /gpfs/projects/ehpc606/ai4land/CONCERTO/population_histsoc_cube_1850-2020_512.zarr
+  data_vars: ['number_of_people']
+
+lock_dir: /scratch/tmp/40546142/ai4land_parity_lock_xh_e60g2
+
+Building NEW (NON_preprocessed) ZarrDataset ...
+Building PREPROCESSED ZarrDataset ...
+Building LEGACY MultiZarrDataset ...
+
+========================================================================================
+2) Sanity
+========================================================================================
+  [OK] len(new) == len(legacy) == 4480000
+  [OK] len(preprocessed) == len(legacy) == 4480000
+  reference.valid_time_indices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  reference.land_pixel_coords.shape: (448000, 2)
+  reference.height/width: 18000/36000
+
+========================================================================================
+4) hilda_target value audit (idx=3810796)
+========================================================================================
+  legacy       dtype=float32  uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+  new          dtype=uint8  uniq=[1, 2, 3, 4, 5, 6, 7]
+  preprocessed dtype=float32  uniq=[7.0]
+
+========================================================================================
+3) Per-sample tensor diffs (n=32) — candidates vs legacy
+========================================================================================
+
+  index=3810796
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=9.289e-10
+      [FAIL] preprocessed: max=1.531e+00 mean=4.660e-02 cand=(-0.5791,6.4343) ref=(-1.2869,6.4327)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.470e+03 mean=1.155e+02 cand=(0.0511,1471.0000) ref=(-2.0841,5.3675)
+      [FAIL] preprocessed: max=3.073e+00 mean=1.918e-01 cand=(-1.5696,5.3675) ref=(-2.0841,5.3675)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.990e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130902/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2853588
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.432e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=1.169e+00 cand=(-0.7535,2.7526) ref=(-18.4207,2.6867)
+    x_kg
+      [FAIL] new         : int 68928/131072 differ; cand=[0.0, 19.0, 27.0, 29.0] ref=[19.0, 27.0, 29.0, 31.0]
+      [FAIL] preprocessed: int 68928/131072 differ; cand=[0.0, 19.0, 27.0, 29.0] ref=[19.0, 27.0, 29.0, 31.0]
+    x_static
+      [FAIL] new         : max=3.456e+02 mean=3.093e+01 cand=(-24.0000,347.6731) ref=(-2.1885,2.5681)
+      [FAIL] preprocessed: max=3.297e+00 mean=9.237e-01 cand=(-3.2969,2.5681) ref=(-2.1885,2.5681)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.153e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 60266/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2289891
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=9.565e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=2.927e-01 cand=(-0.7535,8.0017) ref=(-18.4207,8.0014)
+    x_kg
+      [FAIL] new         : int 33486/131072 differ; cand=[0.0, 9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0] ref=[9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0, 31.0]
+      [FAIL] preprocessed: int 33486/131072 differ; cand=[0.0, 9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0] ref=[9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0, 31.0]
+    x_static
+      [FAIL] new         : max=2.540e+03 mean=8.596e+01 cand=(-1003.0000,2542.0000) ref=(-2.3945,7.9950)
+      [FAIL] preprocessed: max=3.297e+00 mean=5.911e-01 cand=(-3.2969,7.9950) ref=(-2.3945,7.9950)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.409e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 95470/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=1208644
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=1.446e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=1.160e+00 cand=(-0.7535,3.0774) ref=(-18.4207,3.0302)
+    x_kg
+      [FAIL] new         : int 63748/131072 differ; cand=[0.0, 19.0, 27.0, 29.0] ref=[19.0, 27.0, 29.0, 31.0]
+      [FAIL] preprocessed: int 63748/131072 differ; cand=[0.0, 19.0, 27.0, 29.0] ref=[19.0, 27.0, 29.0, 31.0]
+    x_static
+      [FAIL] new         : max=1.217e+03 mean=4.775e+01 cand=(-39.0000,1218.0000) ref=(-2.1884,6.8528)
+      [FAIL] preprocessed: max=3.297e+00 mean=8.691e-01 cand=(-3.2969,6.8528) ref=(-2.1884,6.8528)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.975e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 66854/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=1379075
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=1.725e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=3.290e-01 cand=(-0.7480,1.0627) ref=(-18.4207,1.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=5.831e+02 mean=9.781e+01 cand=(0.0005,584.0000) ref=(-2.1847,2.3817)
+      [FAIL] preprocessed: max=3.185e+00 mean=1.962e-01 cand=(-1.2691,2.3817) ref=(-2.1847,2.3817)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=4.000e+00 mean=2.941e+00 cand=(7.0000,7.0000) ref=(3.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130674/131072 differ; cand=[7.0] ref=[3.0, 4.0, 5.0, 7.0]
+
+  index=183561
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.273e+03 mean=3.773e+02 cand=(0.0000,3275.0000) ref=(-0.7685,1.9503)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.562e+00 cand=(-3.2969,2.0000) ref=(-0.7685,1.9503)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=337075
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=9.296e-10
+      [FAIL] preprocessed: max=2.366e+00 mean=3.890e-02 cand=(-0.6951,8.3659) ref=(-2.2676,8.3657)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.515e+02 mean=8.484e+01 cand=(-141.0000,353.7438) ref=(-2.1235,2.1951)
+      [FAIL] preprocessed: max=3.119e+00 mean=2.029e-01 cand=(-1.3362,1.9984) ref=(-2.1235,2.1951)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=4.502e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 129920/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=74043
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=9.349e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=2.144e-02 cand=(-0.7535,9.2555) ref=(-18.4207,9.2554)
+    x_kg
+      [FAIL] new         : int 2478/131072 differ; cand=[0.0, 4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0] ref=[4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0, 31.0]
+      [FAIL] preprocessed: int 2478/131072 differ; cand=[0.0, 4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0] ref=[4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0, 31.0]
+    x_static
+      [FAIL] new         : max=2.961e+03 mean=1.592e+02 cand=(-374.0000,2963.0000) ref=(-2.7122,7.1740)
+      [FAIL] preprocessed: max=3.297e+00 mean=2.228e-01 cand=(-3.2969,7.1740) ref=(-2.7122,7.1740)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=3.862e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 125848/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=785197
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=1.872e-09
+      [FAIL] preprocessed: max=3.400e+00 mean=1.505e-01 cand=(-0.7480,4.2146) ref=(-3.3658,4.5246)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.771e+02 mean=7.344e+01 cand=(0.0316,378.0000) ref=(-2.0760,2.3413)
+      [FAIL] preprocessed: max=3.063e+00 mean=2.059e-01 cand=(-1.4188,2.3413) ref=(-2.0760,2.3413)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.993e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130586/131072 differ; cand=[7.0] ref=[1.0, 3.0, 4.0, 5.0, 7.0]
+
+  index=3643450
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.274e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=1.106e-01 cand=(-0.7480,3.2053) ref=(-18.4207,3.1639)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.314e+03 mean=3.201e+02 cand=(0.0000,3316.0000) ref=(-2.1889,4.2057)
+      [FAIL] preprocessed: max=3.189e+00 mean=2.507e-01 cand=(-1.7850,4.2057) ref=(-2.1889,4.2057)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=5.000e+00 mean=3.433e+00 cand=(7.0000,7.0000) ref=(2.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130286/131072 differ; cand=[7.0] ref=[2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=2909382
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=6.799e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=4.588e-01 cand=(-0.7535,10.0957) ref=(-18.4207,10.0957)
+    x_kg
+      [FAIL] new         : int 52404/131072 differ; cand=[0.0, 2.0, 3.0] ref=[2.0, 3.0, 31.0]
+      [FAIL] preprocessed: int 52404/131072 differ; cand=[0.0, 2.0, 3.0] ref=[2.0, 3.0, 31.0]
+    x_static
+      [FAIL] new         : max=3.397e+03 mean=1.320e+02 cand=(-3398.0000,533.0000) ref=(-2.7536,4.3444)
+      [FAIL] preprocessed: max=3.297e+00 mean=7.619e-01 cand=(-3.2969,4.3444) ref=(-2.7536,4.3444)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.834e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 77326/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4089144
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.121e+03 mean=5.036e+02 cand=(0.0000,3123.0000) ref=(0.0000,1.8930)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.553e+00 cand=(-3.2969,2.0000) ref=(0.0000,1.8930)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=2256248
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=1.655e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=3.810e-01 cand=(-0.7535,3.7276) ref=(-18.4207,3.7032)
+    x_kg
+      [FAIL] new         : int 43224/131072 differ; cand=[0.0, 7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0] ref=[7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0, 31.0]
+      [FAIL] preprocessed: int 43224/131072 differ; cand=[0.0, 7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0] ref=[7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0, 31.0]
+    x_static
+      [FAIL] new         : max=3.820e+03 mean=1.092e+02 cand=(-935.0000,3822.0000) ref=(-2.1887,9.9711)
+      [FAIL] preprocessed: max=3.297e+00 mean=7.219e-01 cand=(-3.2969,9.9711) ref=(-2.1887,9.9711)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.597e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 81434/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2717728
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=6.455e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=4.350e-01 cand=(-0.7535,6.6480) ref=(-18.4207,6.6467)
+    x_kg
+      [FAIL] new         : int 69276/131072 differ; cand=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0] ref=[7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0, 31.0]
+      [FAIL] preprocessed: int 69276/131072 differ; cand=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0] ref=[7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0, 31.0]
+    x_static
+      [FAIL] new         : max=1.766e+03 mean=7.329e+01 cand=(-265.0000,1767.0000) ref=(-2.1886,6.2113)
+      [FAIL] preprocessed: max=3.297e+00 mean=9.641e-01 cand=(-3.2969,6.2113) ref=(-2.1886,6.2113)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.420e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 60580/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4348927
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=7.788e-10
+      [FAIL] preprocessed: max=6.205e-01 mean=1.328e-02 cand=(-0.7480,5.9847) ref=(-0.6864,5.9821)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.062e+03 mean=1.762e+02 cand=(0.0033,3064.0000) ref=(-2.1496,6.5838)
+      [FAIL] preprocessed: max=3.148e+00 mean=2.400e-01 cand=(-1.2526,6.5838) ref=(-2.1496,6.5838)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=3.412e+00 cand=(7.0000,7.0000) ref=(1.0000,6.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 131072/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+
+  index=3268144
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.630e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=2.008e-01 cand=(-0.5878,6.0913) ref=(-18.4207,6.0890)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=8.550e+02 mean=1.132e+02 cand=(0.0000,856.0000) ref=(-2.1883,3.3644)
+      [FAIL] preprocessed: max=3.188e+00 mean=2.011e-01 cand=(-1.0006,3.3644) ref=(-2.1883,3.3644)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.862e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 125324/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2832573
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.127e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=1.708e-02 cand=(-0.4361,9.1324) ref=(-18.4207,9.1323)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.943e+03 mean=8.500e+01 cand=(0.0000,1944.0000) ref=(-2.6365,6.7611)
+      [FAIL] preprocessed: max=3.188e+00 mean=2.055e-01 cand=(-2.6365,6.7611) ref=(-2.6365,6.7611)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=4.102e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 127696/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=2435439
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=7.781e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=6.804e-02 cand=(-0.5309,4.4852) ref=(-18.4207,4.4739)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=2.876e+03 mean=8.478e+01 cand=(0.0015,2878.0000) ref=(-2.1321,8.9189)
+      [FAIL] preprocessed: max=3.129e+00 mean=2.142e-01 cand=(-1.2962,8.9189) ref=(-2.1321,8.9189)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.107e+00 cand=(7.0000,7.0000) ref=(1.0000,6.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 131072/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 6.0]
+
+  index=2508430
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.502e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=2.956e-01 cand=(-0.6988,3.9087) ref=(-18.4207,3.8884)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.459e+03 mean=1.769e+02 cand=(0.0068,1460.0000) ref=(-2.7169,3.4706)
+      [FAIL] preprocessed: max=3.126e+00 mean=1.879e-01 cand=(-2.7169,3.4706) ref=(-2.7169,3.4706)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=4.506e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130364/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4189124
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=1.638e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=3.366e-01 cand=(-0.6884,5.0849) ref=(-18.4207,5.0787)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=8.370e+02 mean=6.905e+01 cand=(0.0025,838.0000) ref=(-2.1015,3.4595)
+      [FAIL] preprocessed: max=3.094e+00 mean=2.086e-01 cand=(-1.6087,3.4595) ref=(-2.1015,3.4595)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=4.000e+00 mean=2.978e+00 cand=(7.0000,7.0000) ref=(3.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130140/131072 differ; cand=[7.0] ref=[3.0, 4.0, 5.0, 7.0]
+
+  index=1242514
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=5.662e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=4.099e-01 cand=(-0.7535,6.9182) ref=(-18.4207,6.9172)
+    x_kg
+      [FAIL] new         : int 49204/131072 differ; cand=[0.0, 1.0, 2.0, 3.0, 15.0, 29.0] ref=[1.0, 2.0, 3.0, 15.0, 29.0, 31.0]
+      [FAIL] preprocessed: int 49204/131072 differ; cand=[0.0, 1.0, 2.0, 3.0, 15.0, 29.0] ref=[1.0, 2.0, 3.0, 15.0, 29.0, 31.0]
+    x_static
+      [FAIL] new         : max=5.554e+03 mean=2.298e+02 cand=(-5555.0000,3830.0000) ref=(-2.1886,7.7324)
+      [FAIL] preprocessed: max=3.297e+00 mean=7.269e-01 cand=(-3.2969,7.7324) ref=(-2.1886,7.7324)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=1.747e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 81668/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=3655023
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=2.857e+03 mean=4.644e+02 cand=(0.0000,2859.0000) ref=(0.0000,1.7934)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.567e+00 cand=(-3.2969,2.0000) ref=(0.0000,1.7934)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=3005526
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=9.462e-10
+      [FAIL] preprocessed: max=2.980e-01 mean=9.001e-03 cand=(-0.7413,7.3860) ref=(-0.6797,7.3854)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=4.101e+03 mean=2.841e+02 cand=(-118.0000,4103.0000) ref=(-2.2104,8.0208)
+      [FAIL] preprocessed: max=3.188e+00 mean=2.299e-01 cand=(-2.2104,8.0208) ref=(-2.2104,8.0208)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.764e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130552/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=12268
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [FAIL] new         : int 131054/131072 differ; cand=[0.0, 1.0] ref=[1.0, 31.0]
+      [FAIL] preprocessed: int 131054/131072 differ; cand=[0.0, 1.0] ref=[1.0, 31.0]
+    x_static
+      [FAIL] new         : max=5.805e+03 mean=5.369e+02 cand=(-5806.0000,99.0000) ref=(-1.4733,0.7529)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.571e+00 cand=(-3.2969,1.0000) ref=(-1.4733,0.7529)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.000e+00 mean=1.068e-04 cand=(0.0000,7.0000) ref=(0.0000,6.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 14/131072 differ; cand=[0.0, 7.0] ref=[0.0, 6.0]
+
+  index=1765788
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.025e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=7.997e-02 cand=(-0.7290,5.7567) ref=(-18.4207,5.7535)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.801e+03 mean=6.210e+01 cand=(-37.0000,1802.0000) ref=(-2.1886,6.3470)
+      [FAIL] preprocessed: max=3.297e+00 mean=2.986e-01 cand=(-3.2969,6.3470) ref=(-2.1886,6.3470)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=3.026e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 125020/131072 differ; cand=[7.0] ref=[1.0, 2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=3841171
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.229e+03 mean=1.370e+02 cand=(0.0000,1230.0000) ref=(-0.7685,1.1793)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.538e+00 cand=(-3.2969,1.0000) ref=(-0.7685,1.1793)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=2483330
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [FAIL] new         : int 32942/131072 differ; cand=[0.0, 30.0] ref=[30.0, 31.0]
+      [FAIL] preprocessed: int 32942/131072 differ; cand=[0.0, 30.0] ref=[30.0, 31.0]
+    x_static
+      [FAIL] new         : max=2.130e+03 mean=2.451e+01 cand=(0.0000,2132.0000) ref=(-0.7685,1.5194)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.565e+00 cand=(-3.2969,2.0000) ref=(-0.7685,1.5194)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=150463
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=1.194e-09
+      [FAIL] preprocessed: max=1.842e+01 mean=4.157e-01 cand=(-0.5309,6.1078) ref=(-18.4207,6.1055)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=1.163e+03 mean=1.666e+02 cand=(0.0090,1164.0000) ref=(-2.9676,3.5070)
+      [FAIL] preprocessed: max=3.138e+00 mean=1.985e-01 cand=(-2.9676,3.5070) ref=(-2.9676,3.5070)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=5.000e+00 mean=1.050e+00 cand=(7.0000,7.0000) ref=(2.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 131064/131072 differ; cand=[7.0] ref=[2.0, 3.0, 6.0, 7.0]
+
+  index=3426706
+    x_continuous
+      [OK  ] new         : close max=9.537e-07 mean=2.463e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=1.142e+00 cand=(-0.6074,3.4262) ref=(-18.4207,3.5450)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=7.700e+02 mean=1.110e+02 cand=(0.0747,771.0000) ref=(-2.0951,3.3332)
+      [FAIL] preprocessed: max=3.086e+00 mean=1.992e-01 cand=(-1.7262,3.3332) ref=(-2.0951,3.3332)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=4.000e+00 mean=2.956e+00 cand=(7.0000,7.0000) ref=(3.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130468/131072 differ; cand=[7.0] ref=[3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=3268856
+    x_continuous
+      [OK  ] new         : close max=4.768e-07 mean=8.858e-10
+      [FAIL] preprocessed: max=2.184e+00 mean=4.927e-02 cand=(-0.4653,5.4572) ref=(-2.0645,5.4529)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=6.117e+03 mean=8.626e+02 cand=(0.0000,6120.0000) ref=(-2.1879,5.2039)
+      [FAIL] preprocessed: max=3.297e+00 mean=2.586e-01 cand=(-3.2969,5.2039) ref=(-2.1879,5.2039)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=3.942e+00 cand=(7.0000,7.0000) ref=(1.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 130132/131072 differ; cand=[7.0] ref=[1.0, 3.0, 6.0, 7.0]
+
+  index=3792657
+    x_continuous
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=1.842e+01 mean=1.234e+00 cand=(-0.7535,0.0000) ref=(-18.4207,0.0000)
+    x_kg
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+    x_static
+      [FAIL] new         : max=3.243e+03 mean=5.179e+02 cand=(0.0000,3245.0000) ref=(0.0000,1.9390)
+      [FAIL] preprocessed: max=3.297e+00 mean=1.547e+00 cand=(-3.2969,2.0000) ref=(0.0000,1.9390)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [OK  ] preprocessed: close max=0.000e+00 mean=0.000e+00
+    hilda_target
+      [OK  ] new         : int exact
+      [OK  ] preprocessed: int exact
+
+  index=786937
+    x_continuous
+      [OK  ] new         : close max=1.907e-06 mean=6.947e-10
+      [FAIL] preprocessed: max=1.842e+01 mean=3.104e-01 cand=(-0.7535,7.2473) ref=(-18.4207,7.2466)
+    x_kg
+      [FAIL] new         : int 38968/131072 differ; cand=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0] ref=[7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0, 31.0]
+      [FAIL] preprocessed: int 38968/131072 differ; cand=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0] ref=[7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0, 31.0]
+    x_static
+      [FAIL] new         : max=3.674e+03 mean=3.136e+02 cand=(-2043.0000,3676.0000) ref=(-2.9927,7.3909)
+      [FAIL] preprocessed: max=3.297e+00 mean=6.224e-01 cand=(-3.2969,7.3909) ref=(-2.9927,7.3909)
+    x_hilda_prior
+      [OK  ] new         : close max=0.000e+00 mean=0.000e+00
+      [FAIL] preprocessed: max=6.000e+00 mean=2.464e+00 cand=(0.0000,7.0000) ref=(0.0000,7.0000)
+    hilda_target
+      [OK  ] new         : int exact
+      [FAIL] preprocessed: int 91670/131072 differ; cand=[0.0, 7.0] ref=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+========================================================================================
+RESULT
+========================================================================================
+samples checked: 32
+  new          total tensor failures: 43  per-key: {'x_continuous': 0, 'x_kg': 11, 'x_static': 32, 'x_hilda_prior': 0, 'hilda_target': 0}
+  preprocessed total tensor failures: 127  per-key: {'x_continuous': 32, 'x_kg': 11, 'x_static': 32, 'x_hilda_prior': 26, 'hilda_target': 26}
+[FAIL] at least one candidate diverges from the legacy reference
+END TIME: Fri May 15 08:43:33 CEST 2026

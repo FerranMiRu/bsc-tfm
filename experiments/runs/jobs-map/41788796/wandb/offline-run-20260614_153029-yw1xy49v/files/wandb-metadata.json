@@ -1,0 +1,117 @@
+{
+  "os": "Linux-5.14.0-284.30.1.el9_2.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.19",
+  "startedAt": "2026-06-14T13:30:29.671110Z",
+  "args": [
+    "--config-name",
+    "debug-single",
+    "system.slurm_job_id=41788796",
+    "training.resume.path=",
+    "training.num_workers=12"
+  ],
+  "program": "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py",
+  "codePath": "src/ai4land/training/train.py",
+  "git": {
+    "remote": "https://gitlab.earth.bsc.es/ces/ai4land.git",
+    "commit": "9a114e94dde73055390dda1267a29a12ebfec1af"
+  },
+  "root": "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788796",
+  "host": "as05r4b32",
+  "username": "bsc096444",
+  "executable": "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3",
+  "codePathLocal": "src/ai4land/training/train.py",
+  "cpu_count": 80,
+  "cpu_count_logical": 160,
+  "gpu": "NVIDIA H100",
+  "gpu_count": 4,
+  "disk": {
+    "/": {
+      "total": "70055161233408",
+      "used": "24604156362752"
+    }
+  },
+  "memory": {
+    "total": "540609101824"
+  },
+  "cpu": {
+    "count": 80,
+    "countLogical": 160
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA H100",
+      "memoryTotal": "68416438272",
+      "cudaCores": 16896,
+      "architecture": "Hopper"
+    },
+    {
+      "name": "NVIDIA H100",
+      "memoryTotal": "68416438272",
+      "cudaCores": 16896,
+      "architecture": "Hopper"
+    },
+    {
+      "name": "NVIDIA H100",
+      "memoryTotal": "68416438272",
+      "cudaCores": 16896,
+      "architecture": "Hopper"
+    },
+    {
+      "name": "NVIDIA H100",
+      "memoryTotal": "68416438272",
+      "cudaCores": 16896,
+      "architecture": "Hopper"
+    }
+  ],
+  "slurm": {
+    "cluster_name": "marenostrum5",
+    "conf": "/etc/slurm/slurm.conf",
+    "cpu_bind": "none",
+    "cpus_on_node": "80",
+    "cpus_per_task": "20",
+    "eclibr": "0",
+    "ecplug": "1",
+    "erlast": "sbatch",
+    "ersbac": "1",
+    "gpus_on_node": "4",
+    "gtids": "0",
+    "hint": "nomultithread",
+    "job_account": "ehpc536",
+    "job_cpus_per_node": "80",
+    "job_dependency": "afterany:41788795",
+    "job_end_time": "1781450942",
+    "job_gid": "50000",
+    "job_gpus": "0,1,2,3",
+    "job_id": "41788796",
+    "job_name": "bench_1rank",
+    "job_nodelist": "as05r4b32",
+    "job_num_nodes": "1",
+    "job_partition": "acc",
+    "job_qos": "acc_ehpc",
+    "job_start_time": "1781443742",
+    "job_uid": "6765",
+    "job_user": "bsc096444",
+    "jobid": "41788796",
+    "localid": "0",
+    "mem_per_cpu": "6250",
+    "nnodes": "1",
+    "nodeid": "0",
+    "nodelist": "as05r4b32",
+    "nprocs": "1",
+    "ntasks": "1",
+    "ntasks_per_node": "1",
+    "oom_kill_step": "0",
+    "prio_process": "0",
+    "procid": "0",
+    "script_context": "prolog_task",
+    "submit_dir": "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm",
+    "submit_host": "alogin4",
+    "task_pid": "1301171",
+    "tasks_per_node": "1",
+    "threads_per_core": "1",
+    "topology_addr": "core.ai05ibsw.as05r4ibsw2.as05r4b32",
+    "topology_addr_pattern": "switch.switch.switch.node",
+    "tres_per_task": "cpu=20"
+  },
+  "cudaVersion": "12.2"
+}

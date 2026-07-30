@@ -1,0 +1,4 @@
+START TIME: Mon Jun  8 08:52:24 CEST 2026
+Config: profiling-singlezarr | num_getitem=50 | num_batches=80 | split=train | batch_timeout=30s | workers_sweep=[12,16,19] | luh2_threads=1 | num_coldwarm=50 | nvme_stage=0
+Launch command: uv run python -m ai4land.utils.profile_dataloader     --config-name profiling-singlezarr     system.slurm_job_id=41523471     ++profile.num_getitem=50     ++profile.num_batches=80     ++profile.split=train     ++profile.batch_timeout_s=30     ++profile.workers_sweep=[12,16,19]     ++profile.num_coldwarm=50     ++data.luh2_load_threads=1     
+END TIME: Mon Jun  8 09:01:08 CEST 2026

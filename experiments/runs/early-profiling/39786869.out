@@ -1,0 +1,15 @@
+START TIME: Wed Apr 29 16:41:40 CEST 2026
+Master: as01r1b20:29500
+Launch command: nsys profile     -o /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/profiling/nsys_39786869     -t cuda,nvtx,osrt,cudnn,cublas     --capture-range=cudaProfilerApi     --capture-range-end=stop     --sample=process-tree     --cpuctxsw=process-tree     --trace-fork-before-exec=true     --cuda-memory-usage=true     --gpu-metrics-devices=all     --gpu-metrics-frequency=10000     --stats=true     --force-overwrite=true     uv run accelerate launch         --num_processes 1         --num_machines 1         --machine_rank 0         --main_process_ip as01r1b20         --main_process_port 29500         --mixed_precision bf16         --dynamo_backend no         /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py         --config-name profiling         system.slurm_job_id=39786869
+[2026-04-29 16:47:15,426][root][INFO] - Recurrent UNet Model Successfully Configured and Initialized.
+[2026-04-29 16:47:15,444][root][INFO] - Starting from scratch (no valid checkpoint provided).
+[1;34mwandb[0m:
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/wandb/offline-run-20260429_164713-ejev1eg6[0m
+[1;34mwandb[0m: Find logs at: [1;35mlogs/wandb/offline-run-20260429_164713-ejev1eg6/logs[0m
+Hint: CUDA_VISIBLE_DEVICES is set. You may want to use '--gpu-metrics-devices=cuda-visible' instead of '--gpu-metrics-devices=all'
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Processing events...
+Generated:
+nsys trace written to: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/profiling/nsys_39786869.nsys-rep
+END TIME: Wed Apr 29 16:47:59 CEST 2026

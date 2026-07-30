@@ -1,0 +1,13 @@
+START TIME: Mon Jun  8 14:41:10 CEST 2026
+HOST: as03r3b07
+=== Creating 4 GiB test file on GPFS ===
+4096+0 records in
+4096+0 records out
+4294967296 bytes (4.3 GB, 4.0 GiB) copied, 11.5651 s, 371 MB/s
+-rw-r--r-- 1 bsc096444 ehpc736 4.0G Jun  8 14:41 /gpfs/scratch/ehpc736/bsc096444/io_bench/testfile_4g.bin
+
+=== GPFS cold read | bs=1M | iflag=direct ===
+4096+0 records in
+4096+0 records out
+4294967296 bytes (4.3 GB, 4.0 GiB) copied, 162.323 s, 26.5 MB/s
+END TIME: Mon Jun  8 14:44:04 CEST 2026

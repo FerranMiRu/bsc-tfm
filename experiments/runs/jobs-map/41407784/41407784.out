@@ -1,0 +1,4 @@
+START TIME: Wed Jun  3 19:21:56 CEST 2026
+Config: profiling-multizarr | num_getitem=50 | num_batches=80 | split=train | batch_timeout=30s | workers_sweep=[0,1,4,12]
+Launch command: uv run python -m ai4land.utils.profile_dataloader     --config-name profiling-multizarr     system.slurm_job_id=41407784     ++profile.num_getitem=50     ++profile.num_batches=80     ++profile.split=train     ++profile.batch_timeout_s=30     ++profile.workers_sweep=[0,1,4,12]
+END TIME: Wed Jun  3 19:34:50 CEST 2026

@@ -1,0 +1,28 @@
+START TIME: Thu Jun 11 15:07:04 CEST 2026
+Master: as07r1b22:29500
+Launch command: uv run accelerate launch     --multi_gpu     --num_processes $(( 1 * 4 ))     --num_machines 1     --machine_rank ${SLURM_PROCID}     --main_process_ip as07r1b22     --main_process_port 29500     --mixed_precision bf16     --dynamo_backend no     /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py     --config-name debug-merged     system.slurm_job_id=41652690     training.resume.path=
+[2026-06-11 15:08:32,007][root][INFO] - Recurrent UNet Model Successfully Configured and Initialized.
+[2026-06-11 15:08:32,033][root][INFO] - Starting from scratch (no valid checkpoint provided).
+[2026-06-11 15:08:32,510][root][INFO] - Train: 4480000 samples, Val: 640000 samples
+[2026-06-11 15:08:34,014][root][INFO] - Starting training from epoch 1
+[2026-06-11 15:08:39,977][root][INFO] - Epoch [1/1], Batch [1/15], Loss: 2.1989 (Overall: 2.2000, Change: 2.1978), TF Ratio: 1.000
+[2026-06-11 15:08:40,215][root][INFO] - Epoch [1/1], Batch [2/15], Loss: 2.1612 (Overall: 2.1173, Change: 2.1297), TF Ratio: 1.000
+[2026-06-11 15:08:40,433][root][INFO] - Epoch [1/1], Batch [3/15], Loss: 2.1893 (Overall: 2.1707, Change: 2.3204), TF Ratio: 0.999
+[2026-06-11 15:08:40,733][root][INFO] - Epoch [1/1], Batch [4/15], Loss: 2.1880 (Overall: 2.1965, Change: 2.1716), TF Ratio: 0.999
+[2026-06-11 15:08:40,906][root][INFO] - Epoch [1/1], Batch [5/15], Loss: 2.1303 (Overall: 1.8960, Change: 1.9030), TF Ratio: 0.999
+[2026-06-11 15:08:41,064][root][INFO] - Epoch [1/1], Batch [6/15], Loss: 2.1264 (Overall: 2.0700, Change: 2.1442), TF Ratio: 0.999
+[2026-06-11 15:08:41,220][root][INFO] - Epoch [1/1], Batch [7/15], Loss: 2.1121 (Overall: 1.9113, Change: 2.1406), TF Ratio: 0.999
+[2026-06-11 15:08:41,425][root][INFO] - Epoch [1/1], Batch [8/15], Loss: 2.0736 (Overall: 1.8455, Change: 1.7625), TF Ratio: 0.998
+[2026-06-11 15:08:41,601][root][INFO] - Epoch [1/1], Batch [9/15], Loss: 2.0613 (Overall: 1.6668, Change: 2.2588), TF Ratio: 0.998
+[2026-06-11 15:08:41,804][root][INFO] - Epoch [1/1], Batch [10/15], Loss: 2.0325 (Overall: 1.7085, Change: 1.8380), TF Ratio: 0.998
+[2026-06-11 15:08:41,964][root][INFO] - Epoch [1/1], Batch [11/15], Loss: 2.0124 (Overall: 1.6234, Change: 2.0004), TF Ratio: 0.998
+[2026-06-11 15:08:42,138][root][INFO] - Epoch [1/1], Batch [12/15], Loss: 2.0010 (Overall: 1.7091, Change: 2.0413), TF Ratio: 0.998
+[2026-06-11 15:08:42,292][root][INFO] - Epoch [1/1], Batch [13/15], Loss: 1.9756 (Overall: 1.5099, Change: 1.8322), TF Ratio: 0.997
+[2026-06-11 15:08:42,457][root][INFO] - Epoch [1/1], Batch [14/15], Loss: 1.9493 (Overall: 1.5607, Change: 1.6537), TF Ratio: 0.997
+[2026-06-11 15:08:42,609][root][INFO] - Epoch [1/1], Batch [15/15], Loss: 1.9315 (Overall: 1.5307, Change: 1.8335), TF Ratio: 0.997
+[2026-06-11 15:08:49,151][root][INFO] - Epoch 1 done. Validating...
+[2026-06-11 15:08:54,366][root][INFO] - Epoch [1/1] | Train: 1.9409 | Val: 1.2229
+[2026-06-11 15:08:54,589][root][INFO] - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41652690/best_model.pth
+[2026-06-11 15:08:54,784][root][INFO] - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41652690/model_epoch_1.pth
+[2026-06-11 15:08:55,118][root][INFO] - Training complete.
+END TIME: Thu Jun 11 15:09:03 CEST 2026

@@ -1,0 +1,51 @@
+load CUDA/12.8 (PATH, MANPATH, LD_LIBRARY_PATH, LIBRARY_PATH, C_INCLUDE_PATH,
+CPLUS_INCLUDE_PATH, CUDA_HOME, CUDA_VERSION, CUDA_INC, CUDA_INSTALL_PATH) 
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Error executing job with overrides: ['system.slurm_job_id=39710800']
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/pathlib.py", line 1175, in mkdir
+    self._accessor.mkdir(self, mode)
+PermissionError: [Errno 13] Permission denied: '/gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc096444/trained_models/unet_impl/39710800'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 446, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 442, in main
+    trainer.run()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 306, in run
+    Path(self.save_path).mkdir(parents=True, exist_ok=True)
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/pathlib.py", line 1184, in mkdir
+    if not exist_ok or not self.is_dir():
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/pathlib.py", line 1305, in is_dir
+    return S_ISDIR(self.stat().st_mode)
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/pathlib.py", line 1097, in stat
+    return self._accessor.stat(self, follow_symlinks=follow_symlinks)
+PermissionError: [Errno 13] Permission denied: '/gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc096444/trained_models/unet_impl/39710800'
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 39710800.0 ON as03r4b30 CANCELLED AT 2026-04-28T13:36:38 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 39710800 ON as03r4b30 CANCELLED AT 2026-04-28T13:36:38 DUE TO TIME LIMIT ***

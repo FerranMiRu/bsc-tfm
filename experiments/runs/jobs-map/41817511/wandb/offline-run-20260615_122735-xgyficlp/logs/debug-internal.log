@@ -1,0 +1,15 @@
+{"time":"2026-06-15T12:27:35.950954196+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T12:27:35.951033199+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41817511/wandb/offline-run-20260615_122735-xgyficlp/logs/debug-core.log"}
+{"time":"2026-06-15T12:27:36.15052614+02:00","level":"INFO","msg":"created new stream","id":"xgyficlp"}
+{"time":"2026-06-15T12:27:36.15056488+02:00","level":"INFO","msg":"stream: started","id":"xgyficlp"}
+{"time":"2026-06-15T12:27:36.150612485+02:00","level":"INFO","msg":"sender: started","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:27:36.150619697+02:00","level":"INFO","msg":"handler: started","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:27:36.150642026+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:27:36.158293557+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T12:28:09.331869827+02:00","level":"INFO","msg":"stream: closing","id":"xgyficlp"}
+{"time":"2026-06-15T12:28:09.331954339+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T12:28:09.33258371+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T12:28:09.332769487+02:00","level":"INFO","msg":"handler: closed","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:28:09.332785341+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:28:09.332813628+02:00","level":"INFO","msg":"sender: closed","stream_id":"xgyficlp"}
+{"time":"2026-06-15T12:28:09.333136438+02:00","level":"INFO","msg":"stream: closed","id":"xgyficlp"}

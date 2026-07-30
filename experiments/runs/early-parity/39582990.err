@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1116, in _copy_listed
+    variables[name] = self._variables[name]
+KeyError: 'weighted_organic'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/the_one_test.py", line 561, in <module>
+    raise SystemExit(main())
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/the_one_test.py", line 550, in main
+    _check_zarr_dataset(cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/the_one_test.py", line 503, in _check_zarr_dataset
+    sample = dataset[0]
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/dataset.py", line 527, in __getitem__
+    static_channel = self._get_static_data(y0, x0)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/dataset.py", line 375, in _get_static_data
+    self.dataset["main"][self.features_to_use["static"]]
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1277, in __getitem__
+    return self._copy_listed(key)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1118, in _copy_listed
+    ref_name, var_name, var = _get_virtual_variable(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset_utils.py", line 79, in _get_virtual_variable
+    raise KeyError(key)
+KeyError: 'weighted_organic'

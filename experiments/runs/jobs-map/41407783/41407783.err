@@ -1,0 +1,73 @@
+2026-06-03 19:20:40,782 - INFO - Split: train | land_index=/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/land_pixel_index_sample.npy
+2026-06-03 19:20:40,782 - INFO - Stores: /gpfs/scratch/ehpc736/data/AI4LAND_preprocessed_new-data-2000-2015.zarr
+2026-06-03 19:20:40,782 - INFO - use_synchronizer: True
+2026-06-03 19:20:40,782 - INFO - Sweep: num_workers=[0, 1, 4, 12] | num_batches=80 | batch_timeout=30s
+Error executing job with overrides: ['system.slurm_job_id=41407783', '++profile.num_getitem=50', '++profile.num_batches=80', '++profile.split=train', '++profile.batch_timeout_s=30', '++profile.workers_sweep=[0,1,4,12]']
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 1781, in _get_open_params
+    zarr_root_group = zarr.open_consolidated(store, **open_kwargs)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/zarr/convenience.py", line 1360, in open_consolidated
+    meta_store = ConsolidatedStoreClass(store, metadata_key=metadata_key)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/zarr/storage.py", line 3046, in __init__
+    meta = json_loads(self.store[metadata_key])
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/zarr/storage.py", line 1120, in __getitem__
+    raise KeyError(key)
+KeyError: '.zmetadata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 1785, in _get_open_params
+    zarr_root_group = zarr.open_group(store, **open_kwargs)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/zarr/hierarchy.py", line 1578, in open_group
+    raise GroupNotFoundError(path)
+zarr.errors.GroupNotFoundError: group not found at path ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_dataloader.py", line 558, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 223, in run_and_report
+    raise ex
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 132, in run
+    _ = ret.return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 260, in return_value
+    raise self._return_value
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_dataloader.py", line 528, in main
+    dataset = build_dataset(unified, land_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_dataloader.py", line 67, in build_dataset
+    return SingleZarrDataset(cfg.data, land_index_path=land_index_path)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/datasets.py", line 57, in __init__
+    self._init_dataset()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/datasets.py", line 111, in _init_dataset
+    self.dataset["main"] = xr.open_zarr(self.cfg.stores, chunks={}, synchronizer=synchronizer)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 1505, in open_zarr
+    ds = open_dataset(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/api.py", line 687, in open_dataset
+    backend_ds = backend.open_dataset(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 1578, in open_dataset
+    store = ZarrStore.open_group(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 664, in open_group
+    ) = _get_open_params(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/backends/zarr.py", line 1801, in _get_open_params
+    raise FileNotFoundError(
+FileNotFoundError: No such file or directory: '/gpfs/scratch/ehpc736/data/AI4LAND_preprocessed_new-data-2000-2015.zarr'
+srun: error: as07r2b03: task 0: Exited with exit code 1
+srun: Terminating StepId=41407783.0

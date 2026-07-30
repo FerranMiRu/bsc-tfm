@@ -1,0 +1,7 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 41788803 ON as01r2b07 CANCELLED AT 2026-06-14T21:51:53 ***
+slurmstepd: error: *** STEP 41788803.0 ON as01r2b07 CANCELLED AT 2026-06-14T21:51:53 ***

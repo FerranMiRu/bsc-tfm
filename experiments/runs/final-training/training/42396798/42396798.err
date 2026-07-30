@@ -1,0 +1,11 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 42396798.0 ON as01r3b29 CANCELLED AT 2026-06-24T13:21:12 ***
+slurmstepd: error: *** JOB 42396798 ON as01r3b29 CANCELLED AT 2026-06-24T13:21:12 ***
+W0624 13:21:12.312000 1158387 torch/distributed/elastic/agent/server/api.py:739] Received Signals.SIGTERM death signal, shutting down workers
+W0624 13:21:12.315000 1158387 torch/distributed/elastic/multiprocessing/api.py:1012] Sending process 1158482 closing signal SIGTERM
+W0624 13:21:12.317000 1158387 torch/distributed/elastic/multiprocessing/api.py:1012] Sending process 1158483 closing signal SIGTERM
+W0624 13:21:12.319000 1158387 torch/distributed/elastic/multiprocessing/api.py:1012] Sending process 1158484 closing signal SIGTERM

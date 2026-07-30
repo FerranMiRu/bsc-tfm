@@ -1,0 +1,16 @@
+{"time":"2026-06-14T15:40:29.600768272+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T15:40:29.600826358+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788809/wandb/offline-run-20260614_154029-79k1v9i9/logs/debug-core.log"}
+{"time":"2026-06-14T15:40:29.888555862+02:00","level":"INFO","msg":"created new stream","id":"79k1v9i9"}
+{"time":"2026-06-14T15:40:29.888619815+02:00","level":"INFO","msg":"stream: started","id":"79k1v9i9"}
+{"time":"2026-06-14T15:40:29.888691971+02:00","level":"INFO","msg":"handler: started","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:40:29.888700797+02:00","level":"INFO","msg":"sender: started","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:40:29.888700906+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:40:29.896122096+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-14T15:46:01.556189484+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-14T15:46:01.745954789+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-14T15:46:01.74713796+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-14T15:46:02.812456499+02:00","level":"INFO","msg":"stream: closing","id":"79k1v9i9"}
+{"time":"2026-06-14T15:46:02.812478444+02:00","level":"INFO","msg":"handler: closed","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:46:02.81248708+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:46:02.81259322+02:00","level":"INFO","msg":"sender: closed","stream_id":"79k1v9i9"}
+{"time":"2026-06-14T15:46:02.818931237+02:00","level":"INFO","msg":"stream: closed","id":"79k1v9i9"}

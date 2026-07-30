@@ -1,0 +1,17 @@
+2026-05-28 10:17:30,791 - INFO - Recurrent UNet Model Successfully Configured and Initialized.
+2026-05-28 10:17:30,802 - INFO - Starting from scratch (no valid checkpoint provided).
+2026-05-28 10:17:30,898 - INFO - Train: 6272000 samples, Val: 896000 samples
+2026-05-28 10:17:30,900 - INFO - Starting training from epoch 1
+2026-05-28 10:17:44,724 - INFO - Epoch [1/1], Batch [1/15], Loss: 1.2798 (Overall: 2.5596, Change: 0.0000), TF Ratio: 1.000
+2026-05-28 10:17:44,890 - INFO - Epoch [1/1], Batch [2/15], Loss: 1.2807 (Overall: 2.5633, Change: 0.0000), TF Ratio: 1.000
+2026-05-28 10:17:45,041 - INFO - Epoch [1/1], Batch [3/15], Loss: 1.2797 (Overall: 2.5551, Change: 0.0000), TF Ratio: 0.999
+2026-05-28 10:17:45,243 - INFO - Epoch [1/1], Batch [4/15], Loss: 1.2809 (Overall: 2.5695, Change: 0.0000), TF Ratio: 0.999
+2026-05-28 10:17:45,467 - INFO - Epoch [1/1], Batch [5/15], Loss: 1.2675 (Overall: 2.4279, Change: 0.0000), TF Ratio: 0.999
+2026-05-28 10:17:46,405 - INFO - Epoch [1/1], Batch [6/15], Loss: 1.2546 (Overall: 2.3799, Change: 0.0000), TF Ratio: 0.999
+2026-05-28 10:17:46,560 - INFO - Epoch [1/1], Batch [7/15], Loss: 1.2470 (Overall: 2.4024, Change: 0.0000), TF Ratio: 0.999
+2026-05-28 10:17:46,716 - INFO - Epoch [1/1], Batch [8/15], Loss: 1.2417 (Overall: 2.4094, Change: 0.0000), TF Ratio: 0.998
+2026-05-28 10:17:46,870 - INFO - Epoch [1/1], Batch [9/15], Loss: 1.2282 (Overall: 2.2403, Change: 0.0000), TF Ratio: 0.998
+2026-05-28 10:17:47,026 - INFO - Epoch [1/1], Batch [10/15], Loss: 1.2192 (Overall: 2.2760, Change: 0.0000), TF Ratio: 0.998
+2026-05-28 10:18:01,436 - INFO - [profiling] 5 active batches (host-side, approx): wall=0.777s, dataloader stall=0.014s (1.8% of wall). For exact GPU timing see nsys stats output.
+2026-05-28 10:18:01,917 - INFO - Profiling capture complete — running one validation pass before exit.
+2026-05-28 10:18:32,680 - INFO - [profiling] Validation loss: 1.0322 (1 steps)

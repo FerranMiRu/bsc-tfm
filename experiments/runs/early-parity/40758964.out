@@ -1,0 +1,19 @@
+START TIME: Tue May 19 18:49:54 CEST 2026
+
+--- data_vars ---
+new (NON_preprocessed): ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+preprocessed: ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+legacy[luh2]: ['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban']
+legacy[hilda]: ['hilda_labels']
+legacy[static]: ['aspect', 'elevation', 'slope', 'weighted_organic', 'weighted_pct_clay', 'weighted_pct_sand']
+legacy[koppen_geiger]: ['kg_class']
+legacy[population]: ['number_of_people']
+
+--- sanity ---
+reference len=4480000 valid_time_indices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] land_pixel_coords.shape=(448000, 2) hw=(18000,36000)
+  new: OK
+  preprocessed: OK
+
+--- writing CSV to /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/tests/parity_40758964.csv ---
+wrote 480 rows
+END TIME: Tue May 19 18:56:28 CEST 2026

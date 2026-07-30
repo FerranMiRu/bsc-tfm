@@ -1,0 +1,92 @@
+START TIME: Tue Jun 23 13:23:35 CEST 2026
+
+--- data_vars ---
+  multi/luh2           ['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban']
+  multi/hilda          ['hilda_labels']
+  multi/static         ['aspect', 'elevation', 'slope', 'weighted_organic', 'weighted_pct_clay', 'weighted_pct_sand']
+  multi/koppen_geiger  ['kg_class']
+  multi/population     ['number_of_people']
+  single_small           ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+  single_big             ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+  single_256             ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+  merged_small/dynamic   variables=['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'number_of_people', 'kg_class', 'LULC_states']
+  merged_small/static    variables=['ASPECT', 'elevation', 'SLOPE', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+  merged_big/dynamic     variables=['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'number_of_people', 'kg_class', 'LULC_states']
+  merged_big/static      variables=['ASPECT', 'elevation', 'SLOPE', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+  preprocessed_small     ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+
+--- sanity (vs baseline multizarr) ---
+  baseline       len=4480000 valid_time_indices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] hw=(18000,36000)
+  single_small         len=4480000 OK
+  single_big           len=4480000 OK
+  single_256           len=4480000 OK
+  merged_small         len=4480000 OK
+  merged_big           len=4480000 OK
+  preprocessed_small   len=4480000 OK
+
+--- writing diff CSV to /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/42328823/parity_42328823.csv ---
+wrote 1920 rows
+--- analysis ---
+--- jobs-map/42328823/parity_42328823.csv
+rows=1920  candidates=['merged_big', 'merged_small', 'preprocessed_small', 'single_256', 'single_big', 'single_small']  samples=64  tensors=['hilda_target', 'x_continuous', 'x_hilda_prior', 'x_kg', 'x_static']
+
+=== single_small ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=yes
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        BAD     
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+
+=== single_big ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=yes
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        BAD     
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+
+=== single_256 ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=yes
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        BAD     
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+
+=== merged_small ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=yes
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        BAD     
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+
+=== merged_big ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=yes
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        BAD     
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+
+=== preprocessed_small ===
+  verdict: MISMATCH
+  comparisons=320  exact=170/320 (53.1%)  max_abs_diff=3.100e+01  dtype_mismatch=no
+  tensor          max_abs_diff    exact       shape     dtype   
+  hilda_target    0.000e+00       64/64       ok        ok      
+  x_continuous    1.842e+01       0/64        ok        ok      
+  x_hilda_prior   0.000e+00       64/64       ok        ok      
+  x_kg            3.100e+01       42/64       ok        ok      
+  x_static        3.297e+00       0/64        ok        ok      
+END TIME: Tue Jun 23 13:46:01 CEST 2026

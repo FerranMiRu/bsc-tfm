@@ -1,0 +1,311 @@
+START TIME: Thu May 14 15:36:54 CEST 2026
+
+========================================================================================
+1) data_vars per store
+========================================================================================
+NEW (single zarr): /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+  data_vars: ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+
+LEGACY [luh2]: /gpfs/scratch/ehpc606/ai4land/CONCERTO/luh2_1850-2015_cube_512.zarr
+  data_vars: ['c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban']
+
+LEGACY [hilda]: /gpfs/projects/ehpc606/ai4land/CONCERTO/hilda_1899-2020_cube_512_single_channel_8_class_clean.zarr
+  data_vars: ['hilda_labels']
+
+LEGACY [static]: /gpfs/projects/ehpc606/ai4land/CONCERTO/static_cube_processed.zarr
+  data_vars: ['aspect', 'elevation', 'slope', 'weighted_organic', 'weighted_pct_clay', 'weighted_pct_sand']
+
+LEGACY [koppen_geiger]: /gpfs/projects/ehpc606/ai4land/CONCERTO/koppen_geiger_annual_cube_1901-2020_512.zarr
+  data_vars: ['kg_class']
+
+LEGACY [population]: /gpfs/projects/ehpc606/ai4land/CONCERTO/population_histsoc_cube_1850-2020_512.zarr
+  data_vars: ['number_of_people']
+
+lock_dir: /scratch/tmp/40519412/ai4land_parity_lock_7rv7e3rm
+
+Building NEW ZarrDataset ...
+Building LEGACY MultiZarrDataset ...
+
+========================================================================================
+2) Sanity
+========================================================================================
+  [OK] len match: 4480000
+  [OK] valid_time_indices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  [OK] land_pixel_coords: shape=(448000, 2)
+  new.height/width=18000/36000
+  legacy.height/width=18000/36000
+
+========================================================================================
+4) hilda_target value audit (idx=3810796)
+========================================================================================
+  new dtype=uint8  uniq=[1, 2, 3, 4, 5, 6, 7]
+  legacy dtype=float32  uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+========================================================================================
+3) Per-sample tensor diffs (n=32)
+========================================================================================
+
+  index=3810796
+    [OK   x_continuous] float close (max=4.768e-07, mean=9.289e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[26.0, 27.0, 29.0]
+    [FAIL x_static] float mismatch: max=1.469730e+03 mean=1.155296e+02 shape=(6, 256, 256) new_range=(0.0511,1471.0000) legacy_range=(-2.0841,5.3675)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2853588
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.432e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 68928/131072 cells differ; new_uniq=[0.0, 19.0, 27.0, 29.0] legacy_uniq=[19.0, 27.0, 29.0, 31.0]
+    [FAIL x_static] float mismatch: max=3.455532e+02 mean=3.092747e+01 shape=(6, 256, 256) new_range=(-24.0000,347.6731) legacy_range=(-2.1885,2.5681)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2289891
+    [OK   x_continuous] float close (max=9.537e-07, mean=9.565e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 33486/131072 cells differ; new_uniq=[0.0, 9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0] legacy_uniq=[9.0, 10.0, 15.0, 16.0, 18.0, 19.0, 26.0, 27.0, 29.0, 31.0]
+    [FAIL x_static] float mismatch: max=2.540326e+03 mean=8.596362e+01 shape=(6, 256, 256) new_range=(-1003.0000,2542.0000) legacy_range=(-2.3945,7.9950)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=1208644
+    [OK   x_continuous] float close (max=1.907e-06, mean=1.446e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 63748/131072 cells differ; new_uniq=[0.0, 19.0, 27.0, 29.0] legacy_uniq=[19.0, 27.0, 29.0, 31.0]
+    [FAIL x_static] float mismatch: max=1.216825e+03 mean=4.774983e+01 shape=(6, 256, 256) new_range=(-39.0000,1218.0000) legacy_range=(-2.1884,6.8528)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=1379075
+    [OK   x_continuous] float close (max=1.907e-06, mean=1.725e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[23.0, 27.0, 28.0]
+    [FAIL x_static] float mismatch: max=5.830642e+02 mean=9.781182e+01 shape=(6, 256, 256) new_range=(0.0005,584.0000) legacy_range=(-2.1847,2.3817)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[3.0, 4.0, 5.0, 7.0]
+
+  index=183561
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[30.0]
+    [FAIL x_static] float mismatch: max=3.273050e+03 mean=3.772853e+02 shape=(6, 256, 256) new_range=(0.0000,3275.0000) legacy_range=(-0.7685,1.9503)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=337075
+    [OK   x_continuous] float close (max=9.537e-07, mean=9.296e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[7.0, 26.0]
+    [FAIL x_static] float mismatch: max=3.515487e+02 mean=8.484213e+01 shape=(6, 256, 256) new_range=(-141.0000,353.7438) legacy_range=(-2.1235,2.1951)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=74043
+    [OK   x_continuous] float close (max=9.537e-07, mean=9.349e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 2478/131072 cells differ; new_uniq=[0.0, 4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0] legacy_uniq=[4.0, 6.0, 7.0, 8.0, 9.0, 17.0, 18.0, 19.0, 31.0]
+    [FAIL x_static] float mismatch: max=2.961167e+03 mean=1.591526e+02 shape=(6, 256, 256) new_range=(-374.0000,2963.0000) legacy_range=(-2.7122,7.1740)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=785197
+    [OK   x_continuous] float close (max=4.768e-07, mean=1.872e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[2.0, 3.0]
+    [FAIL x_static] float mismatch: max=3.771419e+02 mean=7.344045e+01 shape=(6, 256, 256) new_range=(0.0316,378.0000) legacy_range=(-2.0760,2.3413)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 3.0, 4.0, 5.0, 7.0]
+
+  index=3643450
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.274e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[5.0, 7.0, 23.0, 29.0]
+    [FAIL x_static] float mismatch: max=3.314034e+03 mean=3.201323e+02 shape=(6, 256, 256) new_range=(0.0000,3316.0000) legacy_range=(-2.1889,4.2057)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=2909382
+    [OK   x_continuous] float close (max=9.537e-07, mean=6.799e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 52404/131072 cells differ; new_uniq=[0.0, 2.0, 3.0] legacy_uniq=[2.0, 3.0, 31.0]
+    [FAIL x_static] float mismatch: max=3.397435e+03 mean=1.320234e+02 shape=(6, 256, 256) new_range=(-3398.0000,533.0000) legacy_range=(-2.7536,4.3444)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4089144
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[30.0]
+    [FAIL x_static] float mismatch: max=3.121107e+03 mean=5.035873e+02 shape=(6, 256, 256) new_range=(0.0000,3123.0000) legacy_range=(0.0000,1.8930)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=2256248
+    [OK   x_continuous] float close (max=1.907e-06, mean=1.655e-09, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 43224/131072 cells differ; new_uniq=[0.0, 7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0] legacy_uniq=[7.0, 9.0, 10.0, 15.0, 16.0, 27.0, 29.0, 30.0, 31.0]
+    [FAIL x_static] float mismatch: max=3.819844e+03 mean=1.092374e+02 shape=(6, 256, 256) new_range=(-935.0000,3822.0000) legacy_range=(-2.1887,9.9711)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2717728
+    [OK   x_continuous] float close (max=9.537e-07, mean=6.455e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 69276/131072 cells differ; new_uniq=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0] legacy_uniq=[7.0, 8.0, 9.0, 14.0, 15.0, 26.0, 27.0, 31.0]
+    [FAIL x_static] float mismatch: max=1.765618e+03 mean=7.329126e+01 shape=(6, 256, 256) new_range=(-265.0000,1767.0000) legacy_range=(-2.1886,6.2113)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4348927
+    [OK   x_continuous] float close (max=4.768e-07, mean=7.788e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[3.0, 4.0, 6.0, 8.0, 9.0]
+    [FAIL x_static] float mismatch: max=3.062129e+03 mean=1.762009e+02 shape=(6, 256, 256) new_range=(0.0033,3064.0000) legacy_range=(-2.1496,6.5838)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+
+  index=3268144
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.630e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[27.0]
+    [FAIL x_static] float mismatch: max=8.549617e+02 mean=1.132143e+02 shape=(6, 256, 256) new_range=(0.0000,856.0000) legacy_range=(-2.1883,3.3644)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=2832573
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.127e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[11.0, 14.0, 21.0, 22.0, 25.0, 26.0]
+    [FAIL x_static] float mismatch: max=1.942552e+03 mean=8.499838e+01 shape=(6, 256, 256) new_range=(0.0000,1944.0000) legacy_range=(-2.6365,6.7611)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=2435439
+    [OK   x_continuous] float close (max=4.768e-07, mean=7.781e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[4.0, 5.0]
+    [FAIL x_static] float mismatch: max=2.876199e+03 mean=8.477923e+01 shape=(6, 256, 256) new_range=(0.0015,2878.0000) legacy_range=(-2.1321,8.9189)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 6.0]
+
+  index=2508430
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.502e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[7.0, 22.0, 26.0, 27.0]
+    [FAIL x_static] float mismatch: max=1.458734e+03 mean=1.768938e+02 shape=(6, 256, 256) new_range=(0.0068,1460.0000) legacy_range=(-2.7169,3.4706)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=4189124
+    [OK   x_continuous] float close (max=1.907e-06, mean=1.638e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[1.0]
+    [FAIL x_static] float mismatch: max=8.369685e+02 mean=6.905471e+01 shape=(6, 256, 256) new_range=(0.0025,838.0000) legacy_range=(-2.1015,3.4595)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[3.0, 4.0, 5.0, 7.0]
+
+  index=1242514
+    [OK   x_continuous] float close (max=1.907e-06, mean=5.662e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 49204/131072 cells differ; new_uniq=[0.0, 1.0, 2.0, 3.0, 15.0, 29.0] legacy_uniq=[1.0, 2.0, 3.0, 15.0, 29.0, 31.0]
+    [FAIL x_static] float mismatch: max=5.553621e+03 mean=2.298255e+02 shape=(6, 256, 256) new_range=(-5555.0000,3830.0000) legacy_range=(-2.1886,7.7324)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=3655023
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[30.0]
+    [FAIL x_static] float mismatch: max=2.857207e+03 mean=4.644348e+02 shape=(6, 256, 256) new_range=(0.0000,2859.0000) legacy_range=(0.0000,1.7934)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=3005526
+    [OK   x_continuous] float close (max=4.768e-07, mean=9.462e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[3.0, 4.0, 6.0, 7.0, 8.0, 9.0, 11.0, 12.0, 13.0, 29.0]
+    [FAIL x_static] float mismatch: max=4.100738e+03 mean=2.840742e+02 shape=(6, 256, 256) new_range=(-118.0000,4103.0000) legacy_range=(-2.2104,8.0208)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=12268
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 131054/131072 cells differ; new_uniq=[0.0, 1.0] legacy_uniq=[1.0, 31.0]
+    [FAIL x_static] float mismatch: max=5.804527e+03 mean=5.369481e+02 shape=(6, 256, 256) new_range=(-5806.0000,99.0000) legacy_range=(-1.4733,0.7529)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 6.0]
+
+  index=1765788
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.025e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[4.0, 5.0]
+    [FAIL x_static] float mismatch: max=1.800605e+03 mean=6.209621e+01 shape=(6, 256, 256) new_range=(-37.0000,1802.0000) legacy_range=(-2.1886,6.3470)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 2.0, 3.0, 4.0, 6.0, 7.0]
+
+  index=3841171
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[30.0]
+    [FAIL x_static] float mismatch: max=1.228821e+03 mean=1.370273e+02 shape=(6, 256, 256) new_range=(0.0000,1230.0000) legacy_range=(-0.7685,1.1793)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=2483330
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 32942/131072 cells differ; new_uniq=[0.0, 30.0] legacy_uniq=[30.0, 31.0]
+    [FAIL x_static] float mismatch: max=2.130481e+03 mean=2.450607e+01 shape=(6, 256, 256) new_range=(0.0000,2132.0000) legacy_range=(-0.7685,1.5194)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=150463
+    [OK   x_continuous] float close (max=9.537e-07, mean=1.194e-09, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[4.0, 5.0, 7.0]
+    [FAIL x_static] float mismatch: max=1.162846e+03 mean=1.665826e+02 shape=(6, 256, 256) new_range=(0.0090,1164.0000) legacy_range=(-2.9676,3.5070)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[2.0, 3.0, 6.0, 7.0]
+
+  index=3426706
+    [OK   x_continuous] float close (max=9.537e-07, mean=2.463e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[27.0]
+    [FAIL x_static] float mismatch: max=7.699937e+02 mean=1.110003e+02 shape=(6, 256, 256) new_range=(0.0747,771.0000) legacy_range=(-2.0951,3.3332)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[3.0, 4.0, 5.0, 6.0, 7.0]
+
+  index=3268856
+    [OK   x_continuous] float close (max=4.768e-07, mean=8.858e-10, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[23.0, 29.0, 30.0]
+    [FAIL x_static] float mismatch: max=6.116977e+03 mean=8.626190e+02 shape=(6, 256, 256) new_range=(0.0000,6120.0000) legacy_range=(-2.1879,5.2039)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[1.0, 3.0, 6.0, 7.0]
+
+  index=3792657
+    [OK   x_continuous] float close (max=0.000e+00, mean=0.000e+00, shape=(2, 15, 256, 256))
+    [OK   x_kg] integer exact; uniq=[30.0]
+    [FAIL x_static] float mismatch: max=3.243061e+03 mean=5.179222e+02 shape=(6, 256, 256) new_range=(0.0000,3245.0000) legacy_range=(0.0000,1.9390)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0]
+
+  index=786937
+    [OK   x_continuous] float close (max=1.907e-06, mean=6.947e-10, shape=(2, 15, 256, 256))
+    [FAIL x_kg] integer mismatch: 38968/131072 cells differ; new_uniq=[0.0, 7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0] legacy_uniq=[7.0, 8.0, 9.0, 14.0, 15.0, 17.0, 18.0, 19.0, 25.0, 26.0, 27.0, 29.0, 31.0]
+    [FAIL x_static] float mismatch: max=3.673899e+03 mean=3.136136e+02 shape=(6, 256, 256) new_range=(-2043.0000,3676.0000) legacy_range=(-2.9927,7.3909)
+    [OK   x_hilda_prior] float close (max=0.000e+00, mean=0.000e+00, shape=(1, 256, 256))
+    [WARN hilda_target] dtype: new=torch.uint8 legacy=torch.float32 (casting for compare)
+    [OK   hilda_target] integer exact; uniq=[0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+
+========================================================================================
+RESULT
+========================================================================================
+samples checked: 32
+samples with at least one tensor mismatch: 32
+per-key failure counts: {'x_continuous': 0, 'x_kg': 11, 'x_static': 32, 'x_hilda_prior': 0, 'hilda_target': 0}
+[FAIL] loaders are NOT equivalent on the sampled patches
+END TIME: Thu May 14 15:50:00 CEST 2026

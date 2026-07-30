@@ -1,0 +1,16 @@
+{"time":"2026-06-15T05:22:46.467558014+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T05:22:46.467610902+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799699/wandb/offline-run-20260615_052246-ffedfly3/logs/debug-core.log"}
+{"time":"2026-06-15T05:22:46.63823663+02:00","level":"INFO","msg":"created new stream","id":"ffedfly3"}
+{"time":"2026-06-15T05:22:46.638272705+02:00","level":"INFO","msg":"stream: started","id":"ffedfly3"}
+{"time":"2026-06-15T05:22:46.638301426+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ffedfly3"}
+{"time":"2026-06-15T05:22:46.638327401+02:00","level":"INFO","msg":"handler: started","stream_id":"ffedfly3"}
+{"time":"2026-06-15T05:22:46.638309047+02:00","level":"INFO","msg":"sender: started","stream_id":"ffedfly3"}
+{"time":"2026-06-15T05:22:46.644810522+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T06:01:32.349832086+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T06:01:32.350587439+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T06:01:32.351502718+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T06:01:33.356938826+02:00","level":"INFO","msg":"stream: closing","id":"ffedfly3"}
+{"time":"2026-06-15T06:01:33.356952931+02:00","level":"INFO","msg":"handler: closed","stream_id":"ffedfly3"}
+{"time":"2026-06-15T06:01:33.356960129+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ffedfly3"}
+{"time":"2026-06-15T06:01:33.356980436+02:00","level":"INFO","msg":"sender: closed","stream_id":"ffedfly3"}
+{"time":"2026-06-15T06:01:33.357088724+02:00","level":"INFO","msg":"stream: closed","id":"ffedfly3"}

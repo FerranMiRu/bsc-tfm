@@ -1,0 +1,52 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{mathpazo}
+
+\title{\textbf{Performance Optimization of the AI4Land Training Pipeline on MareNostrum~5}}
+\author{
+  Ferran Mirabent Rubinat\\[1em]
+  \small Master's Thesis in Modelling for Science and Engineering\\
+  \small Universitat Aut\`onoma de Barcelona\\[1.5em]
+  \small \textbf{Tutors:}\\
+  \small Oriol Tint\'o Prims \\
+  \small Barcelona Supercomputing Center (BSC)\\\and
+  \small S\'ilvia Cuadrado Gavil\'an\\[0.5em]
+  \small Universitat Aut\`onoma de Barcelona (UAB)
+}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+Accurate modelling of land use and land cover (LULC) change is essential for projecting carbon
+emissions and understanding climate feedbacks. The AI4Land project, developed at the Barcelona
+Supercomputing Center within the framework of the Horizon Europe projects CONCERTO and TerraDT,
+employs a UNet-based deep learning model to downscale LULC data from the Land-Use Harmonization
+dataset (LUH2) at approximately 30\,km resolution to 1\,km resolution, covering the period
+1850--2100 including future projections based on Shared Socioeconomic Pathways (SSPs). The
+pipeline is also intended to be adopted by the ELLIOT project for training geospatial foundation
+models. Training this model on multi-channel geospatial datasets is computationally demanding
+and requires efficient use of high-performance computing resources.
+
+This thesis focuses on identifying and resolving performance bottlenecks in the AI4Land training
+pipeline running on MareNostrum~5, equipped with NVIDIA H100 GPUs. Preliminary profiling has
+revealed the data loading stage as the primary bottleneck, with significant variance in epoch
+duration traceable to the current use of multiple Zarr stores and suboptimal data ingestion
+patterns. The work will systematically evaluate optimizations with a particular emphasis on the
+data loading pipeline, while also exploring computational improvements at the model and hardware
+level. Each optimization will be assessed through profiling with NVIDIA Nsight Systems to quantify
+its impact on throughput and training time.
+
+The expected outcome is a measurably faster and more efficient training pipeline that maintains
+model accuracy, enabling faster iteration cycles for the AI4Land project and contributing
+practical guidelines for training deep learning models on large-scale HPC infrastructure.
+\end{abstract}
+
+\end{document}

@@ -1,0 +1,60 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+--- Logging error ---
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 122] Disk quota exceeded
+Call stack:
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 445, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 441, in main
+    trainer.run()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/base_trainer.py", line 386, in run
+    running_loss, train_steps = self.train_epoch(epoch)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 341, in train_epoch
+    logging.info(
+Message: 'Epoch [7/10], Batch [1443/2500], Loss: 0.8783 (Overall: 0.4493, Change: 0.9402), TF Ratio: 0.000'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/logging/__init__.py", line 1104, in emit
+    self.flush()
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/logging/__init__.py", line 1084, in flush
+    self.stream.flush()
+OSError: [Errno 122] Disk quota exceeded
+Call stack:
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py", line 445, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+srun: error: as02r1b25: task 0: Exited with exit code 1
+srun: Terminating StepId=42441509.0

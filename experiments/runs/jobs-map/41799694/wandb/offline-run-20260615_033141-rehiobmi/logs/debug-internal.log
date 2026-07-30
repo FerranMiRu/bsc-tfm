@@ -1,0 +1,16 @@
+{"time":"2026-06-15T03:31:41.865577475+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T03:31:41.865634526+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799694/wandb/offline-run-20260615_033141-rehiobmi/logs/debug-core.log"}
+{"time":"2026-06-15T03:31:41.994414575+02:00","level":"INFO","msg":"created new stream","id":"rehiobmi"}
+{"time":"2026-06-15T03:31:41.99446136+02:00","level":"INFO","msg":"stream: started","id":"rehiobmi"}
+{"time":"2026-06-15T03:31:41.994522753+02:00","level":"INFO","msg":"sender: started","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:31:41.994569347+02:00","level":"INFO","msg":"handler: started","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:31:41.994524146+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:31:42.001700385+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T03:37:36.64366962+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T03:37:36.71221136+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T03:37:36.713364951+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T03:37:37.79951215+02:00","level":"INFO","msg":"stream: closing","id":"rehiobmi"}
+{"time":"2026-06-15T03:37:37.799523338+02:00","level":"INFO","msg":"handler: closed","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:37:37.799529332+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:37:37.799546991+02:00","level":"INFO","msg":"sender: closed","stream_id":"rehiobmi"}
+{"time":"2026-06-15T03:37:37.803641248+02:00","level":"INFO","msg":"stream: closed","id":"rehiobmi"}

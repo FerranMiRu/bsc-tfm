@@ -1,0 +1,16 @@
+{"time":"2026-06-14T22:57:56.017908393+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T22:57:56.017983731+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799686/wandb/offline-run-20260614_225755-1kap8059/logs/debug-core.log"}
+{"time":"2026-06-14T22:57:56.134894677+02:00","level":"INFO","msg":"created new stream","id":"1kap8059"}
+{"time":"2026-06-14T22:57:56.13494786+02:00","level":"INFO","msg":"stream: started","id":"1kap8059"}
+{"time":"2026-06-14T22:57:56.134993133+02:00","level":"INFO","msg":"handler: started","stream_id":"1kap8059"}
+{"time":"2026-06-14T22:57:56.135008107+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"1kap8059"}
+{"time":"2026-06-14T22:57:56.135042486+02:00","level":"INFO","msg":"sender: started","stream_id":"1kap8059"}
+{"time":"2026-06-14T22:57:56.14238192+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-14T23:08:25.209654312+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-14T23:08:25.2629087+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-14T23:08:25.26389503+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-14T23:08:26.27043739+02:00","level":"INFO","msg":"stream: closing","id":"1kap8059"}
+{"time":"2026-06-14T23:08:26.270459729+02:00","level":"INFO","msg":"handler: closed","stream_id":"1kap8059"}
+{"time":"2026-06-14T23:08:26.270468784+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"1kap8059"}
+{"time":"2026-06-14T23:08:26.270580798+02:00","level":"INFO","msg":"sender: closed","stream_id":"1kap8059"}
+{"time":"2026-06-14T23:08:26.298083525+02:00","level":"INFO","msg":"stream: closed","id":"1kap8059"}

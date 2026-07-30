@@ -1,0 +1,9 @@
+START TIME: Mon Jun  8 15:12:50 CEST 2026
+HOST: as06r5b16
+-rw-r--r-- 1 bsc096444 ehpc736 4.0G Jun  8 14:41 /gpfs/scratch/ehpc736/bsc096444/io_bench/testfile_4g.bin
+
+=== GPFS cold read | bs=1M | iflag=direct ===
+4096+0 records in
+4096+0 records out
+4294967296 bytes (4.3 GB, 4.0 GiB) copied, 138.143 s, 31.1 MB/s
+END TIME: Mon Jun  8 15:15:08 CEST 2026

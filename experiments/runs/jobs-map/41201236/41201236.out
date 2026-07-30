@@ -1,0 +1,63 @@
+START TIME: Fri May 29 11:15:48 CEST 2026
+Master: as04r1b12:29500
+Launch command: uv run accelerate launch     --multi_gpu     --num_processes $(( 1 * 4 ))     --num_machines 1     --machine_rank ${SLURM_PROCID}     --main_process_ip as04r1b12     --main_process_port 29500     --mixed_precision bf16     --dynamo_backend no     /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py     --config-name profiling-preprocessed     system.slurm_job_id=41201236     training.resume.path=
+[2026-05-29 11:16:51,235][root][INFO] - Recurrent UNet Model Successfully Configured and Initialized.
+[2026-05-29 11:16:51,236][root][INFO] - Starting from scratch (no valid checkpoint provided).
+[2026-05-29 11:16:51,291][root][INFO] - Train: 6272000 samples, Val: 896000 samples
+[2026-05-29 11:16:52,702][root][INFO] - Starting training from epoch 1
+[2026-05-29 11:17:08,599][root][INFO] - Epoch [1/1], Batch [1/50], Loss: 1.0401 (Overall: 2.0801, Change: 0.0000), TF Ratio: 1.000
+[2026-05-29 11:17:08,756][root][INFO] - Epoch [1/1], Batch [2/50], Loss: 1.0401 (Overall: 2.0803, Change: 0.0000), TF Ratio: 1.000
+[2026-05-29 11:17:08,920][root][INFO] - Epoch [1/1], Batch [3/50], Loss: 1.0433 (Overall: 2.0994, Change: 0.0000), TF Ratio: 0.999
+[2026-05-29 11:17:09,518][root][INFO] - Epoch [1/1], Batch [4/50], Loss: 1.0420 (Overall: 2.0762, Change: 0.0000), TF Ratio: 0.999
+[2026-05-29 11:17:09,672][root][INFO] - Epoch [1/1], Batch [5/50], Loss: 1.0362 (Overall: 2.0259, Change: 0.0000), TF Ratio: 0.999
+[2026-05-29 11:17:09,825][root][INFO] - Epoch [1/1], Batch [6/50], Loss: 1.0325 (Overall: 2.0287, Change: 0.0000), TF Ratio: 0.999
+[2026-05-29 11:17:09,978][root][INFO] - Epoch [1/1], Batch [7/50], Loss: 1.0297 (Overall: 2.0246, Change: 0.0000), TF Ratio: 0.999
+[2026-05-29 11:17:10,131][root][INFO] - Epoch [1/1], Batch [8/50], Loss: 1.0268 (Overall: 2.0133, Change: 0.0000), TF Ratio: 0.998
+[2026-05-29 11:17:10,284][root][INFO] - Epoch [1/1], Batch [9/50], Loss: 1.0192 (Overall: 1.9173, Change: 0.0000), TF Ratio: 0.998
+[2026-05-29 11:17:10,437][root][INFO] - Epoch [1/1], Batch [10/50], Loss: 1.0134 (Overall: 1.9226, Change: 0.0000), TF Ratio: 0.998
+[2026-05-29 11:17:10,590][root][INFO] - Epoch [1/1], Batch [11/50], Loss: 1.0086 (Overall: 1.9211, Change: 0.0000), TF Ratio: 0.998
+[2026-05-29 11:17:19,652][root][INFO] - Epoch [1/1], Batch [12/50], Loss: 1.0059 (Overall: 1.9528, Change: 0.0000), TF Ratio: 0.998
+[2026-05-29 11:17:19,809][root][INFO] - Epoch [1/1], Batch [13/50], Loss: 0.9998 (Overall: 1.8531, Change: 0.0000), TF Ratio: 0.997
+[2026-05-29 11:17:19,963][root][INFO] - Epoch [1/1], Batch [14/50], Loss: 0.9948 (Overall: 1.8598, Change: 0.0000), TF Ratio: 0.997
+[2026-05-29 11:17:20,115][root][INFO] - Epoch [1/1], Batch [15/50], Loss: 0.9906 (Overall: 1.8631, Change: 0.0000), TF Ratio: 0.997
+[2026-05-29 11:17:20,269][root][INFO] - Epoch [1/1], Batch [16/50], Loss: 0.9846 (Overall: 1.7905, Change: 0.0000), TF Ratio: 0.997
+[2026-05-29 11:17:20,422][root][INFO] - Epoch [1/1], Batch [17/50], Loss: 0.9772 (Overall: 1.7172, Change: 0.0000), TF Ratio: 0.997
+[2026-05-29 11:17:20,576][root][INFO] - Epoch [1/1], Batch [18/50], Loss: 0.9722 (Overall: 1.7723, Change: 0.0000), TF Ratio: 0.996
+[2026-05-29 11:17:20,729][root][INFO] - Epoch [1/1], Batch [19/50], Loss: 0.9668 (Overall: 1.7384, Change: 0.0000), TF Ratio: 0.996
+[2026-05-29 11:17:20,883][root][INFO] - Epoch [1/1], Batch [20/50], Loss: 0.9629 (Overall: 1.7793, Change: 0.0000), TF Ratio: 0.996
+[2026-05-29 11:17:21,037][root][INFO] - Epoch [1/1], Batch [21/50], Loss: 0.9577 (Overall: 1.7092, Change: 0.0000), TF Ratio: 0.996
+[2026-05-29 11:17:21,189][root][INFO] - Epoch [1/1], Batch [22/50], Loss: 0.9524 (Overall: 1.6803, Change: 0.0000), TF Ratio: 0.996
+[2026-05-29 11:17:21,342][root][INFO] - Epoch [1/1], Batch [23/50], Loss: 0.9476 (Overall: 1.6840, Change: 0.0000), TF Ratio: 0.995
+[2026-05-29 11:17:32,286][root][INFO] - Epoch [1/1], Batch [24/50], Loss: 0.9425 (Overall: 1.6493, Change: 0.0000), TF Ratio: 0.995
+[2026-05-29 11:17:32,442][root][INFO] - Epoch [1/1], Batch [25/50], Loss: 0.9370 (Overall: 1.6101, Change: 0.0000), TF Ratio: 0.995
+[2026-05-29 11:17:32,595][root][INFO] - Epoch [1/1], Batch [26/50], Loss: 0.9322 (Overall: 1.6281, Change: 0.0000), TF Ratio: 0.995
+[2026-05-29 11:17:32,748][root][INFO] - Epoch [1/1], Batch [27/50], Loss: 0.9275 (Overall: 1.6108, Change: 0.0000), TF Ratio: 0.995
+[2026-05-29 11:17:32,902][root][INFO] - Epoch [1/1], Batch [28/50], Loss: 0.9235 (Overall: 1.6308, Change: 0.0000), TF Ratio: 0.994
+[2026-05-29 11:17:33,057][root][INFO] - Epoch [1/1], Batch [29/50], Loss: 0.9178 (Overall: 1.5149, Change: 0.0000), TF Ratio: 0.994
+[2026-05-29 11:17:33,209][root][INFO] - Epoch [1/1], Batch [30/50], Loss: 0.9127 (Overall: 1.5303, Change: 0.0000), TF Ratio: 0.994
+[2026-05-29 11:17:33,363][root][INFO] - Epoch [1/1], Batch [31/50], Loss: 0.9075 (Overall: 1.5036, Change: 0.0000), TF Ratio: 0.994
+[2026-05-29 11:17:33,518][root][INFO] - Epoch [1/1], Batch [32/50], Loss: 0.9043 (Overall: 1.6075, Change: 0.0000), TF Ratio: 0.994
+[2026-05-29 11:17:33,672][root][INFO] - Epoch [1/1], Batch [33/50], Loss: 0.9009 (Overall: 1.5833, Change: 0.0000), TF Ratio: 0.993
+[2026-05-29 11:17:33,824][root][INFO] - Epoch [1/1], Batch [34/50], Loss: 0.8964 (Overall: 1.4967, Change: 0.0000), TF Ratio: 0.993
+[2026-05-29 11:17:33,977][root][INFO] - Epoch [1/1], Batch [35/50], Loss: 0.8930 (Overall: 1.5558, Change: 0.0000), TF Ratio: 0.993
+[2026-05-29 11:17:44,798][root][INFO] - Epoch [1/1], Batch [36/50], Loss: 0.8904 (Overall: 1.5950, Change: 0.0000), TF Ratio: 0.993
+[2026-05-29 11:17:44,953][root][INFO] - Epoch [1/1], Batch [37/50], Loss: 0.8860 (Overall: 1.4617, Change: 0.0000), TF Ratio: 0.993
+[2026-05-29 11:17:45,106][root][INFO] - Epoch [1/1], Batch [38/50], Loss: 0.8820 (Overall: 1.4654, Change: 0.0000), TF Ratio: 0.992
+[2026-05-29 11:17:45,259][root][INFO] - Epoch [1/1], Batch [39/50], Loss: 0.8781 (Overall: 1.4580, Change: 0.0000), TF Ratio: 0.992
+[2026-05-29 11:17:45,415][root][INFO] - Epoch [1/1], Batch [40/50], Loss: 0.8742 (Overall: 1.4487, Change: 0.0000), TF Ratio: 0.992
+[2026-05-29 11:17:45,570][root][INFO] - Epoch [1/1], Batch [41/50], Loss: 0.8701 (Overall: 1.4105, Change: 0.0000), TF Ratio: 0.992
+[2026-05-29 11:17:45,724][root][INFO] - Epoch [1/1], Batch [42/50], Loss: 0.8665 (Overall: 1.4392, Change: 0.0000), TF Ratio: 0.992
+[2026-05-29 11:17:45,879][root][INFO] - Epoch [1/1], Batch [43/50], Loss: 0.8628 (Overall: 1.4102, Change: 0.0000), TF Ratio: 0.991
+[2026-05-29 11:17:46,035][root][INFO] - Epoch [1/1], Batch [44/50], Loss: 0.8592 (Overall: 1.4100, Change: 0.0000), TF Ratio: 0.991
+[2026-05-29 11:17:46,190][root][INFO] - Epoch [1/1], Batch [45/50], Loss: 0.8557 (Overall: 1.3995, Change: 0.0000), TF Ratio: 0.991
+[2026-05-29 11:17:46,343][root][INFO] - Epoch [1/1], Batch [46/50], Loss: 0.8522 (Overall: 1.3952, Change: 0.0000), TF Ratio: 0.991
+[2026-05-29 11:17:46,495][root][INFO] - Epoch [1/1], Batch [47/50], Loss: 0.8489 (Overall: 1.3900, Change: 0.0000), TF Ratio: 0.991
+[2026-05-29 11:17:56,779][root][INFO] - Epoch [1/1], Batch [48/50], Loss: 0.8457 (Overall: 1.3968, Change: 0.0000), TF Ratio: 0.990
+[2026-05-29 11:17:56,948][root][INFO] - Epoch [1/1], Batch [49/50], Loss: 0.8424 (Overall: 1.3641, Change: 0.0000), TF Ratio: 0.990
+[2026-05-29 11:17:57,101][root][INFO] - Epoch [1/1], Batch [50/50], Loss: 0.8391 (Overall: 1.3558, Change: 0.0000), TF Ratio: 0.990
+[2026-05-29 11:18:07,087][root][INFO] - Epoch 1 done. Validating...
+[2026-05-29 11:18:33,179][root][INFO] - Epoch [1/1] | Train: 0.8375 | Val: 0.8159
+[2026-05-29 11:18:33,392][root][INFO] - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41201236/best_model.pth
+[2026-05-29 11:18:33,582][root][INFO] - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41201236/model_epoch_1.pth
+[2026-05-29 11:18:33,880][root][INFO] - Training complete.
+END TIME: Fri May 29 11:18:37 CEST 2026

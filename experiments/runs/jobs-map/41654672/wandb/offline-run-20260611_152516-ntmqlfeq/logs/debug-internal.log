@@ -1,0 +1,16 @@
+{"time":"2026-06-11T15:25:16.42279429+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-11T15:25:16.422868526+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41654672/wandb/offline-run-20260611_152516-ntmqlfeq/logs/debug-core.log"}
+{"time":"2026-06-11T15:25:16.540104639+02:00","level":"INFO","msg":"created new stream","id":"ntmqlfeq"}
+{"time":"2026-06-11T15:25:16.540156387+02:00","level":"INFO","msg":"stream: started","id":"ntmqlfeq"}
+{"time":"2026-06-11T15:25:16.540195257+02:00","level":"INFO","msg":"handler: started","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:25:16.540215306+02:00","level":"INFO","msg":"sender: started","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:25:16.540227453+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:25:16.54828553+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-11T15:31:52.885730858+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-11T15:31:52.898565719+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-11T15:31:52.899436724+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-11T15:31:53.905464927+02:00","level":"INFO","msg":"stream: closing","id":"ntmqlfeq"}
+{"time":"2026-06-11T15:31:53.905478541+02:00","level":"INFO","msg":"handler: closed","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:31:53.905485719+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:31:53.905521433+02:00","level":"INFO","msg":"sender: closed","stream_id":"ntmqlfeq"}
+{"time":"2026-06-11T15:31:53.921417122+02:00","level":"INFO","msg":"stream: closed","id":"ntmqlfeq"}

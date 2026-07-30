@@ -1,0 +1,344 @@
+START TIME: Mon Apr 20 12:56:32 CEST 2026
+Master: as06r1b32:29500
+Launch command: uv run accelerate launch     --multi_gpu     --num_processes $(( 1 * 4 ))     --num_machines 1     --machine_rank ${SLURM_PROCID}     --main_process_ip as06r1b32     --main_process_port 29500     --mixed_precision bf16     --dynamo_backend no     /gpfs/scratch/bsc32/bsc406752/git/ai4land_secondary/source/training/train.py     --config-name inference_unet_fwd     system.slurm_job_id=39367779     training.resume.path=/gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435     model.type=unet
+[2026-04-20 12:58:11,878][root][INFO] - Recurrent UNet Model Successfully Configured and Initialized.
+[2026-04-20 12:58:11,922][root][INFO] - Loading checkpoint.
+[2026-04-20 12:58:11,948][root][INFO] - Resumed from epoch 3
+[2026-04-20 12:58:18,980][root][INFO] - Starting training from epoch 3
+[2026-04-20 13:09:48,905][root][INFO] - Epoch [3/10], Batch [100/2500], Loss: 0.9163 (Overall: 0.8087, Change: 1.2483), TF Ratio: 0.000
+[2026-04-20 13:20:45,602][root][INFO] - Epoch [3/10], Batch [200/2500], Loss: 0.9078 (Overall: 0.7824, Change: 1.7908), TF Ratio: 0.000
+[2026-04-20 13:30:49,135][root][INFO] - Epoch [3/10], Batch [300/2500], Loss: 0.9095 (Overall: 0.8452, Change: 0.9042), TF Ratio: 0.000
+[2026-04-20 13:40:45,964][root][INFO] - Epoch [3/10], Batch [400/2500], Loss: 0.9093 (Overall: 0.3451, Change: 1.1593), TF Ratio: 0.000
+[2026-04-20 13:51:46,505][root][INFO] - Epoch [3/10], Batch [500/2500], Loss: 0.9130 (Overall: 0.4411, Change: 1.4462), TF Ratio: 0.000
+[2026-04-20 14:01:53,884][root][INFO] - Epoch [3/10], Batch [600/2500], Loss: 0.9102 (Overall: 0.5325, Change: 1.3225), TF Ratio: 0.000
+[2026-04-20 14:12:20,936][root][INFO] - Epoch [3/10], Batch [700/2500], Loss: 0.9137 (Overall: 0.6076, Change: 1.2482), TF Ratio: 0.000
+[2026-04-20 14:24:26,348][root][INFO] - Epoch [3/10], Batch [800/2500], Loss: 0.9158 (Overall: 0.3969, Change: 1.5179), TF Ratio: 0.000
+[2026-04-20 14:34:54,310][root][INFO] - Epoch [3/10], Batch [900/2500], Loss: 0.9183 (Overall: 0.4219, Change: 1.1499), TF Ratio: 0.000
+[2026-04-20 14:44:43,923][root][INFO] - Epoch [3/10], Batch [1000/2500], Loss: 0.9159 (Overall: 0.4821, Change: 0.6036), TF Ratio: 0.000
+[2026-04-20 14:55:45,555][root][INFO] - Epoch [3/10], Batch [1100/2500], Loss: 0.9174 (Overall: 1.0202, Change: 1.0098), TF Ratio: 0.000
+[2026-04-20 15:05:33,138][root][INFO] - Epoch [3/10], Batch [1200/2500], Loss: 0.9178 (Overall: 0.4069, Change: 1.0728), TF Ratio: 0.000
+[2026-04-20 15:15:27,320][root][INFO] - Epoch [3/10], Batch [1300/2500], Loss: 0.9153 (Overall: 0.5597, Change: 1.1235), TF Ratio: 0.000
+[2026-04-20 15:26:25,672][root][INFO] - Epoch [3/10], Batch [1400/2500], Loss: 0.9158 (Overall: 0.2374, Change: 1.0299), TF Ratio: 0.000
+[2026-04-20 15:36:16,170][root][INFO] - Epoch [3/10], Batch [1500/2500], Loss: 0.9151 (Overall: 0.5272, Change: 1.5021), TF Ratio: 0.000
+[2026-04-20 15:46:03,612][root][INFO] - Epoch [3/10], Batch [1600/2500], Loss: 0.9165 (Overall: 0.7764, Change: 1.2051), TF Ratio: 0.000
+[2026-04-20 15:57:01,399][root][INFO] - Epoch [3/10], Batch [1700/2500], Loss: 0.9144 (Overall: 0.5194, Change: 0.8719), TF Ratio: 0.000
+[2026-04-20 16:06:46,111][root][INFO] - Epoch [3/10], Batch [1800/2500], Loss: 0.9153 (Overall: 0.6240, Change: 1.5928), TF Ratio: 0.000
+[2026-04-20 16:16:34,406][root][INFO] - Epoch [3/10], Batch [1900/2500], Loss: 0.9144 (Overall: 0.3505, Change: 1.1866), TF Ratio: 0.000
+[2026-04-20 16:27:25,338][root][INFO] - Epoch [3/10], Batch [2000/2500], Loss: 0.9147 (Overall: 0.7737, Change: 1.2223), TF Ratio: 0.000
+[2026-04-20 16:37:10,606][root][INFO] - Epoch [3/10], Batch [2100/2500], Loss: 0.9154 (Overall: 0.5426, Change: 0.8382), TF Ratio: 0.000
+[2026-04-20 16:47:00,032][root][INFO] - Epoch [3/10], Batch [2200/2500], Loss: 0.9157 (Overall: 0.8863, Change: 1.2942), TF Ratio: 0.000
+[2026-04-20 16:57:56,101][root][INFO] - Epoch [3/10], Batch [2300/2500], Loss: 0.9148 (Overall: 0.6969, Change: 1.6900), TF Ratio: 0.000
+[2026-04-20 17:07:39,145][root][INFO] - Epoch [3/10], Batch [2400/2500], Loss: 0.9147 (Overall: 0.6359, Change: 1.4341), TF Ratio: 0.000
+[2026-04-20 17:17:22,913][root][INFO] - Epoch [3/10], Batch [2500/2500], Loss: 0.9148 (Overall: 0.4217, Change: 0.9562), TF Ratio: 0.000
+[2026-04-20 17:18:10,706][root][INFO] - Epoch 3 done. Validating...
+[2026-04-20 18:12:47,499][root][INFO] - Epoch [3/10] | Train: 0.9153 | Val: 0.8628
+[2026-04-20 18:12:47,903][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_3.pth
+[2026-04-20 18:25:52,584][root][INFO] - Epoch [4/10], Batch [100/2500], Loss: 0.9036 (Overall: 0.5943, Change: 0.8076), TF Ratio: 0.000
+[2026-04-20 18:36:24,911][root][INFO] - Epoch [4/10], Batch [200/2500], Loss: 0.8995 (Overall: 0.3604, Change: 1.7432), TF Ratio: 0.000
+[2026-04-20 18:46:27,232][root][INFO] - Epoch [4/10], Batch [300/2500], Loss: 0.9062 (Overall: 0.7207, Change: 1.1952), TF Ratio: 0.000
+[2026-04-20 18:58:49,398][root][INFO] - Epoch [4/10], Batch [400/2500], Loss: 0.9068 (Overall: 0.2950, Change: 0.6183), TF Ratio: 0.000
+[2026-04-20 19:09:25,299][root][INFO] - Epoch [4/10], Batch [500/2500], Loss: 0.9073 (Overall: 0.5400, Change: 0.9919), TF Ratio: 0.000
+[2026-04-20 19:20:07,589][root][INFO] - Epoch [4/10], Batch [600/2500], Loss: 0.9030 (Overall: 0.5620, Change: 1.3202), TF Ratio: 0.000
+[2026-04-20 19:31:52,063][root][INFO] - Epoch [4/10], Batch [700/2500], Loss: 0.9019 (Overall: 0.8450, Change: 1.2603), TF Ratio: 0.000
+[2026-04-20 19:42:30,660][root][INFO] - Epoch [4/10], Batch [800/2500], Loss: 0.9008 (Overall: 0.5254, Change: 0.9163), TF Ratio: 0.000
+[2026-04-20 19:53:02,178][root][INFO] - Epoch [4/10], Batch [900/2500], Loss: 0.8993 (Overall: 0.4875, Change: 1.0431), TF Ratio: 0.000
+[2026-04-20 20:04:37,950][root][INFO] - Epoch [4/10], Batch [1000/2500], Loss: 0.8995 (Overall: 0.7254, Change: 1.3151), TF Ratio: 0.000
+[2026-04-20 20:14:56,422][root][INFO] - Epoch [4/10], Batch [1100/2500], Loss: 0.8985 (Overall: 0.6272, Change: 1.0630), TF Ratio: 0.000
+[2026-04-20 20:25:15,053][root][INFO] - Epoch [4/10], Batch [1200/2500], Loss: 0.8987 (Overall: 0.6217, Change: 1.2544), TF Ratio: 0.000
+[2026-04-20 20:36:58,487][root][INFO] - Epoch [4/10], Batch [1300/2500], Loss: 0.8969 (Overall: 0.4763, Change: 1.2223), TF Ratio: 0.000
+[2026-04-20 20:47:24,447][root][INFO] - Epoch [4/10], Batch [1400/2500], Loss: 0.8965 (Overall: 0.3033, Change: 1.1397), TF Ratio: 0.000
+[2026-04-20 20:57:47,495][root][INFO] - Epoch [4/10], Batch [1500/2500], Loss: 0.8959 (Overall: 0.4786, Change: 1.5725), TF Ratio: 0.000
+[2026-04-20 21:09:24,873][root][INFO] - Epoch [4/10], Batch [1600/2500], Loss: 0.8974 (Overall: 0.7308, Change: 1.4027), TF Ratio: 0.000
+[2026-04-20 21:19:47,315][root][INFO] - Epoch [4/10], Batch [1700/2500], Loss: 0.8965 (Overall: 0.4433, Change: 0.7955), TF Ratio: 0.000
+[2026-04-20 21:30:06,648][root][INFO] - Epoch [4/10], Batch [1800/2500], Loss: 0.8970 (Overall: 0.6819, Change: 0.6617), TF Ratio: 0.000
+[2026-04-20 21:41:43,915][root][INFO] - Epoch [4/10], Batch [1900/2500], Loss: 0.8975 (Overall: 0.7873, Change: 1.5787), TF Ratio: 0.000
+[2026-04-20 21:52:02,550][root][INFO] - Epoch [4/10], Batch [2000/2500], Loss: 0.8966 (Overall: 0.7351, Change: 1.2065), TF Ratio: 0.000
+[2026-04-20 22:02:19,396][root][INFO] - Epoch [4/10], Batch [2100/2500], Loss: 0.8982 (Overall: 0.6201, Change: 1.0991), TF Ratio: 0.000
+[2026-04-20 22:13:56,759][root][INFO] - Epoch [4/10], Batch [2200/2500], Loss: 0.8978 (Overall: 0.6487, Change: 1.0282), TF Ratio: 0.000
+[2026-04-20 22:24:32,227][root][INFO] - Epoch [4/10], Batch [2300/2500], Loss: 0.8966 (Overall: 0.5378, Change: 1.3568), TF Ratio: 0.000
+[2026-04-20 22:34:49,771][root][INFO] - Epoch [4/10], Batch [2400/2500], Loss: 0.8958 (Overall: 0.5174, Change: 0.9218), TF Ratio: 0.000
+[2026-04-20 22:46:32,265][root][INFO] - Epoch [4/10], Batch [2500/2500], Loss: 0.8950 (Overall: 1.2238, Change: 1.1616), TF Ratio: 0.000
+[2026-04-20 22:46:41,410][root][INFO] - Epoch 4 done. Validating...
+[2026-04-20 23:43:12,693][root][INFO] - Epoch [4/10] | Train: 0.8948 | Val: 0.8159
+[2026-04-20 23:43:12,911][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/best_model.pth
+[2026-04-20 23:43:13,059][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_4.pth
+[2026-04-20 23:54:49,512][root][INFO] - Epoch [5/10], Batch [100/2500], Loss: 0.8761 (Overall: 0.3451, Change: 1.7341), TF Ratio: 0.000
+[2026-04-21 00:04:58,376][root][INFO] - Epoch [5/10], Batch [200/2500], Loss: 0.8834 (Overall: 0.5915, Change: 1.2118), TF Ratio: 0.000
+[2026-04-21 00:16:29,657][root][INFO] - Epoch [5/10], Batch [300/2500], Loss: 0.8820 (Overall: 0.6729, Change: 1.4012), TF Ratio: 0.000
+[2026-04-21 00:28:00,575][root][INFO] - Epoch [5/10], Batch [400/2500], Loss: 0.8851 (Overall: 0.6650, Change: 1.3010), TF Ratio: 0.000
+[2026-04-21 00:37:42,051][root][INFO] - Epoch [5/10], Batch [500/2500], Loss: 0.8885 (Overall: 0.6055, Change: 1.3603), TF Ratio: 0.000
+[2026-04-21 00:47:54,665][root][INFO] - Epoch [5/10], Batch [600/2500], Loss: 0.8900 (Overall: 0.5741, Change: 1.0817), TF Ratio: 0.000
+[2026-04-21 00:58:15,754][root][INFO] - Epoch [5/10], Batch [700/2500], Loss: 0.8912 (Overall: 0.4350, Change: 1.2668), TF Ratio: 0.000
+[2026-04-21 01:08:11,146][root][INFO] - Epoch [5/10], Batch [800/2500], Loss: 0.8892 (Overall: 0.5066, Change: 1.6930), TF Ratio: 0.000
+[2026-04-21 01:19:33,697][root][INFO] - Epoch [5/10], Batch [900/2500], Loss: 0.8856 (Overall: 0.8646, Change: 0.5391), TF Ratio: 0.000
+[2026-04-21 01:29:28,899][root][INFO] - Epoch [5/10], Batch [1000/2500], Loss: 0.8825 (Overall: 0.9597, Change: 1.2047), TF Ratio: 0.000
+[2026-04-21 01:40:01,493][root][INFO] - Epoch [5/10], Batch [1100/2500], Loss: 0.8848 (Overall: 0.4735, Change: 1.0764), TF Ratio: 0.000
+[2026-04-21 01:51:04,047][root][INFO] - Epoch [5/10], Batch [1200/2500], Loss: 0.8822 (Overall: 0.6494, Change: 1.2979), TF Ratio: 0.000
+[2026-04-21 02:01:07,769][root][INFO] - Epoch [5/10], Batch [1300/2500], Loss: 0.8812 (Overall: 0.4929, Change: 1.0567), TF Ratio: 0.000
+[2026-04-21 02:11:16,985][root][INFO] - Epoch [5/10], Batch [1400/2500], Loss: 0.8816 (Overall: 0.7541, Change: 1.6534), TF Ratio: 0.000
+[2026-04-21 02:22:46,782][root][INFO] - Epoch [5/10], Batch [1500/2500], Loss: 0.8806 (Overall: 0.7152, Change: 1.2765), TF Ratio: 0.000
+[2026-04-21 02:33:04,463][root][INFO] - Epoch [5/10], Batch [1600/2500], Loss: 0.8813 (Overall: 0.5890, Change: 0.6232), TF Ratio: 0.000
+[2026-04-21 02:43:16,553][root][INFO] - Epoch [5/10], Batch [1700/2500], Loss: 0.8817 (Overall: 0.3608, Change: 1.2163), TF Ratio: 0.000
+[2026-04-21 02:54:50,058][root][INFO] - Epoch [5/10], Batch [1800/2500], Loss: 0.8807 (Overall: 0.6858, Change: 1.4264), TF Ratio: 0.000
+[2026-04-21 03:05:12,090][root][INFO] - Epoch [5/10], Batch [1900/2500], Loss: 0.8806 (Overall: 0.5883, Change: 1.3366), TF Ratio: 0.000
+[2026-04-21 03:15:28,761][root][INFO] - Epoch [5/10], Batch [2000/2500], Loss: 0.8791 (Overall: 0.7512, Change: 1.0827), TF Ratio: 0.000
+[2026-04-21 03:27:00,218][root][INFO] - Epoch [5/10], Batch [2100/2500], Loss: 0.8783 (Overall: 0.2304, Change: 0.6841), TF Ratio: 0.000
+[2026-04-21 03:37:05,316][root][INFO] - Epoch [5/10], Batch [2200/2500], Loss: 0.8768 (Overall: 0.4901, Change: 1.2222), TF Ratio: 0.000
+[2026-04-21 03:47:26,160][root][INFO] - Epoch [5/10], Batch [2300/2500], Loss: 0.8769 (Overall: 0.5134, Change: 1.0739), TF Ratio: 0.000
+[2026-04-21 03:58:47,368][root][INFO] - Epoch [5/10], Batch [2400/2500], Loss: 0.8751 (Overall: 0.1774, Change: 0.6174), TF Ratio: 0.000
+[2026-04-21 04:08:35,251][root][INFO] - Epoch [5/10], Batch [2500/2500], Loss: 0.8747 (Overall: 0.4612, Change: 1.2259), TF Ratio: 0.000
+[2026-04-21 04:08:57,926][root][INFO] - Epoch 5 done. Validating...
+[2026-04-21 05:04:26,704][root][INFO] - Epoch [5/10] | Train: 0.8798 | Val: 0.7840
+[2026-04-21 05:04:26,894][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/best_model.pth
+[2026-04-21 05:04:27,032][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_5.pth
+[2026-04-21 05:17:27,133][root][INFO] - Epoch [6/10], Batch [100/2500], Loss: 0.9096 (Overall: 0.5253, Change: 1.2082), TF Ratio: 0.000
+[2026-04-21 05:28:07,613][root][INFO] - Epoch [6/10], Batch [200/2500], Loss: 0.8957 (Overall: 0.5603, Change: 1.0085), TF Ratio: 0.000
+[2026-04-21 05:38:37,179][root][INFO] - Epoch [6/10], Batch [300/2500], Loss: 0.8841 (Overall: 0.4095, Change: 1.0824), TF Ratio: 0.000
+[2026-04-21 05:50:14,175][root][INFO] - Epoch [6/10], Batch [400/2500], Loss: 0.8740 (Overall: 0.5902, Change: 1.3528), TF Ratio: 0.000
+[2026-04-21 06:00:05,238][root][INFO] - Epoch [6/10], Batch [500/2500], Loss: 0.8782 (Overall: 0.4094, Change: 0.7517), TF Ratio: 0.000
+[2026-04-21 06:09:57,654][root][INFO] - Epoch [6/10], Batch [600/2500], Loss: 0.8763 (Overall: 0.6156, Change: 0.9260), TF Ratio: 0.000
+[2026-04-21 06:20:59,228][root][INFO] - Epoch [6/10], Batch [700/2500], Loss: 0.8739 (Overall: 0.5431, Change: 0.8040), TF Ratio: 0.000
+[2026-04-21 06:31:06,826][root][INFO] - Epoch [6/10], Batch [800/2500], Loss: 0.8735 (Overall: 0.5593, Change: 0.9776), TF Ratio: 0.000
+[2026-04-21 06:41:03,527][root][INFO] - Epoch [6/10], Batch [900/2500], Loss: 0.8712 (Overall: 0.3389, Change: 1.0903), TF Ratio: 0.000
+[2026-04-21 06:52:20,286][root][INFO] - Epoch [6/10], Batch [1000/2500], Loss: 0.8723 (Overall: 0.5337, Change: 0.7204), TF Ratio: 0.000
+[2026-04-21 07:02:13,147][root][INFO] - Epoch [6/10], Batch [1100/2500], Loss: 0.8747 (Overall: 0.7323, Change: 1.4296), TF Ratio: 0.000
+[2026-04-21 07:12:14,565][root][INFO] - Epoch [6/10], Batch [1200/2500], Loss: 0.8766 (Overall: 0.7268, Change: 1.2136), TF Ratio: 0.000
+[2026-04-21 07:23:23,237][root][INFO] - Epoch [6/10], Batch [1300/2500], Loss: 0.8769 (Overall: 0.7064, Change: 0.8863), TF Ratio: 0.000
+[2026-04-21 07:33:37,649][root][INFO] - Epoch [6/10], Batch [1400/2500], Loss: 0.8752 (Overall: 0.5201, Change: 1.0319), TF Ratio: 0.000
+[2026-04-21 07:43:28,971][root][INFO] - Epoch [6/10], Batch [1500/2500], Loss: 0.8736 (Overall: 0.5997, Change: 1.1635), TF Ratio: 0.000
+[2026-04-21 07:54:34,706][root][INFO] - Epoch [6/10], Batch [1600/2500], Loss: 0.8727 (Overall: 0.8117, Change: 0.7891), TF Ratio: 0.000
+[2026-04-21 08:04:24,262][root][INFO] - Epoch [6/10], Batch [1700/2500], Loss: 0.8727 (Overall: 0.6275, Change: 0.9933), TF Ratio: 0.000
+[2026-04-21 08:14:20,440][root][INFO] - Epoch [6/10], Batch [1800/2500], Loss: 0.8726 (Overall: 0.6938, Change: 0.8094), TF Ratio: 0.000
+[2026-04-21 08:25:29,874][root][INFO] - Epoch [6/10], Batch [1900/2500], Loss: 0.8731 (Overall: 0.5777, Change: 1.2998), TF Ratio: 0.000
+[2026-04-21 08:35:22,126][root][INFO] - Epoch [6/10], Batch [2000/2500], Loss: 0.8726 (Overall: 0.5436, Change: 1.5425), TF Ratio: 0.000
+[2026-04-21 08:45:17,563][root][INFO] - Epoch [6/10], Batch [2100/2500], Loss: 0.8713 (Overall: 0.6174, Change: 1.0849), TF Ratio: 0.000
+[2026-04-21 08:56:33,676][root][INFO] - Epoch [6/10], Batch [2200/2500], Loss: 0.8711 (Overall: 0.4904, Change: 1.3361), TF Ratio: 0.000
+[2026-04-21 09:06:33,321][root][INFO] - Epoch [6/10], Batch [2300/2500], Loss: 0.8715 (Overall: 0.6351, Change: 1.2522), TF Ratio: 0.000
+[2026-04-21 09:16:29,022][root][INFO] - Epoch [6/10], Batch [2400/2500], Loss: 0.8703 (Overall: 0.2408, Change: 1.1965), TF Ratio: 0.000
+[2026-04-21 09:27:32,130][root][INFO] - Epoch [6/10], Batch [2500/2500], Loss: 0.8686 (Overall: 0.6885, Change: 1.2851), TF Ratio: 0.000
+[2026-04-21 09:27:44,065][root][INFO] - Epoch 6 done. Validating...
+[2026-04-21 10:23:32,566][root][INFO] - Epoch [6/10] | Train: 0.8714 | Val: 0.7743
+[2026-04-21 10:23:32,770][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/best_model.pth
+[2026-04-21 10:23:32,955][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_6.pth
+[2026-04-21 10:36:35,578][root][INFO] - Epoch [7/10], Batch [100/2500], Loss: 0.8773 (Overall: 0.7839, Change: 0.9821), TF Ratio: 0.000
+[2026-04-21 10:46:57,993][root][INFO] - Epoch [7/10], Batch [200/2500], Loss: 0.8524 (Overall: 0.4650, Change: 1.2020), TF Ratio: 0.000
+[2026-04-21 10:58:39,065][root][INFO] - Epoch [7/10], Batch [300/2500], Loss: 0.8621 (Overall: 0.6265, Change: 0.8822), TF Ratio: 0.000
+[2026-04-21 11:08:39,370][root][INFO] - Epoch [7/10], Batch [400/2500], Loss: 0.8642 (Overall: 0.5290, Change: 1.2276), TF Ratio: 0.000
+[2026-04-21 11:18:59,248][root][INFO] - Epoch [7/10], Batch [500/2500], Loss: 0.8622 (Overall: 0.6918, Change: 1.1862), TF Ratio: 0.000
+[2026-04-21 11:30:06,057][root][INFO] - Epoch [7/10], Batch [600/2500], Loss: 0.8578 (Overall: 0.7270, Change: 1.2035), TF Ratio: 0.000
+[2026-04-21 11:40:16,117][root][INFO] - Epoch [7/10], Batch [700/2500], Loss: 0.8583 (Overall: 0.3924, Change: 1.2374), TF Ratio: 0.000
+[2026-04-21 11:50:07,605][root][INFO] - Epoch [7/10], Batch [800/2500], Loss: 0.8601 (Overall: 0.2883, Change: 1.2686), TF Ratio: 0.000
+[2026-04-21 12:01:14,550][root][INFO] - Epoch [7/10], Batch [900/2500], Loss: 0.8608 (Overall: 0.6368, Change: 1.4945), TF Ratio: 0.000
+[2026-04-21 12:11:30,924][root][INFO] - Epoch [7/10], Batch [1000/2500], Loss: 0.8637 (Overall: 0.5206, Change: 1.2161), TF Ratio: 0.000
+[2026-04-21 12:21:29,594][root][INFO] - Epoch [7/10], Batch [1100/2500], Loss: 0.8624 (Overall: 0.7001, Change: 0.8771), TF Ratio: 0.000
+[2026-04-21 12:35:30,316][root][INFO] - Epoch [7/10], Batch [1200/2500], Loss: 0.8639 (Overall: 0.4547, Change: 1.1418), TF Ratio: 0.000
+[2026-04-21 12:46:10,203][root][INFO] - Epoch [7/10], Batch [1300/2500], Loss: 0.8624 (Overall: 0.6407, Change: 1.1136), TF Ratio: 0.000
+[2026-04-21 12:56:19,493][root][INFO] - Epoch [7/10], Batch [1400/2500], Loss: 0.8626 (Overall: 0.6465, Change: 1.6394), TF Ratio: 0.000
+[2026-04-21 13:06:15,675][root][INFO] - Epoch [7/10], Batch [1500/2500], Loss: 0.8634 (Overall: 0.6262, Change: 1.3290), TF Ratio: 0.000
+[2026-04-21 13:17:16,668][root][INFO] - Epoch [7/10], Batch [1600/2500], Loss: 0.8630 (Overall: 0.6631, Change: 0.8472), TF Ratio: 0.000
+[2026-04-21 13:27:10,279][root][INFO] - Epoch [7/10], Batch [1700/2500], Loss: 0.8614 (Overall: 0.7492, Change: 0.7686), TF Ratio: 0.000
+[2026-04-21 13:37:14,454][root][INFO] - Epoch [7/10], Batch [1800/2500], Loss: 0.8618 (Overall: 0.4586, Change: 1.2188), TF Ratio: 0.000
+[2026-04-21 13:48:10,247][root][INFO] - Epoch [7/10], Batch [1900/2500], Loss: 0.8607 (Overall: 0.5250, Change: 1.1711), TF Ratio: 0.000
+[2026-04-21 13:58:50,642][root][INFO] - Epoch [7/10], Batch [2000/2500], Loss: 0.8604 (Overall: 0.8652, Change: 0.9300), TF Ratio: 0.000
+[2026-04-21 14:09:01,734][root][INFO] - Epoch [7/10], Batch [2100/2500], Loss: 0.8606 (Overall: 0.6084, Change: 1.1977), TF Ratio: 0.000
+[2026-04-21 14:20:20,886][root][INFO] - Epoch [7/10], Batch [2200/2500], Loss: 0.8599 (Overall: 0.4997, Change: 1.5165), TF Ratio: 0.000
+[2026-04-21 14:31:14,967][root][INFO] - Epoch [7/10], Batch [2300/2500], Loss: 0.8593 (Overall: 0.4987, Change: 1.0515), TF Ratio: 0.000
+[2026-04-21 14:41:36,168][root][INFO] - Epoch [7/10], Batch [2400/2500], Loss: 0.8588 (Overall: 0.5436, Change: 1.4402), TF Ratio: 0.000
+[2026-04-21 14:53:00,797][root][INFO] - Epoch [7/10], Batch [2500/2500], Loss: 0.8594 (Overall: 0.6273, Change: 0.9832), TF Ratio: 0.000
+[2026-04-21 14:53:15,113][root][INFO] - Epoch 7 done. Validating...
+[2026-04-21 15:52:33,680][root][INFO] - Epoch [7/10] | Train: 0.8616 | Val: 0.8303
+[2026-04-21 15:52:33,898][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_7.pth
+[2026-04-21 16:05:15,965][root][INFO] - Epoch [8/10], Batch [100/2500], Loss: 0.8500 (Overall: 0.4468, Change: 1.3518), TF Ratio: 0.000
+[2026-04-21 16:15:26,661][root][INFO] - Epoch [8/10], Batch [200/2500], Loss: 0.8495 (Overall: 0.2995, Change: 1.2238), TF Ratio: 0.000
+[2026-04-21 16:25:24,501][root][INFO] - Epoch [8/10], Batch [300/2500], Loss: 0.8540 (Overall: 0.3164, Change: 1.4273), TF Ratio: 0.000
+[2026-04-21 16:36:31,554][root][INFO] - Epoch [8/10], Batch [400/2500], Loss: 0.8552 (Overall: 0.3754, Change: 1.1212), TF Ratio: 0.000
+[2026-04-21 16:46:50,228][root][INFO] - Epoch [8/10], Batch [500/2500], Loss: 0.8593 (Overall: 0.5081, Change: 1.5321), TF Ratio: 0.000
+[2026-04-21 16:57:39,205][root][INFO] - Epoch [8/10], Batch [600/2500], Loss: 0.8532 (Overall: 0.5710, Change: 1.0426), TF Ratio: 0.000
+[2026-04-21 17:08:20,332][root][INFO] - Epoch [8/10], Batch [700/2500], Loss: 0.8540 (Overall: 0.5237, Change: 0.8477), TF Ratio: 0.000
+[2026-04-21 17:18:21,193][root][INFO] - Epoch [8/10], Batch [800/2500], Loss: 0.8543 (Overall: 0.7430, Change: 1.1372), TF Ratio: 0.000
+[2026-04-21 17:29:32,846][root][INFO] - Epoch [8/10], Batch [900/2500], Loss: 0.8551 (Overall: 0.4758, Change: 1.3437), TF Ratio: 0.000
+[2026-04-21 17:39:33,363][root][INFO] - Epoch [8/10], Batch [1000/2500], Loss: 0.8543 (Overall: 0.5683, Change: 0.8945), TF Ratio: 0.000
+[2026-04-21 17:49:36,889][root][INFO] - Epoch [8/10], Batch [1100/2500], Loss: 0.8545 (Overall: 0.5844, Change: 0.9442), TF Ratio: 0.000
+[2026-04-21 18:00:40,850][root][INFO] - Epoch [8/10], Batch [1200/2500], Loss: 0.8566 (Overall: 0.5500, Change: 1.5035), TF Ratio: 0.000
+[2026-04-21 18:10:35,940][root][INFO] - Epoch [8/10], Batch [1300/2500], Loss: 0.8564 (Overall: 0.5991, Change: 1.0792), TF Ratio: 0.000
+[2026-04-21 18:20:22,860][root][INFO] - Epoch [8/10], Batch [1400/2500], Loss: 0.8573 (Overall: 0.4077, Change: 1.1221), TF Ratio: 0.000
+[2026-04-21 18:31:20,107][root][INFO] - Epoch [8/10], Batch [1500/2500], Loss: 0.8575 (Overall: 0.6693, Change: 1.0436), TF Ratio: 0.000
+[2026-04-21 18:41:03,035][root][INFO] - Epoch [8/10], Batch [1600/2500], Loss: 0.8570 (Overall: 0.5060, Change: 1.1509), TF Ratio: 0.000
+[2026-04-21 18:50:50,306][root][INFO] - Epoch [8/10], Batch [1700/2500], Loss: 0.8563 (Overall: 0.5131, Change: 1.0294), TF Ratio: 0.000
+[2026-04-21 19:01:45,617][root][INFO] - Epoch [8/10], Batch [1800/2500], Loss: 0.8560 (Overall: 0.8330, Change: 0.8823), TF Ratio: 0.000
+[2026-04-21 19:11:30,757][root][INFO] - Epoch [8/10], Batch [1900/2500], Loss: 0.8545 (Overall: 0.4806, Change: 1.2113), TF Ratio: 0.000
+[2026-04-21 19:21:13,445][root][INFO] - Epoch [8/10], Batch [2000/2500], Loss: 0.8540 (Overall: 0.5980, Change: 1.2649), TF Ratio: 0.000
+[2026-04-21 19:32:07,560][root][INFO] - Epoch [8/10], Batch [2100/2500], Loss: 0.8540 (Overall: 0.4115, Change: 1.2592), TF Ratio: 0.000
+[2026-04-21 19:42:26,990][root][INFO] - Epoch [8/10], Batch [2200/2500], Loss: 0.8544 (Overall: 0.5026, Change: 0.9694), TF Ratio: 0.000
+[2026-04-21 19:54:01,091][root][INFO] - Epoch [8/10], Batch [2300/2500], Loss: 0.8542 (Overall: 0.5454, Change: 1.1265), TF Ratio: 0.000
+[2026-04-21 20:03:58,574][root][INFO] - Epoch [8/10], Batch [2400/2500], Loss: 0.8532 (Overall: 0.4012, Change: 0.5870), TF Ratio: 0.000
+[2026-04-21 20:14:03,023][root][INFO] - Epoch [8/10], Batch [2500/2500], Loss: 0.8528 (Overall: 0.4368, Change: 1.3696), TF Ratio: 0.000
+[2026-04-21 20:14:50,664][root][INFO] - Epoch 8 done. Validating...
+[2026-04-21 21:11:38,577][root][INFO] - Epoch [8/10] | Train: 0.8542 | Val: 0.8164
+[2026-04-21 21:11:38,802][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_8.pth
+[2026-04-21 21:24:28,737][root][INFO] - Epoch [9/10], Batch [100/2500], Loss: 0.8344 (Overall: 0.4600, Change: 1.1480), TF Ratio: 0.000
+[2026-04-21 21:35:27,626][root][INFO] - Epoch [9/10], Batch [200/2500], Loss: 0.8275 (Overall: 0.3360, Change: 0.8728), TF Ratio: 0.000
+[2026-04-21 21:46:49,034][root][INFO] - Epoch [9/10], Batch [300/2500], Loss: 0.8358 (Overall: 0.8132, Change: 1.2406), TF Ratio: 0.000
+[2026-04-21 21:56:54,120][root][INFO] - Epoch [9/10], Batch [400/2500], Loss: 0.8354 (Overall: 0.5277, Change: 1.2518), TF Ratio: 0.000
+[2026-04-21 22:07:58,380][root][INFO] - Epoch [9/10], Batch [500/2500], Loss: 0.8360 (Overall: 0.5464, Change: 1.4731), TF Ratio: 0.000
+[2026-04-21 22:18:24,932][root][INFO] - Epoch [9/10], Batch [600/2500], Loss: 0.8379 (Overall: 0.7618, Change: 1.1366), TF Ratio: 0.000
+[2026-04-21 22:29:08,651][root][INFO] - Epoch [9/10], Batch [700/2500], Loss: 0.8377 (Overall: 0.5057, Change: 1.2602), TF Ratio: 0.000
+[2026-04-21 22:38:41,637][root][INFO] - Epoch [9/10], Batch [800/2500], Loss: 0.8406 (Overall: 0.5709, Change: 1.2713), TF Ratio: 0.000
+[2026-04-21 22:48:19,738][root][INFO] - Epoch [9/10], Batch [900/2500], Loss: 0.8397 (Overall: 0.6312, Change: 1.2609), TF Ratio: 0.000
+[2026-04-21 22:59:01,987][root][INFO] - Epoch [9/10], Batch [1000/2500], Loss: 0.8401 (Overall: 0.4786, Change: 1.2793), TF Ratio: 0.000
+[2026-04-21 23:09:29,739][root][INFO] - Epoch [9/10], Batch [1100/2500], Loss: 0.8393 (Overall: 0.6166, Change: 0.8775), TF Ratio: 0.000
+[2026-04-21 23:19:48,141][root][INFO] - Epoch [9/10], Batch [1200/2500], Loss: 0.8396 (Overall: 0.4248, Change: 1.2456), TF Ratio: 0.000
+[2026-04-21 23:29:43,818][root][INFO] - Epoch [9/10], Batch [1300/2500], Loss: 0.8419 (Overall: 0.3913, Change: 1.2197), TF Ratio: 0.000
+[2026-04-21 23:40:47,646][root][INFO] - Epoch [9/10], Batch [1400/2500], Loss: 0.8432 (Overall: 0.2825, Change: 1.1275), TF Ratio: 0.000
+[2026-04-21 23:50:57,165][root][INFO] - Epoch [9/10], Batch [1500/2500], Loss: 0.8427 (Overall: 0.4315, Change: 1.0237), TF Ratio: 0.000
+[2026-04-22 00:01:00,873][root][INFO] - Epoch [9/10], Batch [1600/2500], Loss: 0.8427 (Overall: 0.6363, Change: 1.0419), TF Ratio: 0.000
+[2026-04-22 00:11:58,349][root][INFO] - Epoch [9/10], Batch [1700/2500], Loss: 0.8437 (Overall: 0.4611, Change: 1.1540), TF Ratio: 0.000
+[2026-04-22 00:21:45,000][root][INFO] - Epoch [9/10], Batch [1800/2500], Loss: 0.8426 (Overall: 0.7403, Change: 1.2791), TF Ratio: 0.000
+[2026-04-22 00:31:34,615][root][INFO] - Epoch [9/10], Batch [1900/2500], Loss: 0.8412 (Overall: 0.5932, Change: 1.1512), TF Ratio: 0.000
+[2026-04-22 00:42:28,288][root][INFO] - Epoch [9/10], Batch [2000/2500], Loss: 0.8421 (Overall: 0.5304, Change: 1.1101), TF Ratio: 0.000
+[2026-04-22 00:53:12,216][root][INFO] - Epoch [9/10], Batch [2100/2500], Loss: 0.8415 (Overall: 0.6330, Change: 1.0763), TF Ratio: 0.000
+[2026-04-22 01:02:58,747][root][INFO] - Epoch [9/10], Batch [2200/2500], Loss: 0.8406 (Overall: 0.3521, Change: 1.1204), TF Ratio: 0.000
+[2026-04-22 01:12:57,864][root][INFO] - Epoch [9/10], Batch [2300/2500], Loss: 0.8403 (Overall: 0.5371, Change: 0.9838), TF Ratio: 0.000
+[2026-04-22 01:23:51,355][root][INFO] - Epoch [9/10], Batch [2400/2500], Loss: 0.8404 (Overall: 0.5805, Change: 1.0487), TF Ratio: 0.000
+[2026-04-22 01:33:29,466][root][INFO] - Epoch [9/10], Batch [2500/2500], Loss: 0.8411 (Overall: 0.5703, Change: 1.2329), TF Ratio: 0.000
+[2026-04-22 01:33:56,922][root][INFO] - Epoch 9 done. Validating...
+[2026-04-22 02:29:11,195][root][INFO] - Epoch [9/10] | Train: 0.8472 | Val: 0.7890
+[2026-04-22 02:29:11,387][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_9.pth
+[2026-04-22 02:41:38,867][root][INFO] - Epoch [10/10], Batch [100/2500], Loss: 0.8439 (Overall: 0.6483, Change: 1.1699), TF Ratio: 0.000
+[2026-04-22 02:52:31,785][root][INFO] - Epoch [10/10], Batch [200/2500], Loss: 0.8395 (Overall: 0.6888, Change: 0.6171), TF Ratio: 0.000
+[2026-04-22 03:03:09,012][root][INFO] - Epoch [10/10], Batch [300/2500], Loss: 0.8446 (Overall: 0.5110, Change: 0.8659), TF Ratio: 0.000
+[2026-04-22 03:13:47,820][root][INFO] - Epoch [10/10], Batch [400/2500], Loss: 0.8388 (Overall: 0.5863, Change: 1.4298), TF Ratio: 0.000
+[2026-04-22 03:24:30,255][root][INFO] - Epoch [10/10], Batch [500/2500], Loss: 0.8411 (Overall: 0.6033, Change: 0.8792), TF Ratio: 0.000
+[2026-04-22 03:36:15,253][root][INFO] - Epoch [10/10], Batch [600/2500], Loss: 0.8398 (Overall: 0.9185, Change: 1.5761), TF Ratio: 0.000
+[2026-04-22 03:46:38,370][root][INFO] - Epoch [10/10], Batch [700/2500], Loss: 0.8397 (Overall: 0.6309, Change: 1.3634), TF Ratio: 0.000
+[2026-04-22 03:56:42,944][root][INFO] - Epoch [10/10], Batch [800/2500], Loss: 0.8434 (Overall: 0.5510, Change: 1.0613), TF Ratio: 0.000
+[2026-04-22 04:08:04,671][root][INFO] - Epoch [10/10], Batch [900/2500], Loss: 0.8427 (Overall: 0.3380, Change: 0.7666), TF Ratio: 0.000
+[2026-04-22 04:18:02,091][root][INFO] - Epoch [10/10], Batch [1000/2500], Loss: 0.8432 (Overall: 0.4999, Change: 0.7294), TF Ratio: 0.000
+[2026-04-22 04:27:55,145][root][INFO] - Epoch [10/10], Batch [1100/2500], Loss: 0.8448 (Overall: 0.4474, Change: 0.9265), TF Ratio: 0.000
+[2026-04-22 04:39:04,225][root][INFO] - Epoch [10/10], Batch [1200/2500], Loss: 0.8425 (Overall: 0.4085, Change: 1.0847), TF Ratio: 0.000
+[2026-04-22 04:49:04,822][root][INFO] - Epoch [10/10], Batch [1300/2500], Loss: 0.8429 (Overall: 0.2052, Change: 1.6695), TF Ratio: 0.000
+[2026-04-22 04:59:32,791][root][INFO] - Epoch [10/10], Batch [1400/2500], Loss: 0.8423 (Overall: 0.7785, Change: 1.5199), TF Ratio: 0.000
+[2026-04-22 05:11:24,987][root][INFO] - Epoch [10/10], Batch [1500/2500], Loss: 0.8424 (Overall: 0.3263, Change: 1.3656), TF Ratio: 0.000
+[2026-04-22 05:21:44,171][root][INFO] - Epoch [10/10], Batch [1600/2500], Loss: 0.8421 (Overall: 0.4506, Change: 0.8385), TF Ratio: 0.000
+[2026-04-22 05:31:42,156][root][INFO] - Epoch [10/10], Batch [1700/2500], Loss: 0.8415 (Overall: 0.8376, Change: 1.1590), TF Ratio: 0.000
+[2026-04-22 05:43:03,710][root][INFO] - Epoch [10/10], Batch [1800/2500], Loss: 0.8404 (Overall: 0.8470, Change: 0.9420), TF Ratio: 0.000
+[2026-04-22 05:53:21,067][root][INFO] - Epoch [10/10], Batch [1900/2500], Loss: 0.8399 (Overall: 0.3678, Change: 0.1600), TF Ratio: 0.000
+[2026-04-22 06:03:39,721][root][INFO] - Epoch [10/10], Batch [2000/2500], Loss: 0.8394 (Overall: 0.3461, Change: 0.9684), TF Ratio: 0.000
+[2026-04-22 06:14:52,913][root][INFO] - Epoch [10/10], Batch [2100/2500], Loss: 0.8392 (Overall: 0.5848, Change: 1.0701), TF Ratio: 0.000
+[2026-04-22 06:25:17,326][root][INFO] - Epoch [10/10], Batch [2200/2500], Loss: 0.8393 (Overall: 0.8625, Change: 0.9227), TF Ratio: 0.000
+[2026-04-22 06:35:26,909][root][INFO] - Epoch [10/10], Batch [2300/2500], Loss: 0.8398 (Overall: 0.5872, Change: 1.2684), TF Ratio: 0.000
+[2026-04-22 06:46:45,844][root][INFO] - Epoch [10/10], Batch [2400/2500], Loss: 0.8389 (Overall: 0.5266, Change: 1.3438), TF Ratio: 0.000
+[2026-04-22 06:56:34,885][root][INFO] - Epoch [10/10], Batch [2500/2500], Loss: 0.8388 (Overall: 0.7585, Change: 1.0531), TF Ratio: 0.000
+[2026-04-22 06:57:02,932][root][INFO] - Epoch 10 done. Validating...
+[2026-04-22 07:53:00,321][root][INFO] - Epoch [10/10] | Train: 0.8406 | Val: 0.8358
+[2026-04-22 07:53:00,610][root][INFO] - Checkpoint saved: /gpfs/scratch/ehpc249/ai4land/CONCERTO/bsc406752/trained_models/unet_impl/39192435/model_epoch_10.pth
+[2026-04-22 07:53:02,337][root][INFO] - Starting evaluation for 500 steps
+[2026-04-22 08:03:53,151][root][INFO] - Batch [100/500]
+[2026-04-22 08:12:58,768][root][INFO] - Batch [200/500]
+[2026-04-22 08:21:50,724][root][INFO] - Batch [300/500]
+[2026-04-22 08:31:19,569][root][INFO] - Batch [400/500]
+[2026-04-22 08:39:32,823][root][INFO] - Batch [500/500]
+[2026-04-22 08:40:13,875][root][INFO] - Evaluation results:
+{
+    "overall": {
+        "metrics_by_year": {
+            "year_0": {
+                "avg_accuracy": 0.8775623440742493,
+                "macro_f1": 0.7301337718963623,
+                "mean_iou": 0.6148415207862854,
+                "weighted_f1": 0.8708943128585815
+            },
+            "year_1": {
+                "avg_accuracy": 0.8621394038200378,
+                "macro_f1": 0.7012394666671753,
+                "mean_iou": 0.5844892263412476,
+                "weighted_f1": 0.8513777256011963
+            }
+        },
+        "metrics_by_class": {
+            "accuracy": [
+                0.9999887943267822,
+                0.3178117871284485,
+                0.8652384281158447,
+                0.7099217176437378,
+                0.9505885243415833,
+                0.3943977952003479,
+                0.9367433786392212,
+                0.31715860962867737
+            ],
+            "f1": [
+                0.9994567036628723,
+                0.39108148217201233,
+                0.777699887752533,
+                0.7565671801567078,
+                0.8699347972869873,
+                0.5243627429008484,
+                0.9315084218978882,
+                0.47746047377586365
+            ],
+            "iou": [
+                0.9989140629768372,
+                0.2430710345506668,
+                0.6362592577934265,
+                0.6084504127502441,
+                0.7698093056678772,
+                0.3553466200828552,
+                0.8717977404594421,
+                0.3135948181152344
+            ]
+        },
+        "prior_pred": 0.8701696395874023,
+        "prior_target": 0.9965291619300842
+    },
+    "change": {
+        "metrics_by_year": {
+            "year_0": {
+                "avg_accuracy": 0.3906252980232239,
+                "macro_f1": 0.24182327091693878,
+                "mean_iou": 0.15255384147167206,
+                "weighted_f1": 0.35444921255111694
+            },
+            "year_1": {
+                "avg_accuracy": 0.3923693299293518,
+                "macro_f1": 0.2354212999343872,
+                "mean_iou": 0.1488800048828125,
+                "weighted_f1": 0.3474327325820923
+            }
+        },
+        "metrics_by_class": {
+            "accuracy": [
+                0.0,
+                0.1402510553598404,
+                0.657664954662323,
+                0.2143954336643219,
+                0.5647116899490356,
+                0.013988452963531017,
+                0.4509162902832031,
+                0.0
+            ],
+            "f1": [
+                0.0,
+                0.2121780961751938,
+                0.472696453332901,
+                0.28015971183776855,
+                0.5235661864280701,
+                0.022470472380518913,
+                0.3991096317768097,
+                0.0
+            ],
+            "iou": [
+                0.0,
+                0.11867965757846832,
+                0.3094973862171173,
+                0.1628986895084381,
+                0.3546154201030731,
+                0.011362900957465172,
+                0.24930478632450104,
+                0.0
+            ]
+        }
+    },
+    "change_perc": 0.23871761560440063
+}
+[2026-04-22 08:40:16,040][root][INFO] - Training complete.
+END TIME: Wed Apr 22 08:40:37 CEST 2026

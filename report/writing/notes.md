@@ -1,0 +1,4 @@
+- start from bullet points
+- get some 3-5 images and build out of it
+- send updates with "full" sections
+- We recall that any paragraph taken from the Internet or from existing books must be written between quotation marks " " and carefully referencing the source.

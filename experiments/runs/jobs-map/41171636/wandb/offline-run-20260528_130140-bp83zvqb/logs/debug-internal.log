@@ -1,0 +1,16 @@
+{"time":"2026-05-28T13:01:40.35022121+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-05-28T13:01:40.350286103+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41171636/wandb/offline-run-20260528_130140-bp83zvqb/logs/debug-core.log"}
+{"time":"2026-05-28T13:01:40.530723716+02:00","level":"INFO","msg":"created new stream","id":"bp83zvqb"}
+{"time":"2026-05-28T13:01:40.530764682+02:00","level":"INFO","msg":"stream: started","id":"bp83zvqb"}
+{"time":"2026-05-28T13:01:40.530834735+02:00","level":"INFO","msg":"handler: started","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:01:40.530845416+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:01:40.530858278+02:00","level":"INFO","msg":"sender: started","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:01:40.53852776+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-05-28T13:04:00.057965772+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-05-28T13:04:00.068407011+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-05-28T13:04:00.069650485+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-05-28T13:04:01.076728006+02:00","level":"INFO","msg":"stream: closing","id":"bp83zvqb"}
+{"time":"2026-05-28T13:04:01.076749591+02:00","level":"INFO","msg":"handler: closed","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:04:01.076758396+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:04:01.076776565+02:00","level":"INFO","msg":"sender: closed","stream_id":"bp83zvqb"}
+{"time":"2026-05-28T13:04:01.078029094+02:00","level":"INFO","msg":"stream: closed","id":"bp83zvqb"}

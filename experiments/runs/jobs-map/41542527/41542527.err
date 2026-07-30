@@ -1,0 +1,4 @@
+strace: test_ptrace_get_syscall_info: PTRACE_TRACEME: Operation not permitted
+strace: ptrace(PTRACE_TRACEME, ...): Operation not permitted
+srun: error: as02r2b08: task 0: Exited with exit code 1
+srun: Terminating StepId=41542527.0

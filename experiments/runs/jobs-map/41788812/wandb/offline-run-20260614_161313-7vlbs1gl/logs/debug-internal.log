@@ -1,0 +1,16 @@
+{"time":"2026-06-14T16:13:13.273280663+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T16:13:13.273341728+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788812/wandb/offline-run-20260614_161313-7vlbs1gl/logs/debug-core.log"}
+{"time":"2026-06-14T16:13:13.443236088+02:00","level":"INFO","msg":"created new stream","id":"7vlbs1gl"}
+{"time":"2026-06-14T16:13:13.44330744+02:00","level":"INFO","msg":"stream: started","id":"7vlbs1gl"}
+{"time":"2026-06-14T16:13:13.443385136+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:13:13.443387645+02:00","level":"INFO","msg":"handler: started","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:13:13.443390624+02:00","level":"INFO","msg":"sender: started","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:13:13.45055518+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-14T16:19:00.111243263+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-14T16:19:00.339702636+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-14T16:19:00.340795497+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-14T16:19:01.345838139+02:00","level":"INFO","msg":"stream: closing","id":"7vlbs1gl"}
+{"time":"2026-06-14T16:19:01.345862832+02:00","level":"INFO","msg":"handler: closed","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:19:01.345873118+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:19:01.345883945+02:00","level":"INFO","msg":"sender: closed","stream_id":"7vlbs1gl"}
+{"time":"2026-06-14T16:19:01.371129482+02:00","level":"INFO","msg":"stream: closed","id":"7vlbs1gl"}

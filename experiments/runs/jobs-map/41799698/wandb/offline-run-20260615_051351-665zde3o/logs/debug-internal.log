@@ -1,0 +1,16 @@
+{"time":"2026-06-15T05:13:51.95587642+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T05:13:51.955940284+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799698/wandb/offline-run-20260615_051351-665zde3o/logs/debug-core.log"}
+{"time":"2026-06-15T05:13:52.172685045+02:00","level":"INFO","msg":"created new stream","id":"665zde3o"}
+{"time":"2026-06-15T05:13:52.172755479+02:00","level":"INFO","msg":"stream: started","id":"665zde3o"}
+{"time":"2026-06-15T05:13:52.172829708+02:00","level":"INFO","msg":"handler: started","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:13:52.17283498+02:00","level":"INFO","msg":"sender: started","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:13:52.172826939+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:13:52.180708072+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T05:20:55.778652652+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T05:20:55.851898592+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T05:20:55.852887699+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T05:20:56.934549771+02:00","level":"INFO","msg":"stream: closing","id":"665zde3o"}
+{"time":"2026-06-15T05:20:56.934570545+02:00","level":"INFO","msg":"handler: closed","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:20:56.934578941+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:20:56.934689056+02:00","level":"INFO","msg":"sender: closed","stream_id":"665zde3o"}
+{"time":"2026-06-15T05:20:56.978042634+02:00","level":"INFO","msg":"stream: closed","id":"665zde3o"}

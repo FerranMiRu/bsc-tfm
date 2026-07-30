@@ -1,0 +1,35 @@
+2026-06-27 08:20:57,707 - RANK 0 - INFO - Loading checkpoint from: trained_models/unet_impl/42441511/best_model.pth
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 339, in <module>
+[rank0]:     evaluator = UNetEvaluator(rank, world_size, local_rank, args=args)
+[rank0]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 37, in __init__
+[rank0]:     self.model, self.cfg, _ = load_trained_model(
+[rank0]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/model_utils.py", line 272, in load_trained_model
+[rank0]:     checkpoint = torch.load(checkpoint_path, weights_only=False, map_location=device)
+[rank0]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 1537, in load
+[rank0]:     with _open_zipfile_reader(opened_file) as opened_zipfile:
+[rank0]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 807, in __init__
+[rank0]:     super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+[rank0]: RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory. This is an internal miniz error. If you are seeing this error, there is a high likelihood that your checkpoint file is corrupted. This can happen if the checkpoint was not saved properly, was transferred incorrectly, or the file was modified after saving.
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 339, in <module>
+[rank3]:     evaluator = UNetEvaluator(rank, world_size, local_rank, args=args)
+[rank3]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 37, in __init__
+[rank3]:     self.model, self.cfg, _ = load_trained_model(
+[rank3]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/model_utils.py", line 272, in load_trained_model
+[rank3]:     checkpoint = torch.load(checkpoint_path, weights_only=False, map_location=device)
+[rank3]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 1537, in load
+[rank3]:     with _open_zipfile_reader(opened_file) as opened_zipfile:
+[rank3]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 807, in __init__
+[rank3]:     super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+[rank3]: RuntimeError: PytorchStreamReader failed reading zip archive: failed finding central directory. This is an internal miniz error. If you are seeing this error, there is a high likelihood that your checkpoint file is corrupted. This can happen if the checkpoint was not saved properly, was transferred incorrectly, or the file was modified after saving.
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 339, in <module>
+[rank1]:     evaluator = UNetEvaluator(rank, world_size, local_rank, args=args)
+[rank1]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py", line 37, in __init__
+[rank1]:     self.model, self.cfg, _ = load_trained_model(
+[rank1]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/model_utils.py", line 272, in load_trained_model
+[rank1]:     checkpoint = torch.load(checkpoint_path, weights_only=False, map_location=device)
+[rank1]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 1537, in load
+[rank1]:     with _open_zipfile_reader(opened_file) as opened_zipfile:
+[rank1]:   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/serialization.py", line 807, in __init__

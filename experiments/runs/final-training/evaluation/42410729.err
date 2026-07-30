@@ -1,0 +1,17 @@
+2026-06-24 17:20:38,212 - RANK 0 - INFO - Loading checkpoint from: trained_models/unet_impl/42401736/best_model.pth
+2026-06-24 17:20:39,059 - RANK 0 - INFO - Model will be initialized with 21 continuous channels and 1 year(s) of predictions.
+2026-06-24 17:20:39,059 - RANK 0 - INFO -   - LUH2: 14 variables for 1 timesteps
+2026-06-24 17:20:39,059 - RANK 0 - INFO -   - Static: 6 variables
+2026-06-24 17:20:39,059 - RANK 0 - INFO -   - Population: 1 variable for 1 timesteps
+2026-06-24 17:20:39,059 - RANK 0 - INFO -   - KG (embedded): 31 classes -> 5 dim
+2026-06-24 17:20:39,059 - RANK 0 - INFO -   - HILDA (embedded): 8 classes -> 2 dim
+2026-06-24 17:20:39,132 - RANK 0 - INFO - RecurrentUNet 'unet.' prefix detected. Stripping prefix from state_dict keys.
+2026-06-24 17:20:39,134 - RANK 0 - INFO - Model loaded from epoch: 8
+2026-06-24 17:20:46,741 - RANK 0 - INFO - Starting evaluation loop...
+2026-06-24 17:22:42,003 - RANK 0 - INFO - Batch [100/500]
+2026-06-24 17:23:34,446 - RANK 0 - INFO - Batch [200/500]
+2026-06-24 17:24:26,587 - RANK 0 - INFO - Batch [300/500]
+2026-06-24 17:25:19,382 - RANK 0 - INFO - Batch [400/500]
+2026-06-24 17:26:12,104 - RANK 0 - INFO - Batch [500/500]
+2026-06-24 17:26:24,094 - RANK 0 - INFO - Evaluation loop finished.
+2026-06-24 17:26:24,096 - RANK 0 - INFO - All processes synchronized. Cleaning up DDP.

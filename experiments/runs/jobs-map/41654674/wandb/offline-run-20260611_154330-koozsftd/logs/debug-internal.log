@@ -1,0 +1,16 @@
+{"time":"2026-06-11T15:43:30.595661433+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-11T15:43:30.595765434+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41654674/wandb/offline-run-20260611_154330-koozsftd/logs/debug-core.log"}
+{"time":"2026-06-11T15:43:30.721975097+02:00","level":"INFO","msg":"created new stream","id":"koozsftd"}
+{"time":"2026-06-11T15:43:30.722041039+02:00","level":"INFO","msg":"stream: started","id":"koozsftd"}
+{"time":"2026-06-11T15:43:30.722159063+02:00","level":"INFO","msg":"handler: started","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:43:30.722191907+02:00","level":"INFO","msg":"sender: started","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:43:30.722183906+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:43:30.730007063+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-11T15:49:30.435882521+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-11T15:49:30.478513411+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-11T15:49:30.479350813+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-11T15:49:31.4858432+02:00","level":"INFO","msg":"stream: closing","id":"koozsftd"}
+{"time":"2026-06-11T15:49:31.485867834+02:00","level":"INFO","msg":"handler: closed","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:49:31.48587741+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:49:31.485935347+02:00","level":"INFO","msg":"sender: closed","stream_id":"koozsftd"}
+{"time":"2026-06-11T15:49:31.568839734+02:00","level":"INFO","msg":"stream: closed","id":"koozsftd"}

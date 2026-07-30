@@ -1,0 +1,59 @@
+2026-05-29 11:16:59,983 - INFO - Recurrent UNet Model Successfully Configured and Initialized.
+2026-05-29 11:16:59,985 - INFO - Starting from scratch (no valid checkpoint provided).
+2026-05-29 11:17:07,130 - INFO - Train: 6272000 samples, Val: 896000 samples
+2026-05-29 11:17:08,659 - INFO - Starting training from epoch 1
+2026-05-29 11:17:49,671 - INFO - Epoch [1/1], Batch [1/50], Loss: 1.2080 (Overall: 2.4160, Change: 0.0000), TF Ratio: 1.000
+2026-05-29 11:17:49,828 - INFO - Epoch [1/1], Batch [2/50], Loss: 1.2033 (Overall: 2.3973, Change: 0.0000), TF Ratio: 1.000
+2026-05-29 11:17:49,980 - INFO - Epoch [1/1], Batch [3/50], Loss: 1.2031 (Overall: 2.4054, Change: 0.0000), TF Ratio: 0.999
+2026-05-29 11:17:50,230 - INFO - Epoch [1/1], Batch [4/50], Loss: 1.2036 (Overall: 2.4099, Change: 0.0000), TF Ratio: 0.999
+2026-05-29 11:17:50,384 - INFO - Epoch [1/1], Batch [5/50], Loss: 1.1961 (Overall: 2.3319, Change: 0.0000), TF Ratio: 0.999
+2026-05-29 11:17:50,537 - INFO - Epoch [1/1], Batch [6/50], Loss: 1.1905 (Overall: 2.3249, Change: 0.0000), TF Ratio: 0.999
+2026-05-29 11:17:50,689 - INFO - Epoch [1/1], Batch [7/50], Loss: 1.1861 (Overall: 2.3199, Change: 0.0000), TF Ratio: 0.999
+2026-05-29 11:17:51,009 - INFO - Epoch [1/1], Batch [8/50], Loss: 1.1835 (Overall: 2.3306, Change: 0.0000), TF Ratio: 0.998
+2026-05-29 11:17:51,164 - INFO - Epoch [1/1], Batch [9/50], Loss: 1.1742 (Overall: 2.2001, Change: 0.0000), TF Ratio: 0.998
+2026-05-29 11:17:51,317 - INFO - Epoch [1/1], Batch [10/50], Loss: 1.1662 (Overall: 2.1888, Change: 0.0000), TF Ratio: 0.998
+2026-05-29 11:17:51,470 - INFO - Epoch [1/1], Batch [11/50], Loss: 1.1582 (Overall: 2.1552, Change: 0.0000), TF Ratio: 0.998
+2026-05-29 11:18:22,587 - INFO - Epoch [1/1], Batch [12/50], Loss: 1.1522 (Overall: 2.1733, Change: 0.0000), TF Ratio: 0.998
+2026-05-29 11:18:22,741 - INFO - Epoch [1/1], Batch [13/50], Loss: 1.1429 (Overall: 2.0622, Change: 0.0000), TF Ratio: 0.997
+2026-05-29 11:18:22,894 - INFO - Epoch [1/1], Batch [14/50], Loss: 1.1340 (Overall: 2.0353, Change: 0.0000), TF Ratio: 0.997
+2026-05-29 11:18:23,046 - INFO - Epoch [1/1], Batch [15/50], Loss: 1.1268 (Overall: 2.0534, Change: 0.0000), TF Ratio: 0.997
+2026-05-29 11:18:25,062 - INFO - Epoch [1/1], Batch [16/50], Loss: 1.1195 (Overall: 2.0196, Change: 0.0000), TF Ratio: 0.997
+2026-05-29 11:18:25,215 - INFO - Epoch [1/1], Batch [17/50], Loss: 1.1132 (Overall: 2.0233, Change: 0.0000), TF Ratio: 0.997
+2026-05-29 11:18:25,368 - INFO - Epoch [1/1], Batch [18/50], Loss: 1.1090 (Overall: 2.0765, Change: 0.0000), TF Ratio: 0.996
+2026-05-29 11:18:25,522 - INFO - Epoch [1/1], Batch [19/50], Loss: 1.1042 (Overall: 2.0375, Change: 0.0000), TF Ratio: 0.996
+2026-05-29 11:18:30,857 - INFO - Epoch [1/1], Batch [20/50], Loss: 1.0987 (Overall: 1.9856, Change: 0.0000), TF Ratio: 0.996
+2026-05-29 11:18:31,010 - INFO - Epoch [1/1], Batch [21/50], Loss: 1.0926 (Overall: 1.9440, Change: 0.0000), TF Ratio: 0.996
+2026-05-29 11:18:31,164 - INFO - Epoch [1/1], Batch [22/50], Loss: 1.0864 (Overall: 1.9100, Change: 0.0000), TF Ratio: 0.996
+2026-05-29 11:18:31,317 - INFO - Epoch [1/1], Batch [23/50], Loss: 1.0812 (Overall: 1.9361, Change: 0.0000), TF Ratio: 0.995
+2026-05-29 11:18:57,988 - INFO - Epoch [1/1], Batch [24/50], Loss: 1.0769 (Overall: 1.9557, Change: 0.0000), TF Ratio: 0.995
+2026-05-29 11:18:58,147 - INFO - Epoch [1/1], Batch [25/50], Loss: 1.0719 (Overall: 1.9028, Change: 0.0000), TF Ratio: 0.995
+2026-05-29 11:18:58,299 - INFO - Epoch [1/1], Batch [26/50], Loss: 1.0660 (Overall: 1.8384, Change: 0.0000), TF Ratio: 0.995
+2026-05-29 11:18:58,451 - INFO - Epoch [1/1], Batch [27/50], Loss: 1.0622 (Overall: 1.9248, Change: 0.0000), TF Ratio: 0.995
+2026-05-29 11:18:59,143 - INFO - Epoch [1/1], Batch [28/50], Loss: 1.0585 (Overall: 1.9202, Change: 0.0000), TF Ratio: 0.994
+2026-05-29 11:18:59,296 - INFO - Epoch [1/1], Batch [29/50], Loss: 1.0537 (Overall: 1.8363, Change: 0.0000), TF Ratio: 0.994
+2026-05-29 11:18:59,447 - INFO - Epoch [1/1], Batch [30/50], Loss: 1.0483 (Overall: 1.7807, Change: 0.0000), TF Ratio: 0.994
+2026-05-29 11:18:59,603 - INFO - Epoch [1/1], Batch [31/50], Loss: 1.0431 (Overall: 1.7785, Change: 0.0000), TF Ratio: 0.994
+2026-05-29 11:19:09,226 - INFO - Epoch [1/1], Batch [32/50], Loss: 1.0384 (Overall: 1.7856, Change: 0.0000), TF Ratio: 0.994
+2026-05-29 11:19:09,380 - INFO - Epoch [1/1], Batch [33/50], Loss: 1.0333 (Overall: 1.7391, Change: 0.0000), TF Ratio: 0.993
+2026-05-29 11:19:09,534 - INFO - Epoch [1/1], Batch [34/50], Loss: 1.0286 (Overall: 1.7492, Change: 0.0000), TF Ratio: 0.993
+2026-05-29 11:19:09,686 - INFO - Epoch [1/1], Batch [35/50], Loss: 1.0247 (Overall: 1.7792, Change: 0.0000), TF Ratio: 0.993
+2026-05-29 11:19:31,770 - INFO - Epoch [1/1], Batch [36/50], Loss: 1.0202 (Overall: 1.7247, Change: 0.0000), TF Ratio: 0.993
+2026-05-29 11:19:31,925 - INFO - Epoch [1/1], Batch [37/50], Loss: 1.0162 (Overall: 1.7495, Change: 0.0000), TF Ratio: 0.993
+2026-05-29 11:19:32,078 - INFO - Epoch [1/1], Batch [38/50], Loss: 1.0122 (Overall: 1.7224, Change: 0.0000), TF Ratio: 0.992
+2026-05-29 11:19:32,229 - INFO - Epoch [1/1], Batch [39/50], Loss: 1.0082 (Overall: 1.7120, Change: 0.0000), TF Ratio: 0.992
+2026-05-29 11:19:34,906 - INFO - Epoch [1/1], Batch [40/50], Loss: 1.0048 (Overall: 1.7467, Change: 0.0000), TF Ratio: 0.992
+2026-05-29 11:19:35,059 - INFO - Epoch [1/1], Batch [41/50], Loss: 1.0008 (Overall: 1.6850, Change: 0.0000), TF Ratio: 0.992
+2026-05-29 11:19:35,212 - INFO - Epoch [1/1], Batch [42/50], Loss: 0.9967 (Overall: 1.6571, Change: 0.0000), TF Ratio: 0.992
+2026-05-29 11:19:35,366 - INFO - Epoch [1/1], Batch [43/50], Loss: 0.9928 (Overall: 1.6554, Change: 0.0000), TF Ratio: 0.991
+2026-05-29 11:19:47,020 - INFO - Epoch [1/1], Batch [44/50], Loss: 0.9895 (Overall: 1.6998, Change: 0.0000), TF Ratio: 0.991
+2026-05-29 11:19:47,183 - INFO - Epoch [1/1], Batch [45/50], Loss: 0.9855 (Overall: 1.6185, Change: 0.0000), TF Ratio: 0.991
+2026-05-29 11:19:47,335 - INFO - Epoch [1/1], Batch [46/50], Loss: 0.9817 (Overall: 1.6150, Change: 0.0000), TF Ratio: 0.991
+2026-05-29 11:19:47,487 - INFO - Epoch [1/1], Batch [47/50], Loss: 0.9784 (Overall: 1.6571, Change: 0.0000), TF Ratio: 0.991
+2026-05-29 11:20:04,427 - INFO - Epoch [1/1], Batch [48/50], Loss: 0.9752 (Overall: 1.6524, Change: 0.0000), TF Ratio: 0.990
+2026-05-29 11:20:04,582 - INFO - Epoch [1/1], Batch [49/50], Loss: 0.9714 (Overall: 1.5716, Change: 0.0000), TF Ratio: 0.990
+2026-05-29 11:20:04,737 - INFO - Epoch [1/1], Batch [50/50], Loss: 0.9679 (Overall: 1.5993, Change: 0.0000), TF Ratio: 0.990
+2026-05-29 11:20:35,440 - INFO - Epoch 1 done. Validating...
+2026-05-29 11:21:48,680 - INFO - Epoch [1/1] | Train: 0.9706 | Val: 0.7300
+2026-05-29 11:21:49,097 - INFO - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41201237/best_model.pth
+2026-05-29 11:21:49,292 - INFO - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41201237/model_epoch_1.pth
+2026-05-29 11:21:50,148 - INFO - Training complete.

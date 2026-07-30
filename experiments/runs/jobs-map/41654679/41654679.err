@@ -1,0 +1,69 @@
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+[W611 16:47:05.440390916 TCPStore.cpp:138] [c10d] recvValueWithTimeout failed on SocketImpl(fd=36, addr=[as07r4b07.bsc.mn]:53718, remote=[as07r4b05.bsc.mn]:29501): Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?
+Exception raised from recvBytes at /pytorch/torch/csrc/distributed/c10d/Utils.hpp:682 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x9d (0x7f3c5a2af05d in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x6a9172d (0x7f3c9678a72d in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: c10d::TCPStore::doWait(c10::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::chrono::duration<long, std::ratio<1l, 1000l> >) + 0x16b (0x7f3c967842cb in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: c10d::TCPStore::wait(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::chrono::duration<long, std::ratio<1l, 1000l> > const&) + 0x205 (0x7f3c96784525 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: c10d::PrefixStore::wait(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) + 0x27 (0x7f3c9671d0c7 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: <unknown function> + 0xe8424f (0x7f3ca626124f in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #6: <unknown function> + 0x40fa6a (0x7f3ca57eca6a in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #7: <unknown function> + 0x292802 (0x55db5c08e802 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #8: _PyObject_MakeTpCall + 0x132 (0x55db5bf56942 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #9: <unknown function> + 0x2734be (0x55db5c06f4be in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #10: _PyEval_EvalFrameDefault + 0xa3f8 (0x55db5c0cc728 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #11: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #12: <unknown function> + 0x2fccb9 (0x55db5c0f8cb9 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #13: _PyEval_EvalFrameDefault + 0x3db8 (0x55db5c0c60e8 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #14: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #15: _PyEval_EvalFrameDefault + 0x8a54 (0x55db5c0cad84 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #16: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #17: _PyEval_EvalFrameDefault + 0x8a54 (0x55db5c0cad84 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #18: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #19: _PyEval_EvalFrameDefault + 0x862e (0x55db5c0ca95e in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #20: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #21: _PyEval_EvalFrameDefault + 0x8a54 (0x55db5c0cad84 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #22: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #23: <unknown function> + 0x2fccb9 (0x55db5c0f8cb9 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #24: _PyEval_EvalFrameDefault + 0x42fa (0x55db5c0c662a in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #25: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #26: _PyObject_Call_Prepend + 0x96 (0x55db5c16a756 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #27: <unknown function> + 0x3a2626 (0x55db5c19e626 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #28: _PyEval_EvalFrameDefault + 0xa185 (0x55db5c0cc4b5 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #29: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #30: _PyEval_EvalFrameDefault + 0xa3f8 (0x55db5c0cc728 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #31: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #32: <unknown function> + 0x2fccb9 (0x55db5c0f8cb9 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #33: _PyEval_EvalFrameDefault + 0x42fa (0x55db5c0c662a in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #34: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #35: _PyEval_EvalFrameDefault + 0xa3f8 (0x55db5c0cc728 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #36: _PyFunction_Vectorcall + 0x202 (0x55db5c06d2d2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #37: <unknown function> + 0x2fccb9 (0x55db5c0f8cb9 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #38: _PyEval_EvalFrameDefault + 0x42fa (0x55db5c0c662a in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #39: <unknown function> + 0x3d4544 (0x55db5c1d0544 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #40: <unknown function> + 0x40a183 (0x55db5c206183 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #41: <unknown function> + 0x1b3592 (0x55db5bfaf592 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #42: _PyRun_SimpleFileObject + 0x109 (0x55db5bfaf0c9 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #43: _PyRun_AnyFileObject + 0xa5 (0x55db5bfaeac5 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #44: <unknown function> + 0x1bcd89 (0x55db5bfb8d89 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #45: <unknown function> + 0x1bc8f2 (0x55db5bfb88f2 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #46: Py_RunMain + 0x680 (0x55db5c211b70 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #47: <unknown function> + 0x148028 (0x55db5bf44028 in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+frame #48: <unknown function> + 0x3feb0 (0x7f3d78570eb0 in /lib64/libc.so.6)
+frame #49: __libc_start_main + 0x80 (0x7f3d78570f60 in /lib64/libc.so.6)
+frame #50: <unknown function> + 0x345cdb (0x55db5c141cdb in /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/bin/python3)
+
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992] Error waiting on exit barrier. Elapsed: 0.07367920875549316 seconds
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992] Traceback (most recent call last):
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992]   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 978, in _exit_barrier
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992]     store_util.barrier(
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992]   File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/torch/distributed/elastic/utils/store.py", line 200, in barrier
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992]     store.wait([last_member_key])
+E0611 16:47:05.087000 11430 torch/distributed/elastic/agent/server/api.py:992] torch.distributed.DistNetworkError: Failed to recv, got 0 bytes. Connection was likely closed. Did the remote server shutdown or crash?

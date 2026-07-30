@@ -1,0 +1,38 @@
+START TIME: Mon Jun  8 17:29:38 CEST 2026
+HOST: as04r1b29
+
+=== Running profile_layers ===
+STORE=<default> VAR=<auto> N_SAMPLES=50 SEED=42
+
+Store:     /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+N_SAMPLES: 50
+SEED:      42
+Variable:  LULC_states
+Shape:        (16, 18000, 36000)
+Chunks:       (1, 512, 512)
+Compressor:   Blosc(cname='lz4', clevel=5, shuffle=SHUFFLE, blocksize=0)
+Dtype:        float32
+xarray dims:  ('time', 'latitude', 'longitude')
+Picked 50 random chunk files
+
+--- per-chunk layer timings (n=50) ---
+  raw_read       | mean =    19.36 ms | median =    19.34 ms | p95 =    27.99 ms
+  blosc_decode   | mean =     0.34 ms | median =     0.30 ms | p95 =     0.42 ms
+  zarr_index     | mean =     0.32 ms | median =     0.30 ms | p95 =     0.41 ms
+  xarray_load    | mean =    65.09 ms | median =    16.37 ms | p95 =    17.21 ms
+
+--- deltas (means) ---
+  (a) raw disk I/O:                     19.36 ms
+  (b) pure decompress:                   0.34 ms
+  (c) zarr full read (warm I/O):         0.32 ms
+  (c) - (b)  zarr index + warm I/O:     -0.02 ms
+  (d) - (c)  xarray + dask overhead:   +64.77 ms
+
+--- context ---
+  Mean compressed chunk size: 24572 bytes
+  Estimated cost of 14 LUH2 vars per call (extrapolated):
+    if xarray path:       911.21 ms
+    if zarr-only path:      4.49 ms
+    if decompress only:     4.82 ms
+  (Reference: current _get_luh2_data ~ 314 ms baseline.)
+END TIME: Mon Jun  8 17:30:12 CEST 2026

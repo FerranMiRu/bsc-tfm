@@ -1,0 +1,16 @@
+{"time":"2026-05-29T11:05:33.596272803+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-05-29T11:05:33.596347253+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41199508/wandb/offline-run-20260529_110533-orj4juro/logs/debug-core.log"}
+{"time":"2026-05-29T11:05:33.724689661+02:00","level":"INFO","msg":"created new stream","id":"orj4juro"}
+{"time":"2026-05-29T11:05:33.724745639+02:00","level":"INFO","msg":"stream: started","id":"orj4juro"}
+{"time":"2026-05-29T11:05:33.724799514+02:00","level":"INFO","msg":"handler: started","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:05:33.724818094+02:00","level":"INFO","msg":"sender: started","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:05:33.724806618+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:05:33.733916467+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-05-29T11:10:30.780273312+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-05-29T11:10:30.870639647+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-05-29T11:10:30.871661637+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-05-29T11:10:31.884993635+02:00","level":"INFO","msg":"stream: closing","id":"orj4juro"}
+{"time":"2026-05-29T11:10:31.885008956+02:00","level":"INFO","msg":"handler: closed","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:10:31.885016348+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:10:31.885120846+02:00","level":"INFO","msg":"sender: closed","stream_id":"orj4juro"}
+{"time":"2026-05-29T11:10:31.885215158+02:00","level":"INFO","msg":"stream: closed","id":"orj4juro"}

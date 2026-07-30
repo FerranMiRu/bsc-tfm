@@ -1,0 +1,79 @@
+load CUDA/12.8 (PATH, MANPATH, LD_LIBRARY_PATH, LIBRARY_PATH, C_INCLUDE_PATH,
+CPLUS_INCLUDE_PATH, CUDA_HOME, CUDA_VERSION, CUDA_INC, CUDA_INSTALL_PATH) 
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+2026-06-04 17:19:38,057 - INFO - Split: train | land_index=/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/land_pixel_index_sample.npy
+2026-06-04 17:19:38,057 - INFO - Stores: /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+2026-06-04 17:19:38,057 - INFO - use_synchronizer: True
+2026-06-04 17:19:38,057 - INFO - Sweep: num_workers=[12] | num_batches=20 | batch_timeout=60s
+2026-06-04 17:19:48,320 - INFO - Dataset: SingleZarrDataset | length=6,272,000
+2026-06-04 17:19:48,320 - INFO - ================================================================================
+2026-06-04 17:19:48,320 - INFO - PHASE 1 — __getitem__ + per-modality merged (5 samples)
+2026-06-04 17:19:48,320 - INFO - ================================================================================
+2026-06-04 17:19:51,885 - INFO - shapes: (2, 15, 256, 256) (2, 1, 256, 256) (6, 256, 256) (1, 256, 256) (2, 256, 256) | bytes/sample:   9.50 MB
+2026-06-04 17:19:51,885 - INFO -   sample   1/5   3564.8 ms
+2026-06-04 17:19:57,557 - INFO -   sample   2/5   5671.9 ms
+2026-06-04 17:19:58,670 - INFO -   sample   3/5   1112.8 ms
+2026-06-04 17:20:00,714 - INFO -   sample   4/5   2043.8 ms
+2026-06-04 17:20:01,840 - INFO -   sample   5/5   1126.4 ms
+2026-06-04 17:20:01,841 - INFO - --- getitem | n=5 | mean= 2703.9 ms | median= 2043.8 ms | p95= 5250.4 ms | max= 5671.9 ms | sum=  13.52 s
+2026-06-04 17:20:01,841 - INFO - --- per-modality (load + preprocess merged) ---
+2026-06-04 17:20:01,841 - INFO -   _get_luh2_data        : calls=  10 | mean= 1015.5 ms | median=  409.6 ms | max= 3353.3 ms | total= 10.15 s (75.1%)
+2026-06-04 17:20:01,841 - INFO -   _get_population_data  : calls=  10 | mean=  198.0 ms | median=   50.8 ms | max= 1521.7 ms | total=  1.98 s (14.6%)
+2026-06-04 17:20:01,841 - INFO -   _get_kg_data          : calls=  10 | mean=   44.1 ms | median=   41.7 ms | max=   69.1 ms | total=  0.44 s ( 3.3%)
+2026-06-04 17:20:01,841 - INFO -   _get_static_data      : calls=   5 | mean=   95.5 ms | median=   95.8 ms | max=  107.4 ms | total=  0.48 s ( 3.5%)
+2026-06-04 17:20:01,841 - INFO -   _get_hilda_prior      : calls=   5 | mean=   47.4 ms | median=   49.8 ms | max=   52.6 ms | total=  0.24 s ( 1.8%)
+2026-06-04 17:20:01,841 - INFO -   _get_hilda_target     : calls=   5 | mean=   42.7 ms | median=   43.2 ms | max=   49.5 ms | total=  0.21 s ( 1.6%)
+2026-06-04 17:20:01,860 - INFO - ================================================================================
+2026-06-04 17:20:01,860 - INFO - PHASE 2 — __getitem__ + load vs preprocess split (5 samples)
+2026-06-04 17:20:01,860 - INFO - ================================================================================
+2026-06-04 17:20:02,986 - INFO -   sample   1/5   1126.1 ms
+2026-06-04 17:20:04,002 - INFO -   sample   2/5   1015.2 ms
+2026-06-04 17:20:04,922 - INFO -   sample   3/5    920.0 ms
+2026-06-04 17:20:17,022 - INFO -   sample   4/5  12100.7 ms
+2026-06-04 17:20:23,271 - INFO -   sample   5/5   6248.4 ms
+2026-06-04 17:20:23,271 - INFO - --- getitem | n=5 | mean= 4282.1 ms | median= 1126.1 ms | p95=10930.2 ms | max=12100.7 ms | sum=  21.41 s
+2026-06-04 17:20:23,271 - INFO - --- per-modality (load | preprocess split) ---
+2026-06-04 17:20:23,271 - INFO -   luh2          : calls=  10 | load mean= 1937.4 ms total= 19.37 s (90.5%) | prep mean=   33.5 ms total=  0.33 s ( 1.6%)
+2026-06-04 17:20:23,271 - INFO -   population    : calls=  10 | load mean=   44.8 ms total=  0.45 s ( 2.1%) | prep mean=    0.1 ms total=  0.00 s ( 0.0%)
+2026-06-04 17:20:23,271 - INFO -   kg            : calls=  10 | load mean=   36.1 ms total=  0.36 s ( 1.7%) | prep mean=    0.0 ms total=  0.00 s ( 0.0%)
+2026-06-04 17:20:23,271 - INFO -   static        : calls=   5 | load mean=   47.5 ms total=  0.24 s ( 1.1%) | prep mean=   19.4 ms total=  0.10 s ( 0.5%)
+2026-06-04 17:20:23,272 - INFO -   hilda_prior   : calls=   5 | load mean=   60.4 ms total=  0.30 s ( 1.4%) | prep mean=    0.2 ms total=  0.00 s ( 0.0%)
+2026-06-04 17:20:23,272 - INFO -   hilda_target  : calls=   5 | load mean=   46.8 ms total=  0.23 s ( 1.1%) | prep mean=    0.5 ms total=  0.00 s ( 0.0%)
+2026-06-04 17:20:23,272 - INFO - ================================================================================
+2026-06-04 17:20:23,272 - INFO - PHASE 3 — DataLoader sweep over num_workers=[12] (batch_size=8, prefetch_factor=4 when workers>0, pin_memory=True, persistent_workers=False) — 20 batches per config, per-batch timeout=60s, wall budget=900s
+2026-06-04 17:20:23,272 - INFO - ================================================================================
+2026-06-04 17:20:23,272 - INFO - --------------------------------------------------------------------------------
+2026-06-04 17:20:23,272 - INFO - num_workers = 12
+2026-06-04 17:20:23,272 - INFO - --------------------------------------------------------------------------------
+2026-06-04 17:21:12,320 - [w=12] -   batch   1/20   21887.9 ms   76.00 MB
+2026-06-04 17:21:12,320 - [w=12] -   batch   2/20       0.2 ms   76.00 MB
+2026-06-04 17:21:12,321 - [w=12] -   batch   3/20       0.1 ms   76.00 MB
+2026-06-04 17:22:01,033 - [w=12] -   batch   4/20   48712.0 ms   76.00 MB
+2026-06-04 17:22:01,033 - [w=12] -   batch   5/20       0.1 ms   76.00 MB
+2026-06-04 17:22:01,033 - [w=12] -   batch   6/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,033 - [w=12] -   batch   7/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,033 - [w=12] -   batch   8/20       0.0 ms   76.00 MB
+2026-06-04 17:22:01,034 - [w=12] -   batch   9/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,034 - [w=12] -   batch  10/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,034 - [w=12] -   batch  11/20       0.0 ms   76.00 MB
+2026-06-04 17:22:01,034 - [w=12] -   batch  12/20       0.0 ms   76.00 MB
+2026-06-04 17:22:01,034 - [w=12] -   batch  13/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,035 - [w=12] -   batch  14/20       0.2 ms   76.00 MB
+2026-06-04 17:22:01,035 - [w=12] -   batch  15/20       0.0 ms   76.00 MB
+2026-06-04 17:22:27,513 - [w=12] -   batch  16/20   26478.8 ms   76.00 MB
+2026-06-04 17:22:27,514 - [w=12] -   batch  17/20       0.2 ms   76.00 MB
+2026-06-04 17:22:27,514 - [w=12] -   batch  18/20       0.0 ms   76.00 MB
+2026-06-04 17:22:27,514 - [w=12] -   batch  19/20       0.0 ms   76.00 MB
+2026-06-04 17:22:27,514 - [w=12] -   batch  20/20       0.2 ms   76.00 MB
+2026-06-04 17:23:07,108 - INFO - cold batch: 21887.9 ms (includes worker startup)
+2026-06-04 17:23:07,109 - INFO - --- warm batches | n=19 | mean= 3957.5 ms | median=    0.2 ms | p95=28702.1 ms | max=48712.0 ms | sum=  75.19 s
+2026-06-04 17:23:07,109 - INFO - --- throughput |    2.0 samples/s |   0.25 batches/s
+2026-06-04 17:23:07,109 - INFO - ================================================================================
+2026-06-04 17:23:07,109 - INFO - Profiling complete.
+/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

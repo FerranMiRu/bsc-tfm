@@ -1,0 +1,16 @@
+{"time":"2026-06-01T14:04:35.327896147+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-01T14:04:35.327964919+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41318578/wandb/offline-run-20260601_140434-wkz2vux5/logs/debug-core.log"}
+{"time":"2026-06-01T14:04:35.942225461+02:00","level":"INFO","msg":"created new stream","id":"wkz2vux5"}
+{"time":"2026-06-01T14:04:35.942282836+02:00","level":"INFO","msg":"stream: started","id":"wkz2vux5"}
+{"time":"2026-06-01T14:04:35.942353905+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:04:35.942355891+02:00","level":"INFO","msg":"handler: started","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:04:35.942365277+02:00","level":"INFO","msg":"sender: started","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:04:35.949217522+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-01T14:20:37.080569164+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-01T14:20:37.774839917+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-01T14:20:37.776015158+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-01T14:20:38.783480077+02:00","level":"INFO","msg":"stream: closing","id":"wkz2vux5"}
+{"time":"2026-06-01T14:20:38.783492301+02:00","level":"INFO","msg":"handler: closed","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:20:38.783499031+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:20:38.783517699+02:00","level":"INFO","msg":"sender: closed","stream_id":"wkz2vux5"}
+{"time":"2026-06-01T14:20:38.8173448+02:00","level":"INFO","msg":"stream: closed","id":"wkz2vux5"}

@@ -1,0 +1,7 @@
+START TIME: Sat Jun 27 08:20:16 CEST 2026
+Master: as02r4b05:29500
+--- Starting U-Net Evaluation ---
+  Checkpoint: trained_models/unet_impl/42441511/best_model.pth
+  Time Range: 2001-2014
+Launch command: uv run accelerate launch     --multi_gpu     --num_processes $(( 1 * 4 ))     --num_machines 1     --machine_rank ${SLURM_PROCID}     --main_process_ip as02r4b05     --main_process_port 29500     --mixed_precision bf16     --dynamo_backend no     /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/evaluation/test_unet.py     --checkpoint_path trained_models/unet_impl/42441511/best_model.pth     --lock_dir /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tmp/sync_42441512     --start_year 2001     --end_year 2014
+END TIME: Sat Jun 27 08:21:00 CEST 2026

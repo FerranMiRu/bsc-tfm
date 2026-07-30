@@ -1,0 +1,7 @@
+START TIME: Wed May 20 15:43:26 CEST 2026
+Master: as05r3b03:29500
+Launch command: nsys profile     -o /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/profiling/nsys_40795732     -t cuda,nvtx,osrt,cudnn,cublas     --capture-range=cudaProfilerApi     --capture-range-end=stop     --sample=process-tree     --cpuctxsw=process-tree     --trace-fork-before-exec=true     --cuda-memory-usage=true     --gpu-metrics-devices=all     --gpu-metrics-frequency=10000     --stats=true     --force-overwrite=true     uv run accelerate launch         --num_processes 1         --num_machines 1         --machine_rank 0         --main_process_ip as05r3b03         --main_process_port 29500         --mixed_precision bf16         --dynamo_backend no         /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/training/train.py         --config-name profiling         system.slurm_job_id=40795732
+[2026-05-20 15:45:50,455][root][INFO] - Recurrent UNet Model Successfully Configured and Initialized.
+[2026-05-20 15:45:50,473][root][INFO] - Starting from scratch (no valid checkpoint provided).
+[2026-05-20 15:45:57,308][root][INFO] - Train: 6720000 samples, Val: 960000 samples
+[2026-05-20 15:45:57,311][root][INFO] - Starting training from epoch 1

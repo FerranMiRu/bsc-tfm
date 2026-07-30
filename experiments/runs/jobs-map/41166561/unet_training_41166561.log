@@ -1,0 +1,24 @@
+2026-05-28 11:09:22,139 - INFO - Recurrent UNet Model Successfully Configured and Initialized.
+2026-05-28 11:09:22,149 - INFO - Starting from scratch (no valid checkpoint provided).
+2026-05-28 11:09:28,468 - INFO - Train: 6272000 samples, Val: 896000 samples
+2026-05-28 11:09:29,969 - INFO - Starting training from epoch 1
+2026-05-28 11:11:04,116 - INFO - Epoch [1/1], Batch [1/15], Loss: 2.1455 (Overall: 2.0124, Change: 2.2786), TF Ratio: 1.000
+2026-05-28 11:11:04,273 - INFO - Epoch [1/1], Batch [2/15], Loss: 2.1575 (Overall: 2.1466, Change: 2.1922), TF Ratio: 1.000
+2026-05-28 11:11:04,425 - INFO - Epoch [1/1], Batch [3/15], Loss: 2.1568 (Overall: 2.0998, Change: 2.2110), TF Ratio: 0.999
+2026-05-28 11:11:24,356 - INFO - Epoch [1/1], Batch [4/15], Loss: 2.1707 (Overall: 2.0873, Change: 2.3373), TF Ratio: 0.999
+2026-05-28 11:11:24,529 - INFO - Epoch [1/1], Batch [5/15], Loss: 2.1306 (Overall: 1.8381, Change: 2.1026), TF Ratio: 0.999
+2026-05-28 11:11:24,681 - INFO - Epoch [1/1], Batch [6/15], Loss: 2.1222 (Overall: 1.6661, Change: 2.4945), TF Ratio: 0.999
+2026-05-28 11:11:24,834 - INFO - Epoch [1/1], Batch [7/15], Loss: 2.0843 (Overall: 1.7419, Change: 1.9721), TF Ratio: 0.999
+2026-05-28 11:11:24,988 - INFO - Epoch [1/1], Batch [8/15], Loss: 2.0692 (Overall: 1.7769, Change: 2.1490), TF Ratio: 0.998
+2026-05-28 11:11:25,141 - INFO - Epoch [1/1], Batch [9/15], Loss: 2.0360 (Overall: 1.5820, Change: 1.9587), TF Ratio: 0.998
+2026-05-28 11:11:25,293 - INFO - Epoch [1/1], Batch [10/15], Loss: 2.0160 (Overall: 1.6571, Change: 2.0158), TF Ratio: 0.998
+2026-05-28 11:11:25,445 - INFO - Epoch [1/1], Batch [11/15], Loss: 2.0036 (Overall: 1.8259, Change: 1.9341), TF Ratio: 0.998
+2026-05-28 11:12:57,440 - INFO - Epoch [1/1], Batch [12/15], Loss: 1.9899 (Overall: 1.7089, Change: 1.9680), TF Ratio: 0.998
+2026-05-28 11:12:57,596 - INFO - Epoch [1/1], Batch [13/15], Loss: 1.9682 (Overall: 1.4835, Change: 1.9322), TF Ratio: 0.997
+2026-05-28 11:12:57,748 - INFO - Epoch [1/1], Batch [14/15], Loss: 1.9592 (Overall: 1.6436, Change: 2.0426), TF Ratio: 0.997
+2026-05-28 11:12:57,900 - INFO - Epoch [1/1], Batch [15/15], Loss: 1.9393 (Overall: 1.5190, Change: 1.8007), TF Ratio: 0.997
+2026-05-28 11:13:59,410 - INFO - Epoch 1 done. Validating...
+2026-05-28 11:16:40,667 - INFO - Epoch [1/1] | Train: 1.9200 | Val: 1.2291
+2026-05-28 11:16:41,305 - INFO - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41166561/best_model.pth
+2026-05-28 11:16:41,496 - INFO - Checkpoint saved: /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/trained_models/unet_impl/41166561/model_epoch_1.pth
+2026-05-28 11:16:42,255 - INFO - Training complete.

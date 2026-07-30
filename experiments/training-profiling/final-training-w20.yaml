@@ -1,0 +1,148 @@
+defaults:
+  - _self_
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: False
+
+# --- System & Environment ---
+system:
+  user: "${oc.env:USER}"
+  slurm_job_id: "${oc.env:SLURM_JOB_ID,00000}"
+  save_dir: "${oc.env:AI4LAND_SAVE_DIR}"
+  log_dir: "${oc.env:AI4LAND_LOG_DIR}"
+  wandb_mode: "offline"
+
+# --- Data Configuration ---
+data:
+  lock_dir: "${oc.env:AI4LAND_LOCK_DIR}"
+  patch_size: 256
+  time_range: [1960, 2000]
+  prediction_mode: "forward"
+  exclude_feature: null
+  n_hilda_classes: 8
+  n_kg_classes: 31
+
+  dataset_type: "merged"
+  stores: "/gpfs/scratch/ehpc736/data/AI4LAND_merged_NON_preprocessed-data-1901-2015.zarr"
+
+  feature_names:
+    luh2:
+      [
+        "c3ann",
+        "c3nfx",
+        "c3per",
+        "c4ann",
+        "c4per",
+        "pastr",
+        "primf",
+        "primn",
+        "range",
+        "secdf",
+        "secdn",
+        "secma",
+        "secmb",
+        "urban",
+      ]
+    hilda: ["lulc_states"]
+    static:
+      ["aspect", "elevation", "slope", "weighted_organic", "weighted_pct_clay", "weighted_pct_sand"]
+    koppen_geiger: ["kg_class"]
+    population: ["number_of_people"]
+
+  norm_stats_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/normalization_stats.json"
+  train_index: true
+  land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/land_pixel_index_nc_u16.npy"
+  train_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/train_land_pixel_index_sample.npy"
+  val_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/val_land_pixel_index_sample.npy"
+  test_land_index_path: "/gpfs/projects/ehpc606/ai4land/CONCERTO/land_index/test_land_pixel_index_sample.npy"
+
+  autoregression:
+    enable: true
+    timesteps_dynamic: [0]
+    timesteps_hilda: [1]
+    noise_prob: 0.1
+
+  timesteps_target: [0, 1]
+
+# --- Model Configuration ---
+model:
+  type: "unet"
+
+  unet:
+    teacher_forcings:
+      start_prob: 1.0
+      end_prob: 0.0 # set to 1.0 to always use ground truth priors
+      decay_steps: 5000
+
+  terramind:
+    name: "terramind_v1_base"
+    freeze_backbone: true
+
+  adapter:
+    type: "conv"
+    hidden_dim: 64
+    depth: 8
+    nhead: 4
+    patch_stride: 16
+
+  # Swin-Tiny defaults; see VitParams docstring for the patch-size constraint.
+  vit:
+    embed_dim: 96
+    depths: [2, 2, 6, 2]
+    num_heads: [3, 6, 12, 24]
+    window_size: 8
+    patch_size: 4
+
+  embedding:
+    hilda_dim: 2
+    kg_dim: 5
+
+  masking:
+    patch_size: 16
+    start_prob: 0.6
+    enable_dynamic: true
+    end_prob: 0.99
+    hold_steps: 1000
+    warmup_steps: 1000
+
+# --- Training Parameters ---
+training:
+  mixed_precision: "bf16"
+  epochs: 10
+  batch_size: 8
+  accumulation_steps: 4
+  learning_rate: 0.0005
+  num_workers: 20 # careful with multi-gpu: 4 ranks * N workers = total processes
+  save_freq: 1
+  train_steps_per_epoch: 2500
+  val_steps_per_epoch: 500
+  test_steps_per_epoch: 500
+  debug_sample_count: 0
+  verbose_loader: false
+  log_loss_every_batch: true
+
+  loss:
+    overall_weight: 0.5
+    change_weight: 0.5
+
+  compile: false
+  compile_mode: "default"
+
+  distributed_strategy: "ddp"
+
+  fsdp:
+    sharding_strategy: "full"
+    min_params_to_wrap: 1000000
+
+  resume:
+    path: null
+
+# --- WandB ---
+wandb:
+  project: "ai4land_lu"
+  entity: "bsclsv"
+  group: "unet_training_runs_long"

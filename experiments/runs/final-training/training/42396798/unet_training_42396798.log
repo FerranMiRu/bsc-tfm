@@ -1,0 +1,8 @@
+2026-06-24 13:18:39,586 - INFO - Recurrent UNet Model Successfully Configured and Initialized.
+2026-06-24 13:18:39,602 - INFO - Starting from scratch (no valid checkpoint provided).
+2026-06-24 13:18:41,078 - INFO - Train: 13120000 samples, Val: 2624000 samples
+2026-06-24 13:18:42,843 - INFO - Starting training from epoch 1
+2026-06-24 13:19:21,708 - INFO - Epoch [1/10], Batch [100/2500], Loss: 1.4840 (Overall: 1.2529, Change: 1.6402), TF Ratio: 0.980
+2026-06-24 13:19:53,113 - INFO - Epoch [1/10], Batch [200/2500], Loss: 1.3776 (Overall: 0.8291, Change: 1.4056), TF Ratio: 0.960
+2026-06-24 13:20:22,848 - INFO - Epoch [1/10], Batch [300/2500], Loss: 1.2963 (Overall: 0.7205, Change: 1.2510), TF Ratio: 0.940
+2026-06-24 13:20:50,354 - INFO - Epoch [1/10], Batch [400/2500], Loss: 1.2502 (Overall: 0.7237, Change: 1.2021), TF Ratio: 0.920

@@ -1,0 +1,16 @@
+{"time":"2026-06-14T16:02:15.722463839+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-14T16:02:15.722518262+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41788797/wandb/offline-run-20260614_160215-embvowjf/logs/debug-core.log"}
+{"time":"2026-06-14T16:02:16.002266262+02:00","level":"INFO","msg":"created new stream","id":"embvowjf"}
+{"time":"2026-06-14T16:02:16.002314412+02:00","level":"INFO","msg":"stream: started","id":"embvowjf"}
+{"time":"2026-06-14T16:02:16.002382019+02:00","level":"INFO","msg":"handler: started","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:02:16.002387553+02:00","level":"INFO","msg":"sender: started","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:02:16.002389088+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:02:16.008902969+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-14T16:21:44.053812006+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-14T16:21:44.283839012+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-14T16:21:44.284881122+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-14T16:21:45.319882981+02:00","level":"INFO","msg":"stream: closing","id":"embvowjf"}
+{"time":"2026-06-14T16:21:45.319894522+02:00","level":"INFO","msg":"handler: closed","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:21:45.319901285+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:21:45.31992067+02:00","level":"INFO","msg":"sender: closed","stream_id":"embvowjf"}
+{"time":"2026-06-14T16:21:45.319969076+02:00","level":"INFO","msg":"stream: closed","id":"embvowjf"}

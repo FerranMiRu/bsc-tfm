@@ -1,0 +1,16 @@
+{"time":"2026-06-15T06:04:09.532389917+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-15T06:04:09.532449639+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41799700/wandb/offline-run-20260615_060409-hn2xupaw/logs/debug-core.log"}
+{"time":"2026-06-15T06:04:09.791832021+02:00","level":"INFO","msg":"created new stream","id":"hn2xupaw"}
+{"time":"2026-06-15T06:04:09.791871029+02:00","level":"INFO","msg":"stream: started","id":"hn2xupaw"}
+{"time":"2026-06-15T06:04:09.791898002+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:04:09.791907212+02:00","level":"INFO","msg":"handler: started","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:04:09.791915647+02:00","level":"INFO","msg":"sender: started","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:04:09.798181001+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-15T06:09:04.180759624+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-15T06:09:04.18150804+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-15T06:09:04.182308548+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-15T06:09:05.188920982+02:00","level":"INFO","msg":"stream: closing","id":"hn2xupaw"}
+{"time":"2026-06-15T06:09:05.188935521+02:00","level":"INFO","msg":"handler: closed","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:09:05.188941991+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:09:05.189046623+02:00","level":"INFO","msg":"sender: closed","stream_id":"hn2xupaw"}
+{"time":"2026-06-15T06:09:05.201753612+02:00","level":"INFO","msg":"stream: closed","id":"hn2xupaw"}

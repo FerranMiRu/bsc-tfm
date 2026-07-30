@@ -1,0 +1,4 @@
+START TIME: Wed Jun  3 19:20:05 CEST 2026
+Config: profiling-preprocessed | num_getitem=50 | num_batches=80 | split=train | batch_timeout=30s | workers_sweep=[0,1,4,12]
+Launch command: uv run python -m ai4land.utils.profile_dataloader     --config-name profiling-preprocessed     system.slurm_job_id=41407783     ++profile.num_getitem=50     ++profile.num_batches=80     ++profile.split=train     ++profile.batch_timeout_s=30     ++profile.workers_sweep=[0,1,4,12]
+END TIME: Wed Jun  3 19:20:55 CEST 2026

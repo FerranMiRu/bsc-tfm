@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataarray.py", line 875, in _getitem_coord
+    var = self._coords[key]
+KeyError: 'data'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_merged_breakdown.py", line 125, in <module>
+    main()
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_merged_breakdown.py", line 115, in main
+    dataset[int(idx)]
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/datasets.py", line 1013, in __getitem__
+    dyn, ts_to_idx = self._read_dynamic(t_idx, lat_slice, lon_slice)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/src/ai4land/utils/profile_merged_breakdown.py", line 79, in timed_read_dynamic
+    arr = dataset.dataset["dynamic"]["data"].isel(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataarray.py", line 884, in __getitem__
+    return self._getitem_coord(key)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataarray.py", line 878, in _getitem_coord
+    _, key, var = _get_virtual_variable(self._coords, key, dim_sizes)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset_utils.py", line 79, in _get_virtual_variable
+    raise KeyError(key)
+KeyError: 'data'

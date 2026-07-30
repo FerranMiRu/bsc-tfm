@@ -1,0 +1,438 @@
+% ============================================================
+% AI4Land project papers
+% ============================================================
+
+@article{mozaffari2026ai4land,
+  author       = {Mozaffari, Amirpasha and Casta\~{n}o, Marina and Materia, Stefano and
+                  Tourigny, Etienne and Molina-Sedano, Oscar and Varela-Agrelo, Jordi and
+                  Garcia-Gasulla, Dario and Castrillo Melguizo, Miguel and Acosta, Mario and
+                  Duarte, Amanda},
+  title        = {{AI4Land}: A Scalable Deep Learning Framework on {MareNostrum~5}
+                  for High-Resolution Land Surface Boundary Condition Reconstruction},
+  journal      = {Procedia Computer Science},
+  year         = {2026},
+  eprint       = {2606.11793},
+  archivePrefix= {arXiv},
+  url          = {https://arxiv.org/abs/2606.11793},
+  note         = {Proceedings of the fourth EuroHPC User Days 2026.
+                  Preprint available at \url{https://arxiv.org/abs/2606.11793}}
+}
+
+@inproceedings{mozaffari2025neurips,
+  author       = {Mozaffari, Amirpasha and Casta\~{n}o, Marina and Materia, Stefano and
+                  Duarte, Amanda},
+  title        = {Historical Reconstruction and Future Projection of
+                  Land Surface Boundary Conditions},
+  booktitle    = {NeurIPS 2025 Workshop on Tackling Climate Change with Machine Learning},
+  year         = {2025},
+  url          = {https://www.climatechange.ai/papers/neurips2025/99}
+}
+
+% ============================================================
+% Model architecture and ML methodology
+% ============================================================
+
+@inproceedings{ronneberger2015unet,
+  author       = {Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas},
+  title        = {{U-Net}: Convolutional Networks for Biomedical Image Segmentation},
+  booktitle    = {Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
+  pages        = {234--241},
+  year         = {2015},
+  publisher    = {Springer},
+  url          = {https://arxiv.org/abs/1505.04597}
+}
+
+% ============================================================
+% Datasets used by AI4Land
+% ============================================================
+
+@article{hurtt2020luh2,
+  author       = {Hurtt, George C. and Chini, Louise and Sahajpal, Ritvik and Frolking,
+                  Steve and Bodirsky, Benjamin L. and Calvin, Katherine and Doelman,
+                  Jonathan C. and Fisk, Justin and Fujimori, Shinichiro and
+                  Klein Goldewijk, Kees and others},
+  title        = {Harmonization of Global Land-Use Change and Management for the Period
+                  850--2100 ({LUH2}) for {CMIP6}},
+  journal      = {Geoscientific Model Development},
+  volume       = {13},
+  pages        = {5425--5464},
+  year         = {2020},
+  doi          = {10.5194/gmd-13-5425-2020}
+}
+
+@misc{winkler2020hilda,
+  author       = {Winkler, Karina and Fuchs, Richard and Rounsevell, M. and Herold, Martin},
+  title        = {{HILDA+} Global Land Use Change Between 1960 and 2019 (dataset)},
+  year         = {2020},
+  publisher    = {Pangaea},
+  doi          = {10.1594/PANGAEA.921846}
+}
+
+@article{beck2023koppen,
+  author       = {Beck, Hylke E. and McVicar, Tim R. and Vergopolan, Noemi and Berg, Alexis
+                  and Lutsko, Nicholas J. and Dufour, Ambroise and Zeng, Zhenzhong and
+                  Jiang, Xin and van Dijk, Albert I. J. M. and Miralles, Diego G.},
+  title        = {High-Resolution (1\,km) {K\"{o}ppen}--{Geiger} Maps for 1901--2099
+                  Based on Constrained {CMIP6} Projections},
+  journal      = {Scientific Data},
+  volume       = {10},
+  number       = {1},
+  pages        = {724},
+  year         = {2023},
+  doi          = {10.1038/s41597-023-02549-6}
+}
+
+@techreport{gebco2024,
+  author       = {{GEBCO Compilation Group}},
+  title        = {{GEBCO} 2024 Grid},
+  institution  = {British Oceanographic Data Centre},
+  year         = {2024},
+  url          = {https://www.gebco.net/data-products/gridded-bathymetry-data}
+}
+
+@article{frieler2017isimip,
+  author       = {Frieler, Katja and Lange, Stefan and Piontek, Franziska and
+                  Reyer, Christopher P. O. and Schewe, Jacob and Warszawski, Lila and
+                  Zhao, Fang and Chini, Louise and Denvil, Sebastien and Emanuel, Kerry
+                  and others},
+  title        = {Assessing the Impacts of 1.5\,$^{\circ}$C Global Warming -- Simulation
+                  Protocol of the Inter-Sectoral Impact Model Intercomparison Project
+                  ({ISIMIP2b})},
+  journal      = {Geoscientific Model Development},
+  volume       = {10},
+  number       = {12},
+  pages        = {4321--4345},
+  year         = {2017},
+  doi          = {10.5194/gmd-10-4321-2017}
+}
+
+@article{li2024soil,
+  author       = {Li, Lingcheng and Bisht, Gautam and Hao, Dalei and Leung, L. Ruby},
+  title        = {Global 1\,km Land Surface Parameters for Kilometer-Scale {Earth} System
+                  Modeling},
+  journal      = {Earth System Science Data},
+  volume       = {16},
+  number       = {4},
+  pages        = {2007--2032},
+  year         = {2024},
+  doi          = {10.5194/essd-16-2007-2024}
+}
+
+% ============================================================
+% Data formats and storage
+% ============================================================
+
+@techreport{newman2024zarr,
+  author       = {Newman, D. J.},
+  title        = {Zarr Storage Specification Version 2: Cloud-Optimized Persistence using Zarr},
+  institution  = {NASA Earth Science Data and Information System Standards
+                  Coordination Office},
+  year         = {2024},
+  doi          = {10.5067/DOC/ESCO/ESDS-RFC-048v1},
+  url          = {https://doi.org/10.5067/DOC/ESCO/ESDS-RFC-048v1}
+}
+
+@misc{zarr_software,
+  author       = {{Zarr Development Team}},
+  title        = {Zarr: An Implementation of Chunked, Compressed, {$N$}-Dimensional Arrays},
+  year         = {2024},
+  howpublished = {\url{https://zarr.readthedocs.io}}
+}
+
+@article{xarray,
+  author       = {Hoyer, Stephan and Hamman, Joseph J.},
+  title        = {{xarray}: {N-D} Labeled Arrays and Datasets in {Python}},
+  journal      = {Journal of Open Research Software},
+  volume       = {5},
+  number       = {1},
+  pages        = {10},
+  year         = {2017},
+  doi          = {10.5334/jors.148}
+}
+
+% ============================================================
+% Software tools and frameworks
+% ============================================================
+
+@misc{pytorch,
+  author       = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and
+                  Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming
+                  and Gimelshein, Natalia and Antiga, Luca and others},
+  title        = {{PyTorch}: An Imperative Style, High-Performance Deep Learning Library},
+  booktitle    = {Advances in Neural Information Processing Systems},
+  year         = {2019},
+  url          = {https://pytorch.org}
+}
+
+@misc{accelerate,
+  author       = {Gugger, Sylvain and Debut, Lysandre and Wolf, Thomas and Schmid, Philipp
+                  and Mueller, Zachary and Mangrulkar, Sourab and Sun, Marc and Bossan,
+                  Benjamin},
+  title        = {{Accelerate}: Training and Inference at Scale Made Simple, Efficient
+                  and Adaptable},
+  year         = {2022},
+  howpublished = {\url{https://github.com/huggingface/accelerate}}
+}
+
+@misc{nsight,
+  author       = {{NVIDIA Corporation}},
+  title        = {{NVIDIA Nsight Systems}},
+  year         = {2024},
+  howpublished = {\url{https://developer.nvidia.com/nsight-systems}}
+}
+
+@misc{uv,
+  author       = {{Astral Software}},
+  title        = {{uv}: An Extremely Fast {Python} Package and Project Manager},
+  year         = {2024},
+  howpublished = {\url{https://github.com/astral-sh/uv}}
+}
+
+@misc{ruff,
+  author       = {{Astral Software}},
+  title        = {{Ruff}: An Extremely Fast {Python} Linter and Code Formatter},
+  year         = {2024},
+  howpublished = {\url{https://github.com/astral-sh/ruff}}
+}
+
+@misc{slurm,
+  author       = {Yoo, Andy B. and Jette, Morris A. and Grondona, Mark},
+  title        = {{SLURM}: Simple {Linux} Utility for Resource Management},
+  booktitle    = {Job Scheduling Strategies for Parallel Processing},
+  year         = {2003},
+  publisher    = {Springer}
+}
+
+% ============================================================
+% Optimization references
+% ============================================================
+
+@article{tinto2019mpi,
+  author       = {Tint\'o Prims, Oriol and Castrillo, Miguel and Acosta, Mario C. and
+                  Mula-Valls, Oriol and Sanchez Lorente, Alicia and Serradell, Kim and
+                  Cort\'es, Ana and Doblas-Reyes, Francisco J.},
+  title        = {Finding, Analysing and Solving {MPI} Communication Bottlenecks in
+                  {Earth} System Models},
+  journal      = {Journal of Computational Science},
+  volume       = {36},
+  pages        = {100864},
+  year         = {2019},
+  doi          = {10.1016/j.jocs.2018.04.015},
+  url          = {https://doi.org/10.1016/j.jocs.2018.04.015}
+}
+
+@misc{pytorch_lightning_speed,
+  author       = {{Lightning AI}},
+  title        = {Speed Up Model Training},
+  year         = {2024},
+  howpublished = {\url{https://lightning.ai/docs/pytorch/stable/advanced/speed.html}}
+}
+
+@misc{modexa_dataloader,
+  author       = {{Modexa}},
+  title        = {8 {PyTorch} {DataLoader} Tactics to Max Out Your {GPU}},
+  year         = {2025},
+  howpublished = {\url{https://medium.com/@Modexa/8-pytorch-dataloader-tactics-to-max-out-your-gpu-22270f6f3fa8}}
+}
+
+@misc{earthmover_dataloader,
+  author       = {{Earthmover}},
+  title        = {Cloud Native Data Loaders for Machine Learning using {Zarr} and {Xarray}},
+  year         = {2024},
+  howpublished = {\url{https://www.earthmover.io/blog/cloud-native-dataloader/}}
+}
+
+@misc{xarray_gpu_pipeline,
+  author       = {Sobhani, Negin and others},
+  title        = {Accelerating {AI/ML} Workflows in {Earth} Sciences with {GPU}-Native
+                  {Xarray}, {Zarr}, {DALI}, and nvcomp},
+  year         = {2025},
+  howpublished = {\url{https://xarray.dev/blog/gpu-pipeline}}
+}
+
+@misc{nextplatform_hpcfs,
+  author       = {Hemsoth, Nicole},
+  title        = {{HPC} File Systems Fail for Deep Learning at Scale},
+  year         = {2018},
+  howpublished = {\url{https://www.nextplatform.com/2018/10/09/hpc-file-systems-fail-for-deep-learning-at-scale/}}
+}
+
+@techreport{hvac2022,
+  author       = {Khan, Awais and Paul, Arnab K. and Zimmer, Christopher and Oral, Sarp and
+                  Dash, Sajal and Atchley, Scott and Wang, Feiyi},
+  title        = {{HVAC}: Removing {I/O} Bottleneck for Large-Scale Deep Learning Applications},
+  institution  = {Oak Ridge National Laboratory},
+  year         = {2022},
+  url          = {https://www.osti.gov/servlets/purl/1902810}
+}
+
+@misc{progressive_robot_dataloader,
+  author       = {{Progressive Robot}},
+  title        = {{PyTorch} {DataLoader} Tutorial},
+  year         = {2026},
+  howpublished = {\url{https://www.progressiverobot.com/2026/02/04/pytorch-dataloader-tutorial/}}
+}
+
+% ============================================================
+% HPC infrastructure
+% ============================================================
+
+@misc{mn5,
+  author       = {{Barcelona Supercomputing Center}},
+  title        = {{MareNostrum~5}: A Pre-Exascale {EuroHPC} Supercomputer},
+  year         = {2024},
+  howpublished = {\url{https://www.bsc.es/marenostrum/marenostrum-5}}
+}
+
+@misc{eurohpc,
+  author       = {{EuroHPC JU}},
+  title        = {{European High Performance Computing} Joint Undertaking},
+  year         = {2024},
+  howpublished = {\url{https://eurohpc-ju.europa.eu/}}
+}
+
+% ============================================================
+% Project context
+% ============================================================
+
+@misc{concerto,
+  author       = {{CONCERTO Consortium}},
+  title        = {{CONCERTO}: Improved Carbon Cycle Representation through Multi-Scale Models
+                  and {Earth} Observation for Terrestrial Ecosystems},
+  year         = {2025},
+  note         = {Horizon Europe Grant Agreement 101185000},
+  howpublished = {\url{https://www.projectconcerto.eu}}
+}
+
+@misc{terradt,
+  author       = {{TerraDT Consortium}},
+  title        = {{TerraDT}: Digital Twin of {Earth} System for Cryosphere,
+                  Land Surface and Related Interactions},
+  year         = {2025},
+  note         = {Horizon Europe Grant Agreement 101187992},
+  howpublished = {\url{https://terradt.eu}}
+}
+
+@misc{elliot,
+  author       = {{ELLIOT Consortium}},
+  title        = {{ELLIOT}: European Large Open Multi-Modal Foundation Models for Robust
+                  Generalization on Arbitrary Data Streams},
+  year         = {2025},
+  note         = {Horizon Europe Grant Agreement 101214398}
+}
+
+% ============================================================
+% Parallel filesystem and chunking literature
+% ============================================================
+
+@misc{weka_gpfs,
+  author       = {Murphy, Barbara},
+  title        = {{GPFS} Parallel File System Explained},
+  year         = {2020},
+  howpublished = {\url{https://www.weka.io/blog/gpfs-parallel-file-system/}}
+}
+
+@phdthesis{vef2016gpfs,
+  author       = {Vef, Marc-Andr\'{e}},
+  title        = {Analyzing File Create Performance in {IBM} {Spectrum} {Scale}},
+  school       = {Johannes Gutenberg-Universit\"{a}t Mainz},
+  year         = {2016},
+  url          = {https://www.staff.uni-mainz.de/vef/pubs/vef2016thesis.pdf}
+}
+
+@article{abernathey2021,
+  author       = {Abernathey, Ryan P. and others},
+  title        = {Cloud-Native Repositories for Big Scientific Data},
+  journal      = {Computing in Science \& Engineering},
+  volume       = {23},
+  number       = {2},
+  pages        = {26--35},
+  year         = {2021},
+  doi          = {10.1109/MCSE.2021.3059437}
+}
+
+@misc{dask_chunks,
+  author       = {{Dask Development Team}},
+  title        = {{Dask} Arrays: Choosing Good Chunk Sizes},
+  year         = {2024},
+  howpublished = {\url{https://docs.dask.org/en/stable/array-chunks.html}}
+}
+
+@misc{earthmover_xarray_zarr3,
+  author       = {Bennet, Davis},
+  title        = {Accelerating Xarray with {Zarr-Python 3}},
+  year         = {2025},
+  howpublished = {\url{https://www.earthmover.io/blog/xarray-open-zarr-improvements/}}
+}
+
+@misc{linux_dentry_cache,
+  author       = {{Linux Kernel Internals}},
+  title        = {Dentry and Inode Caches},
+  year         = {2024},
+  howpublished = {\url{https://kernel-internals.org/vfs/dcache-icache/}}
+}
+
+% ============================================================
+% Climate context
+% ============================================================
+
+@article{booth2012carbon,
+  author       = {Booth, Ben B. B. and Jones, Chris D. and Collins, Mat and Totterdell, Ian J.
+                  and Cox, Peter M. and Sitch, Stephen and Huntingford, Chris and Betts,
+                  Richard A. and Harris, Glen R. and Lloyd, Jon},
+  title        = {High Sensitivity of Future Global Warming to Land Carbon Cycle Processes},
+  journal      = {Environmental Research Letters},
+  volume       = {7},
+  number       = {2},
+  pages        = {024002},
+  year         = {2012},
+  doi          = {10.1088/1748-9326/7/2/024002}
+}
+
+@article{gier2024carbon,
+  author       = {Gier, Bettina K. and Schlund, Manuel and Friedlingstein, Pierre and
+                  Jones, Chris D. and Jones, Colin and Zaehle, S\"{o}nke and Eyring, Veronika},
+  title        = {Representation of the Terrestrial Carbon Cycle in {CMIP6}},
+  journal      = {Biogeosciences},
+  volume       = {21},
+  number       = {22},
+  pages        = {5321--5360},
+  year         = {2024},
+  doi          = {10.5194/bg-21-5321-2024}
+}
+
+% ============================================================
+% Reproducible and reusable research software
+% ============================================================
+
+@article{sandve2013,
+  author       = {Sandve, Geir Kjetil and Nekrutenko, Anton and Taylor, James and Hovig, Eivind},
+  title        = {Ten Simple Rules for Reproducible Computational Research},
+  journal      = {PLoS Computational Biology},
+  volume       = {9},
+  number       = {10},
+  pages        = {e1003285},
+  year         = {2013},
+  doi          = {10.1371/journal.pcbi.1003285}
+}
+
+@article{barker2022,
+  author       = {Barker, Michelle and Chue Hong, Neil P. and Katz, Daniel S. and others},
+  title        = {Introducing the {FAIR} Principles for Research Software},
+  journal      = {Scientific Data},
+  volume       = {9},
+  pages        = {622},
+  year         = {2022},
+  doi          = {10.1038/s41597-022-01710-x}
+}
+
+% ============================================================
+% Compute-side / model-training frameworks
+% ============================================================
+
+@misc{anemoi,
+  author       = {{ECMWF and partners}},
+  title        = {{Anemoi}: A Framework for Machine-Learning Weather Forecasting},
+  year         = {2024},
+  howpublished = {\url{https://github.com/ecmwf/anemoi}}
+}

@@ -1,0 +1,16 @@
+{"time":"2026-06-11T14:55:16.818524783+02:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2026-06-11T14:55:16.81859538+02:00","level":"INFO","msg":"created symlink","path":"/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41652687/wandb/offline-run-20260611_145516-7rgr04br/logs/debug-core.log"}
+{"time":"2026-06-11T14:55:16.977109279+02:00","level":"INFO","msg":"created new stream","id":"7rgr04br"}
+{"time":"2026-06-11T14:55:16.977166502+02:00","level":"INFO","msg":"stream: started","id":"7rgr04br"}
+{"time":"2026-06-11T14:55:16.97725484+02:00","level":"INFO","msg":"handler: started","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:55:16.977257075+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:55:16.977257762+02:00","level":"INFO","msg":"sender: started","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:55:16.986850695+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-06-11T14:57:30.894580798+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-06-11T14:57:30.902343945+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-06-11T14:57:30.90359902+02:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2026-06-11T14:57:31.911431646+02:00","level":"INFO","msg":"stream: closing","id":"7rgr04br"}
+{"time":"2026-06-11T14:57:31.91144804+02:00","level":"INFO","msg":"handler: closed","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:57:31.911455945+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:57:31.911557264+02:00","level":"INFO","msg":"sender: closed","stream_id":"7rgr04br"}
+{"time":"2026-06-11T14:57:31.915500214+02:00","level":"INFO","msg":"stream: closed","id":"7rgr04br"}

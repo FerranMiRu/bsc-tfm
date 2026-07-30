@@ -1,0 +1,12 @@
+START TIME: Tue Jun 23 19:30:55 CEST 2026
+
+=== Part 1: warm SingleZarrDataset.__getitem__ decomposition ===
+  single_small   total= 1123.02 ms   io= 427.88 ms   non_io(xarray+decode)=  695.14 ms
+  single_big     total= 5092.50 ms   io= 421.94 ms   non_io(xarray+decode)= 4670.56 ms
+  -> non_io big/small ratio = 6.72   io big/small ratio = 0.99
+
+=== Part 2: warm 'c3ann'.isel(fixed patch).to_numpy() (identical slice) ===
+  single_small   total=   21.83 ms   io=   0.28 ms   non_io(xarray+decode)=   21.55 ms
+  single_big     total=  149.93 ms   io=   0.34 ms   non_io(xarray+decode)=  149.59 ms
+  -> total big/small ratio = 6.87   (warm, identical output => the gap is dask graph build, not I/O)
+END TIME: Tue Jun 23 19:45:19 CEST 2026

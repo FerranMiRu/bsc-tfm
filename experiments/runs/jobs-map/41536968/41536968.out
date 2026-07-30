@@ -1,0 +1,4 @@
+START TIME: Mon Jun  8 16:28:48 CEST 2026
+Config: profiling-singlezarr | num_getitem=5 | num_batches=30 | split=train | batch_timeout=30s | workers_sweep=[12] | luh2_threads=1 | strace_out=/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41536968/strace_41536968.txt
+Launch command: strace -c -f     -e trace=read,pread64,openat,close,futex,sem_wait,sched_yield,mmap,munmap     -o /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41536968/strace_41536968.txt     -- uv run python -m ai4land.utils.profile_dataloader     --config-name profiling-singlezarr     system.slurm_job_id=41536968     ++profile.num_getitem=5     ++profile.num_batches=30     ++profile.split=train     ++profile.batch_timeout_s=30     ++profile.workers_sweep=[12]     ++profile.num_coldwarm=0     ++data.luh2_load_threads=1
+END TIME: Mon Jun  8 16:28:53 CEST 2026

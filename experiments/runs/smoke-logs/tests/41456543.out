@@ -1,0 +1,94 @@
+START TIME: Fri Jun  5 12:07:07 CEST 2026
+
+========================================================================================
+AI4LAND SMOKE TEST
+========================================================================================
+
+========================================================================================
+1) External dependencies
+========================================================================================
+[OK] accelerate 1.13.0
+[OK] cartopy 0.23.0
+[OK] dask 2024.12.1
+[OK] dask_ml 2024.4.4
+[OK] h5netcdf 1.8.1
+[OK] hydra 1.3.2
+[OK] joblib 1.5.3
+[OK] matplotlib 3.10.8
+[OK] netCDF4 1.7.4
+[OK] numcodecs 0.13.1
+[OK] numpy 2.2.6
+[OK] pandas 2.3.3
+[OK] psutil 6.1.1
+[OK] pydantic 2.13.3
+[OK] pyyaml 6.0.3
+[OK] rasterio 1.4.4
+[OK] rioxarray 0.19.0
+[OK] scikit-learn 1.5.2
+[OK] scipy 1.15.3
+[OK] tabulate 0.10.0
+[OK] terratorch 1.2.2
+[OK] torch 2.11.0+cu128
+[OK] torchmetrics 1.9.0
+[OK] torchvision 0.26.0+cu128
+[OK] triton 3.6.0
+[OK] wandb 0.18.7
+[OK] xarray 2025.6.1
+[OK] xgboost 2.1.4
+[OK] zarr 2.18.3
+
+========================================================================================
+2) ai4land internal imports
+========================================================================================
+[OK] ai4land.utils.config_utils: UnifiedConfig, DataParams, SystemParams, ModelParams
+[OK] ai4land.utils.datasets: SingleZarrDataset, MultiZarrDataset
+[OK] ai4land.utils.model_utils: PatchMask, mask_target_change
+[OK] ai4land.utils.utils: PiecewiseFunction, generate_wandb_name
+[OK] ai4land.training.simple_unet: UNet, RecurrentUNet
+[OK] ai4land.training.vit_unet: ViTSegmentation
+[OK] ai4land.training.terramind_adapter: TerraMindAdapter
+[OK] ai4land.training.base_trainer: BaseTrainer
+[OK] ai4land.training.train: TerraTrainer, UNetTrainer
+[OK] ai4land.inference.predict_unet
+[OK] ai4land.inference.pipeline
+[OK] ai4land.evaluation.test_unet
+[OK] ai4land.evaluation.visualize
+[OK] ai4land.preprocessing.process_datasets
+[OK] ai4land.preprocessing.create_split_index
+[OK] ai4land.postprocessing.create_netcdf
+[OK] ai4land.postprocessing.mask_ocean
+
+========================================================================================
+3) Pydantic config validation
+========================================================================================
+[OK] UnifiedConfig: n_continuous_channels=21, use_hilda_emb=True, use_kg_emb=True, elevation_idx=16
+
+========================================================================================
+4) UNet forward + backward pass (CPU, synthetic data)
+========================================================================================
+[OK] UNet: output shape (2, 1, 8, 64, 64), backward OK
+
+========================================================================================
+5) RecurrentUNet forward pass (CPU, synthetic data)
+========================================================================================
+[OK] RecurrentUNet: output shape (2, 2, 8, 64, 64) OK
+
+========================================================================================
+6) SingleZarrDataset init + __getitem__ (real data)
+========================================================================================
+[OK] SingleZarrDataset: len=100, x_continuous=(2, 15, 256, 256), target=(2, 256, 256)
+
+========================================================================================
+7) GPU (informational)
+========================================================================================
+torch.cuda.is_available(): True
+Device count: 1
+Device 0: NVIDIA H100
+Matmul result (cuda): -8488.8965
+[OK] GPU matmul OK
+
+========================================================================================
+RESULT
+========================================================================================
+[OK] All checks passed in 122.2s
+END TIME: Fri Jun  5 12:09:12 CEST 2026

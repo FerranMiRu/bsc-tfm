@@ -1,0 +1,7 @@
+job_id	dataset	ranks	num_workers	seed	step
+41812997	merged	1	12	profile	1
+41812998	single	1	12	profile	2
+41812999	merged	1	12	profile	3
+41813000	single	1	12	profile	4
+41813001	merged	1	12	profile	5
+41813002	single	1	12	profile	6

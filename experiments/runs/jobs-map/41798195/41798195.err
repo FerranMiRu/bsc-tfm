@@ -1,0 +1,26 @@
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_machines` was set to a value of `1`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: avg_train_loss █▃▂▁▁
+wandb:   avg_val_loss ▇▇█▁▂
+wandb:  best_val_loss ██▁
+wandb:          epoch ▁▃▅▆█
+wandb:  learning_rate ▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb: avg_train_loss 1.12408
+wandb:   avg_val_loss 0.51455
+wandb:  best_val_loss 0.49035
+wandb:          epoch 5
+wandb:  learning_rate 0.0005
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/jobs-map/41798195/wandb/offline-run-20260614_211235-3e88uyn1
+wandb: Find logs at: ./jobs-map/41798195/wandb/offline-run-20260614_211235-3e88uyn1/logs

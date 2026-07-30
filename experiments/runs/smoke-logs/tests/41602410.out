@@ -1,0 +1,13 @@
+START TIME: Wed Jun 10 11:55:23 CEST 2026
+
+--- data_vars ---
+single (NON_preprocessed): ['ASPECT', 'LULC_states', 'SLOPE', 'c3ann', 'c3nfx', 'c3per', 'c4ann', 'c4per', 'elevation', 'kg_class', 'number_of_people', 'pastr', 'primf', 'primn', 'range', 'secdf', 'secdn', 'secma', 'secmb', 'urban', 'weighted_ORGANIC', 'weighted_PCT_CLAY', 'weighted_PCT_SAND']
+merged: []
+
+--- sanity ---
+reference=single len=4480000 valid_time_indices=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] hw=(18000,36000)
+  merged: OK
+
+--- writing CSV to /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/tests/parity_41602410.csv ---
+wrote 320 rows
+END TIME: Wed Jun 10 11:57:31 CEST 2026

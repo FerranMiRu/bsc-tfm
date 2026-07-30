@@ -1,0 +1,51 @@
+START TIME: Mon Jun  8 15:12:48 CEST 2026
+HOST: as06r5b11
+Store:      /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr
+Variable:   <auto-discover>
+N_CHUNKS:   100
+
+=== Auto-discovering a variable with 3-dim chunk files ===
+Found: LULC_states
+
+=== Selecting 100 random chunks from /gpfs/scratch/ehpc736/data/AI4LAND_NON_preprocessed-data-2000-2015.zarr/LULC_states/ ===
+Selected 100 chunks
+
+=== Reading chunks (cat > /dev/null, ms wall-clock per read) ===
+
+=== Per-chunk read summary (variable=LULC_states, n=100) ===
+Mean:                  59.5 ms
+Median (p50):          19 ms
+p95:                   29 ms
+p99:                   1933 ms
+Min:                   3 ms
+Max:                   2125 ms
+Mean chunk size:       28063 bytes
+Total bytes:           2806321
+Total wall time:       5954 ms
+Effective rate:        0.4 MB/s
+
+First 10 reads (ms bytes filename):
+   20     4248 5.2.32
+   12     4824 13.31.11
+   20     4248 7.34.20
+   19    10884 8.2.46
+   17     4248 3.29.43
+   19   138866 13.15.41
+   25    19669 14.19.60
+   17     7123 3.3.47
+   21    18653 10.2.12
+ 2125     4248 9.27.56
+
+Last 10 reads:
+   27   210983 11.7.37
+   19     4248 8.30.13
+   22     4248 10.1.2
+   20     4346 10.19.45
+   17     4248 0.34.20
+   22     4248 4.0.58
+   19    66096 12.19.23
+   14    47743 11.11.42
+   20   101836 0.8.42
+   15   123388 10.11.15
+
+END TIME: Mon Jun  8 15:12:55 CEST 2026

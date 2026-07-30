@@ -1,0 +1,31 @@
+load CUDA/12.8 (PATH, MANPATH, LD_LIBRARY_PATH, LIBRARY_PATH, C_INCLUDE_PATH,
+CPLUS_INCLUDE_PATH, CUDA_HOME, CUDA_VERSION, CUDA_INC, CUDA_INSTALL_PATH) 
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.7
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: avg_train_loss ▁
+wandb:   avg_val_loss ▁
+wandb:  best_val_loss ▁
+wandb:          epoch ▁
+wandb:  learning_rate ▁
+wandb: 
+wandb: Run summary:
+wandb: avg_train_loss 2.02354
+wandb:   avg_val_loss 1.66861
+wandb:  best_val_loss 1.66861
+wandb:          epoch 1
+wandb:  learning_rate 0.0005
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /gpfs/scratch/bsc32/bsc096444/ai4land-tfm/logs/wandb/offline-run-20260528_104528-rjd7nmbl
+wandb: Find logs at: ./logs/wandb/offline-run-20260528_104528-rjd7nmbl/logs

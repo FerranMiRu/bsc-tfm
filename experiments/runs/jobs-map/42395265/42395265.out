@@ -1,0 +1,9 @@
+START TIME: Wed Jun 24 12:30:16 CEST 2026
+--- DataLoader throughput (batch=8, prefetch=4) ---
+  merged_big_w12_numpy workers=12  sps=   32.6 (target 53, ~  28.7 at 4-rank) [BELOW TARGET]
+      per-batch ms: p50=    0.2 p95=  1589.8 max=  2797.9  stalls(>1s)=22
+  merged_big_w20_numpy workers=20  sps=   63.0 (target 53, ~  55.4 at 4-rank) [OK]
+      per-batch ms: p50=    0.1 p95=  1279.7 max=  2826.3  stalls(>1s)=12
+  merged_big_w12_dask workers=12  sps=   37.9 (target 53, ~  33.4 at 4-rank) [BELOW TARGET]
+      per-batch ms: p50=    0.2 p95=  2034.5 max=  2900.9  stalls(>1s)=20
+END TIME: Wed Jun 24 12:33:54 CEST 2026

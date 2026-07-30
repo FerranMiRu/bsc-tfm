@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1116, in _copy_listed
+    variables[name] = self._variables[name]
+KeyError: 'organic'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/gpfs/scratch/bsc32/bsc096444/uv-pythons/cpython-3.10-linux-x86_64-gnu/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 316, in <module>
+    sys.exit(main())
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 294, in main
+    _hilda_value_audit(new_ds, legacy_ds, indices[0])
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/test_loader_parity.py", line 243, in _hilda_value_audit
+    legacy_sample = legacy_ds[idx]
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/legacy/multi_zarr_dataset.py", line 438, in __getitem__
+    static_channel = self._get_static_data(y0, x0)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/tests/legacy/multi_zarr_dataset.py", line 339, in _get_static_data
+    ds_static[self.vars_per_store["static"]]
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1277, in __getitem__
+    return self._copy_listed(key)
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset.py", line 1118, in _copy_listed
+    ref_name, var_name, var = _get_virtual_variable(
+  File "/gpfs/scratch/bsc32/bsc096444/ai4land-tfm/.venv/lib/python3.10/site-packages/xarray/core/dataset_utils.py", line 79, in _get_virtual_variable
+    raise KeyError(key)
+KeyError: 'organic'

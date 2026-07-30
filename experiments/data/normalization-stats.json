@@ -1,0 +1,46 @@
+{
+  "elevation": { "elevation": { "mean": -1898.067617, "std": 2652.488087 } },
+  "geophysical": {
+    "aspect": { "mean": 176.620152, "std": 80.690348 },
+    "slope": { "mean": 2.132653, "std": 3.469765 }
+  },
+  "soil": {
+    "weighted_organic": { "mean": 35.37845, "std": 26.88101 },
+    "weighted_pct_clay": { "mean": 25.898297, "std": 8.800354 },
+    "weighted_pct_sand": { "mean": 43.464821, "std": 13.183616 }
+  },
+  "luh2": {
+    "secmb": {
+      "mean": 1.927082,
+      "std": 3.092972,
+      "mean_train": 1.763022780418396,
+      "std_train": 2.9235780239105225,
+      "mean_full_time": 1.878343,
+      "std_full_time": 3.340428,
+      "mean_full_time_train": 1.677768,
+      "std_full_time_train": 3.155864
+    },
+    "secma": {
+      "mean": 87.640533,
+      "std": 138.955918,
+      "mean_train": 70.62830352783203,
+      "std_train": 119.34345245361328,
+      "mean_full_time": 136.866491,
+      "std_full_time": 181.642455,
+      "mean_full_time_train": 123.998823,
+      "std_full_time_train": 179.184013
+    }
+  },
+  "population": {
+    "number_of_people": {
+      "mean": 59.108636,
+      "std": 329.224795,
+      "mean_train": 68.77769,
+      "std_train": 372.647543,
+      "mean_full_time": 29.531676,
+      "std_full_time": 181.880342,
+      "mean_full_time_train": 34.48626,
+      "std_full_time_train": 204.207198
+    }
+  }
+}

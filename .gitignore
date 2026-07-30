@@ -1,3 +1,21 @@
 .DS_Store
 __pycache__/
 *.pyc
+
+# LaTeX build artifacts + compiled PDFs (tracked source = .tex / .bib / figures/ / writing/)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml

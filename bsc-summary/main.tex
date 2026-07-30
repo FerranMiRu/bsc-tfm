@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[top=2.1cm,bottom=2.1cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{parskip}
+\usepackage{enumitem}
+
+\setlist[enumerate]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.6em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt,leftmargin=1.4em}
+
+\newcommand{\x}{$\times$}
+\newcommand{\ra}{$\to$}
+
+\begin{document}
+\pagestyle{plain}
+
+% ------------------------------------------------------------------
+% Compact header (internal technical note, no title page/TOC).
+% ------------------------------------------------------------------
+\begin{center}
+{\LARGE\bfseries AI4Land data-loading optimization\par}
+\vspace{0.15cm}
+{\large What worked, what didn't, and how to store the next dataset\par}
+\end{center}
+
+\vspace{0.15cm}
+\noindent
+\textbf{Author:} Ferran Mirabent Rubinat \quad\textbf{Team:} CES / AI team, BSC \quad\textbf{Date:} \today\\
+\normalsize
+
+\vspace{0.15cm}
+\hrule
+\vspace{0.35cm}
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small
+\textbf{TLDR.} Training was data-loader bound: the H100s sat idle $>$90\% of the time, with a
+$\sim$80~s stall every \texttt{num\_workers} batches. The cost was GPFS \emph{metadata latency},
+paid per chunk file opened, independent of its size. The multi-zarr layout opened $\sim$93 chunk
+files per sample. \textbf{Two fixes:} (1)~stack all variables into one \texttt{dynamic} +
+one \texttt{static} array so a sample opens $\sim$9 files, not $\sim$93; (2)~read patches through
+raw \texttt{zarr}, bypassing the xarray/dask graph whose per-chunk cost scales
+with the store's time extent. On the full historical store, 10 epochs on 1 node went from $\sim$55~h
+\ra{} $\sim$2.3~h (merge) \ra{} $\sim$1.3~h (raw reader). Training is now GPU-bound. All layouts are
+bit-identical (parity~0), so model accuracy is unchanged.}}
+
+% ============================================================
+\section*{1. The bottleneck (diagnosis)}
+% ============================================================
+
+Per-sample fetch time factors as \emph{opens/sample} \x{} \emph{cost/open}.
+
+\begin{itemize}
+  \item \textbf{Opens/sample is set by the layout.} 41 read calls (one per variable per timestep)
+    \x{} $\sim$2.25 chunk files touched per random $256^2$ read $\approx$ 93 opens (measured 92.7).
+  \item \textbf{Cost/open is GPFS metadata latency, flat in bytes.} Cold open $\sim$20~ms, warm
+    $\sim$0.1~ms. Per-chunk anatomy: bytes-from-disk $\sim$19--20~ms, xarray materialise $\sim$16~ms,
+    Blosc decode 0.3~ms.
+  \item \textbf{Not a bandwidth problem.} Single-stream GPFS $\sim$556~MB/s; the $\sim$3~MB compressed
+    pulled per sample would take $\sim$5~ms if bandwidth-bound, against the $\sim$1.25~s observed
+    ($\sim$200\x{} gap).
+  \item \textbf{The periodic stall} is structural: the prefetch pool refills all \texttt{num\_workers}
+    workers at once, so one slow refill lands every \texttt{num\_workers} batches. More workers hide it
+    (deeper outstanding I/O) but never remove it.
+  \item \textbf{Store-size effect.} Bigger store \ra{} slower per sample, though the slice read is
+    identical. The cause: the xarray/dask graph enumerates the store's \emph{full} time extent, not
+    the slice.
+\end{itemize}
+
+% ============================================================
+\section*{2. What worked}
+% ============================================================
+
+\begin{enumerate}
+  \item \textbf{Multi-zarr \ra{} single store.} One store per refill instead of five.
+    Stalls shrink $\sim$8\x{} ($\sim$80~s \ra{} $\sim$10~s). However, the stalls remain and they
+    increase with store size (the $\sim$80~s \ra{} $\sim$10~s is between the Multizarr 1900 - 2020
+    and the single zarr 2000 - 2015).
+  \item \textbf{Single \ra{} merged (\texttt{MergedZarrDataset}).} Stack the 14 LUH2 + population +
+    K\"oppen--Geiger into one \texttt{dynamic} array (variable as a new axis) and the 6 static into one
+    \texttt{static} array. Opens/sample 93~\ra{}~9 ($\sim$10\x{}), file count 16.9\x{} fewer,
+    $\sim$7\x{} single-thread. Short-window training becomes GPU-bound.
+  \item \textbf{Merged xarray \ra{} raw-zarr reader (\texttt{RawMergedZarrDataset},
+    \texttt{dataset\_type: merged\_raw}).} Read patches via \texttt{zarr\_array.oindex[...]}, no
+    xarray/dask. Removes the per-chunk Python/GIL graph work (the store-size-dependent term):
+    $\sim$7\x{} single-thread over merged-xarray, $\sim$1.9--2.5\x{} multi-worker (the gain grows with
+    workers), $\sim$0\% stalls on training. This is the recommended loader.
+\end{enumerate}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}llr@{}}
+\toprule
+\textbf{Isolated dataloader (single-thread \texttt{getitem})} & \textbf{Size} & \textbf{Median/sample} \\
+\midrule
+Multi-zarr, 5 stores          & $\sim$680 GB & 7970 ms \\
+Single-zarr                   & 66 GB        & 1329 ms \\
+Single-zarr                   & 435 GB       & 5513 ms \\
+Merged (dynamic+static stacked) & 59 GB      &  174 ms \\
+Merged                        & 387 GB       &  286 ms \\
+Merged + raw-zarr reader      & 387 GB       & \textbf{38 ms} \\
+\bottomrule
+\end{tabular}
+\caption{Median per-sample fetch, model out of the loop. Merge: 7.6\x{} (small) to 19\x{} (big) over
+single-zarr. Raw reader: $\sim$7\x{} over merged-xarray. The 66~\ra{}~435~GB single-zarr jump (4.2\x)
+is the xarray graph store-size.}
+\end{table}
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{End-to-end (full historical store, 10 epochs, 1 node, 12 workers)} & \textbf{Wall time} \\
+\midrule
+Five separate stores (original)   & $\sim$55 h \\
+Merged store (xarray)             & $\sim$2.3 h \\
+Merged store + raw-zarr reader    & $\sim$1.3 h \\
+\bottomrule
+\end{tabular}
+\caption{All layouts bit-identical (parity~0). Merge $\sim$23\x; raw reader a further $\sim$1.8\x{}
+($\sim$42\x{} total). Final layout is GPU-bound: $\sim$51 samples/s/GPU, $\sim$0\% stalls, per-GPU
+throughput flat from 1 to 16 ranks.}
+\end{table}
+\newpage
+% ============================================================
+\section*{3. What was tried and did not work}
+% ============================================================
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{4.5cm}p{10.6cm}@{}}
+\toprule
+\textbf{Tried} & \textbf{Outcome and reason} \\
+\midrule
+Disable \texttt{ProcessSynchronizer} &
+  No effect. The zarr~v2 read path (\texttt{\_chunk\_getitem}) never acquires the lock; it guards
+  writes only. Config toggle removed, instance kept defensively. \\
+Offline preprocessing bake-in (fill-NaN, normalize) &
+  $\sim$0 gain. Preprocessing was $\sim$8\% of per-sample cost; the residual is
+  stack/transpose/reshape, which a bake-in cannot remove. \\
+\texttt{ThreadPoolExecutor} over per-variable LUH2 reads &
+  No gain; threads=2 regressed $\sim$23\%. Signature of Blosc/GIL contention, not I/O that
+  parallelizes this way. \\
+\texttt{chunks=None} (drop dask, keep xarray) &
+  No multi-worker gain. Keeps xarray's indexing overhead; the win needs xarray removed entirely
+  (raw zarr). \\
+Chunk shape $\ne 512^2$ &
+  Worse. $256^2$ multiplies chunk count and graph work; $1024^2$/$2048^2$ become decode/read-amplified.
+  $512^2$ is optimal for $256^2$ patches. \\
+NVMe staging (copy store to node-local disk) &
+  Discarded. Production store $>$213~GB does not fit the 480~GB local NVMe. \\
+Zarr v3 sharding &
+  Low value here. Shrinks file count but not the logical chunk count the graph enumerates; our Blosc
+  decode is already 0.3~ms/chunk, and GPU-native decode is therefore irrelevant. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+% ============================================================
+\section*{4. Full-dataset follow-up (post-thesis)}
+% ============================================================
+
+The thesis established the fix on short-window stores and projected that merging alone would keep the
+GPUs fed at full scale. It did not, quite. On the full merged store (all variables, full time range,
+built by Joan) the $\sim$80~s stalls collapsed to 1--2~s spikes but did not vanish: 10 epochs took
+$\sim$2.3~h. The residual is the xarray store-size term (graph cost grows with the store's time extent,
+not the slice). Writing the raw-zarr reader removed it and brought the run to $\sim$1.3~h, at which point
+the GPU, not the data path, sets the pace. Parity held throughout (bit-identical, so accuracy is
+unchanged), and per-GPU throughput is flat from 1 to 16 ranks.
+
+% ============================================================
+\section*{5. Knobs to optimize a new dataset}
+% ============================================================
+
+Goal: minimize \emph{cold chunk-file opens per sample}, keep chunk files reasonably large, and keep the
+store's file count from outgrowing the metadata cache.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{4.6cm}p{10.6cm}@{}}
+\toprule
+\textbf{Knob} & \textbf{Target} \\
+\midrule
+Sanity target           & loader delivery $\ge$ GPU consume ($\sim$53 samples/s/GPU) \\
+Verify                  & parity (bit-identical) before any speed claim \\
+File opens per sample        & single digits ($\le \sim$10) \\
+Chunk file size (compressed) & $\ge \sim$1 MB; avoid $<$100 KB \\
+Spatial chunk side $C$  & $\ge 2\times$ patch side $P$; expected chunks/read $=(1+P/C)^2$ \\
+Store count             & one ARCO store, not per-modality \\
+Variable layout         & dynamic stacked on a variable axis; static stacked separately \\
+Reader         & raw zarr (\texttt{oindex}), not xarray \\
+Codec                   & Blosc(lz4) fine; decode negligible \\
+\bottomrule
+\end{tabular}
+\caption{Reference card. When in doubt, cut opens/sample first, it pays off in every cache state.}
+\end{table}
+
+\end{document}

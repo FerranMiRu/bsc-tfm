@@ -112,7 +112,9 @@
 \begin{itemize}
 \item Problem: the layout that makes data FAIR is not the layout that trains fast.
 \item Two representations: interoperable Zarr store vs.\ training-optimised merged store.
-\item Result: $\sim$7$\times$ per-sample, $\sim$4.6$\times$ end-to-end, $\sim$40$\times$ projected.
+\item Result (measured): 7.6$\times$ per-sample on a 16-year record and 19$\times$ on the
+  full historical one; 4.6$\times$ end-to-end on one node; a 10-epoch production training
+  cut from ${\sim}55$\,h to 2.3\,h against the five-store baseline.
 \item Contribution: an automated bridge, plus the released 1850--2100 land-use cube.
 \end{itemize}
 \end{abstract}
@@ -125,35 +127,120 @@
 %% 1  INTRODUCTION
 %% ==================================================================
 \introduction  %% \introduction[modified heading if necessary]
-\begin{itemize}
-\item Context: dataloading is now the bottleneck for ML on Earth-system data at HPC scale.
-\item Problem: FAIR stores and fast stores pull in opposite directions.
-\item Gap: the trade-off is unquantified and no bridge exists.
-\item Setting: AI4Land pipeline on MareNostrum 5.
-\end{itemize}
+\label{sec:intro}
+
+Deep learning on Earth-system data at HPC scale is now routinely limited by data ingestion. A
+training sample is a small spatial patch drawn at a random place and year, with every input
+variable stacked at that point, and an epoch issues millions of such reads. Parallel
+filesystems charge a near-constant metadata cost per file opened, so the per-sample cost is
+governed by how many chunk files a sample touches, and the storage layout fixes that count.
+
+Two design goals therefore conflict. A store built for reuse keeps one array per variable with
+its own attributes and provenance, so a consumer can open a single field. A store built for
+training wants every variable a sample needs inside as few files as possible. The same numbers
+in the two arrangements differ by an order of magnitude in file count.
+
+The size of that penalty has not been quantified for a production pipeline. Guidance to prefer
+fewer, larger chunks is standard \citep{dask_chunks, abernathey2021}, and the weakness of
+parallel filesystems under many small reads is documented \citep{nextplatform_hpcfs,
+vef2016gpfs}, but how much a reuse-oriented layout costs a real training run, which layer pays
+it, and how it scales with the archive remain open.
+
+We answer this for the AI4Land pipeline \citep{mozaffari2026scalable} on MareNostrum~5
+\citep{mn5}. The harmonised cube of Sect.~\ref{sec:substrate} exists as an interoperable store
+with one array per variable and a training-optimised store with all variables stacked into two
+arrays, both holding numerically equivalent data. We decompose the per-sample cost down to a
+single file open and measure both layouts end to end.
+
+Under a common reader the merged layout fetches a sample $7.6\times$ faster over a sixteen-year
+record and $19.3\times$ faster over the full historical one; a training run on one node
+finishes $4.6\times$ sooner; and ten epochs of the production configuration fell from about
+55\,h to 2.3\,h against the five-store layout the project began with. The GPUs, previously idle
+more than 90\,\% of the time, now set the pace.
 
 \subsection{The interoperability--efficiency tension for ML-ready geospatial data}
-\begin{itemize}
-\item The two poles: reusability vs.\ throughput.
-\item Why they conflict: many small objects stress the metadata server.
-\item Claim: general to any chunked format, not specific to this dataset.
-\end{itemize}
+\label{sec:tension}
+
+The two poles are defined by their consumers. One reads little data and much description:
+which variables exist, in what units, on what grid, derived how. The other reads one patch of
+every variable at one place and year, several million times, and consults the description once.
+
+The conflict is arithmetic. Per-sample fetch time factors into the number of chunk files
+opened and the cost per open. The layout fixes the first factor: a per-variable store forces
+one read per variable per timestep, and each read touches more than one chunk file whenever
+the patch straddles a boundary. For a patch of side $P$ drawn at a uniformly random position
+from an array chunked at side $C$ in each spatial dimension, with $P<C$, the expected number
+of chunks a read overlaps is
+%
+\begin{equation}
+\label{eq:straddle}
+\mathbb{E}[\,n_{\mathrm{chunks}}\,] = \left(1 + \frac{P}{C}\right)^{2},
+\end{equation}
+%
+which gives $2.25$ at $P=256$, $C=512$. In the interoperable layout the product reaches about
+93 opens per sample.
+
+The second factor is set by the filesystem and by whether the file's metadata is cached, and it
+is close to flat in bytes returned. That flatness makes the first factor decisive: splitting
+the same bytes across ten times as many files costs close to ten times as much.
+
+Two properties sharpen the tension as a project grows. The penalty scales with the archive,
+since a longer record holds proportionally more chunk files and more array structure for the
+reader to carry. And it scales with concurrency: each GPU runs its own reader pool, so a
+four-GPU node with twelve readers each puts 48 processes on the same metadata service, shared
+with every other job on the machine.
+
+The argument holds for any scheme that cuts arrays into separately addressable objects on a
+filesystem that charges per object: netCDF split by variable, tiled rasters with one file per
+tile and band, or object stores with a fixed per-request latency. What differs between systems
+is the size of the charge; the layout still sets how often it is paid.
 
 \subsection{Related work}
+\label{sec:related}
+
+Historically, Earth observation and climatological data have been distributed in GRIB or
+NetCDF formats \citep{Gowan2022, Kuluke2021}. Both present structural limitations when
+integrated into modern machine learning pipelines. GRIB files read data sequentially, which is
+inefficient for repeated selective access, limits parallel I/O and lazy loading, and requires
+the metadata to be fully parsed before extracting the data \citep{Gowan2022, Glahn2003}. NetCDF
+relies on HDF5 and fixes its chunk layout at file creation. Its file handles are tied to
+individual processes, which causes I/O issues when multiple workers access the same dataset,
+and it lacks native zero-copy tensor export, so data must pass through CPU RAM first
+\citep{Huang2023, Russell2006}. Zarr avoids these constraints, with chunked arrays, flexible
+metadata and direct memory sharing for AI workflows \citep{Gowan2022, newman2024zarr}, and is
+the format used here.
+
+Zarr adoption in the Earth sciences is framed around ARCO storage: publish once, harmonised
+and chunked, so any consumer can pull a sub-region over the network \citep{abernathey2021}.
+That literature treats chunk geometry as a parameter tuned for a representative analysis
+query, and its guidance is to keep chunks large enough to amortise the per-object overhead
+\citep{dask_chunks}. A randomly shuffled training loop is a different consumer, touching every
+variable at once and reusing almost nothing between reads. Work on feeding chunked stores
+straight into training reports large gains once the chunk shape matches the sampling pattern
+\citep{earthmover_dataloader, xarray_gpu_pipeline}, but targets cloud object storage or a
+direct path into GPU memory.
+
+On supercomputers the storage layer has been a recognised weak point for deep learning for some
+years. These systems were provisioned to stream few large files, while training issues
+enormous numbers of small scattered reads, and reports from large machines show the metadata
+path saturating well before bandwidth \citep{nextplatform_hpcfs}. The usual remedy adds a
+layer, staging the working set onto node-local disk \citep{hvac2022}. That route is closed
+here, since the production store exceeds the node-local capacity. We reduce how often the cost
+is incurred, by changing the layout.
+
+GPFS optimises for large-file bandwidth and routes metadata operations through a dedicated
+service that becomes contended once a system holds millions of small files \citep{weka_gpfs}.
+A study of file-create performance on the same architecture finds metadata operations scaling
+poorly, with a small fraction of files accounting for most of the total time
+\citep{vef2016gpfs}. The read-side measurements of Sect.~\ref{sec:diagnosis} are consistent
+with this.
+
+%% ---- REMAINING RELATED-WORK THREADS, NOT YET WRITTEN ----
 \begin{itemize}
-\item ARCO/Zarr storage for Earth-system data.
-\item I/O optimisation on HPC; GPFS/Lustre metadata studies.
 \item FAIR principles and ML dataset metadata (Croissant).
 \item Dataloading formats at scale (WebDataset, TFRecord).
 \item Our position: the intersection --- trade-off plus tooling.
 \end{itemize}
-
-Historically, Earth observation and climatological data have been distributed in GRIB or NetCDF formats \citep{Gowan2022, Kuluke2021}. However, both present structural limitations when integrated into modern machine learning pipelines. GRIB files read data sequentially, which is inefficient for repeated selective access. This design limits parallel I/O and lazy loading for efficient workflows. Additionally, its metadata must be fully parsed before extracting the data, making the format rigid and not efficient \citep{Gowan2022, Glahn2003}. NetCDF format relies on HDF5 and uses a chunk layout that is fixed at file creation. Its file handles are tied to individual processes, which causes I/O issues when multiple workers access the same dataset. The format also lacks native zero-copy tensor export, meaning data must pass through CPU RAM first, which doubles memory usage and slows training \citep{Huang2023, Russell2006}.
-
-To overcome these limitations, we use Zarr, which natively supports chunked arrays, flexible metadata, and direct memory sharing for AI workflows \citep{Gowan2022}
-
-
-
 
 \subsection{Contributions and paper outline}
 \begin{itemize}
@@ -162,11 +249,11 @@ To overcome these limitations, we use Zarr, which natively supports chunked arra
 \item C3: the released, DOI'd 1850--2100 cube.
 \end{itemize}
 
-
 %% ==================================================================
 %% 2  THE DATASET SUBSTRATE
 %% ==================================================================
 \section{The dataset substrate: a harmonised 1850--2100 land-use cube}
+\label{sec:substrate}
 The dataset we consider in this paper is created from seven separate sources, covering the years 1850 to 2100, and in a 1 km grid. Next, we will detail the processing performed to unify the data from these heterogeneous sources. This is also explained in \textit{citation to ML Earth paper?}
 
 \subsection{Source datasets and provenance}
@@ -224,33 +311,555 @@ PNNL soil \citep{li2024global}               & Static input (texture, organic) &
 CC0 is the PNNL DataHub default.}
 \end{table*}
 
-
 %% ==================================================================
 %% 3  THE TWO REPRESENTATIONS FAIR <-> FAST
 %% ==================================================================
 \section{Two representations of one dataset}
+\label{sec:two-reps}
 
-In this section we describe the two on-disk built from the same data cube. The interoperable store, which focus on discoverability, accesibility and self-description by preserving all the metadata required for a data reconstruction; and the training-optimised merged store, which has been designed to be more effective in the training process by dropping the non-essential metadata and applying a more efficient layout in terms of I/O. Therefore, both formats store the same data, they are different objects that differ in layout, and metadata strategy, which is the baseline for the trade-off analysis.
+Both representations are built from the same cube and carry numerically equivalent data: the
+same samples drawn through the same reader agree to floating-point round-off, and the
+categorical fields match exactly. They share the 1\,km global grid of
+$18\,000 \times 36\,000$ pixels, $512 \times 512$ spatial chunks (2556 per global field), one
+chunk per year along time, and Blosc/LZ4 level 5 with byte shuffle. They differ in how
+variables are grouped into arrays, in data types and in metadata strategy, which is the
+baseline for the trade-off analysis. Table~\ref{tab:layouts} collects the differences.
+
+The project's first production runs used neither. The inputs were spread over five
+per-modality Zarr stores, about 680\,GB and 6.73 million chunk files over 1850--2020, and a
+sample opened all five in turn. That layout is the production baseline of
+Sect.~\ref{sec:throughput}.
 
 \subsection{The interoperable (FAIR) store}
+\label{sec:fair-store}
 
-Focusing on the interoperable store, each variable is stored in a different Zarr array. Applying this layout we can preserve data semantic identity and their processing history preserved directly within the variable attributes. This metadata strategy ensures that the data remain understandable and traceable, even without access to the original source or processing scripts. Thus, this design ensures reproducibility, as any consumer can verify how the data were obtained and processed. This layout schema also enables users to inspect and visualize the data easily, by using standard scientific libraries.
+Each variable is kept in its own Zarr array, so its semantic identity and processing history
+live in its own attributes and stay traceable without the original sources or the processing
+scripts. Any consumer can verify how a field was produced, and standard libraries open and
+plot one field without touching the rest.
 
-This store has been designed to accomplish the FAIR principles:
+The store targets the FAIR principles:
 \begin{itemize}
-    \item \textbf{Findable}: \textbf{it has been published as a DOI-registered artifact \cite{doi_ref} and indexed in the BSC AI Factory data catalog.}
-    \item \textbf{Accessible}: We have used a layout that enables an easy visualization and manipulation via standard libraries (e.g., \textit{xarray}, \textit{numpy}...);
-    \item \textbf{Interoperable}: through CF-compliant conventions attributes have been standardized;
-    \item \textbf{Reusable}: By inspecting the metadata, every consumer can follow the processing history of the data and its origen, which provide complete context for validation.
+    \item \textbf{Findable}: published as a DOI-registered artifact \cite{doi_ref} and indexed
+      in the BSC AI Factory data catalog.
+    \item \textbf{Accessible}: the layout supports inspection and manipulation through
+      standard libraries such as xarray \citep{xarray} and numpy.
+    \item \textbf{Interoperable}: attributes are standardised following CF conventions.
+    \item \textbf{Reusable}: the metadata carries the origin and processing history of every
+      field, providing the context needed for validation.
 \end{itemize}
 
+The file count follows from the arrangement. Each of the 17 time-dependent variables holds
+$2556 \times T$ chunk files over $T$ years and each of the 6 static variables holds 2556, so
+the sixteen-year window 2000--2015 comes to 710\,571 files and 66\,GB and the full historical
+record 1901--2015 to 5\,012\,319 files and 435\,GB. Most of those files are small: ocean chunks
+compress to the codec floor, putting the median chunk file at about 4\,kB and the mean at about
+0.1\,MB.
+
 \subsection{The training-optimised merged store}
+\label{sec:merged-store}
 
-After implementing the AI4Land model training pipeline with the interoperable store, we identified a significant I/O bottleneck that delayed data ingestion. The diagnosis and quantification of this limitation are detailed in Section 4. To address it, we designed a training-optimized layout structured as a single Zarr store containing two coordinate-defined groups: static (non-temporal variables) and dynamic (time-indexed variables). Each group holds exactly one consolidated Zarr array, collapsing all variables into a unified structure. Original variable names are promoted to an explicit coordinate dimension, adding one axis while preserving the original spatial and temporal coordinates. Per-variable descriptors are stripped during this consolidation, as they are redundant for training workflows. This layout prioritizes ingestion throughput over data discoverability, significantly reducing initialization overhead and accelerating batch loading.
+Profiling the pipeline on the interoperable store identified an ingestion bottleneck, diagnosed
+in Sect.~\ref{sec:diagnosis}. The training-optimised layout is a single store with two
+coordinate-defined groups, \emph{static} and \emph{dynamic}, each holding exactly one
+consolidated array. Variable names are promoted to a leading coordinate axis, the spatial and
+temporal coordinates are preserved, and per-variable descriptors are dropped.
+
+Only the variable axis changes chunking. The dynamic array is
+$(17, T, 18\,000, 36\,000)$ chunked $(17, 1, 512, 512)$, so one chunk file carries all 17
+dynamic variables for one year and one spatial tile; the static array is
+$(6, 18\,000, 36\,000)$ chunked $(6, 512, 512)$. Spatial and temporal chunking and the
+compressed bytes are unchanged. File counts fall from 710\,571 to 43\,459 and from
+5\,012\,319 to 296\,503, about sixteen-fold, and the surviving files are larger, at a median of
+72\,kB and a mean of 1.4\,MB for the dynamic group.
+
+A single array carries a single data type, so the categorical fields are stored as floating
+point and cast back at read time. The read pattern collapses along with the file count. A
+sample needs every variable at one place across the years its autoregressive sequence spans:
+41 reads in the interoperable layout, and in the merged layout two read calls, one on the
+dynamic array covering three years and one on the static array, spanning four single-year
+accesses in total. With the straddling factor of Eq.~(\ref{eq:straddle}) the per-sample open
+count falls from $41 \times 2.25 \approx 92$ to $4 \times 2.25 = 9$. Counting chunk-file
+fetches over one thousand random samples gives 92.7 and 9.05, and the measured straddle
+distribution matches the predicted 25\,\%, 50\,\%, 25\,\% split over one, two and four chunks.
+
 \subsection{What each representation gives up}
+\label{sec:gives-up}
 
-To sum up, each format presents a clear trade-off, trading one advantage for another. The interoperable store sacrifices raw I/O throughput to maintain rich, per-variable semantics and a self-describing structure. The training-optimized merged store, in contrast, trades semantic depth and general-purpose usability for speed, collapsing variables into unified groups and dropping non-essential metadata. This consolidation also trades storage efficiency for ingestion performance. The consequences of these design choices are detailed and quantified in Sections 4 and 6.
+The interoperable store trades read throughput for per-variable semantics and a self-describing
+structure, quantified in Sect.~\ref{sec:throughput}. The merged store trades semantic depth and
+general-purpose usability for speed: a consumer can no longer open one variable on its own,
+the per-variable attributes are gone, the categorical fields lose their type, and the
+conventions that make the archive interoperable no longer hold. It is also specialised to one
+access pattern, with chunk geometry matched to $256^2$ patch sampling; long time series at
+single grid points, or whole global fields of one variable, read worse from it than from the
+interoperable store.
 
+The storage cost runs in the unexpected direction. The merged store occupies 387\,GB against
+435\,GB over the full record and 59\,GB against 66\,GB over the short one, since the same
+compressed bytes in fewer files spend less on per-file overhead. The real cost is the second
+copy: a project that publishes one store and trains on the other holds both, so the footprint
+roughly doubles. Sect.~\ref{sec:bridge} covers the conversion that produces it.
+
+%t
+\begin{table*}[t]
+\caption{The two on-disk representations of the same cube. Both use the same grid,
+$512\times512$ spatial chunking, one-year chunking along time and the same compressor, and both
+return numerically equivalent samples. They differ in how variables are grouped into arrays,
+which sets the chunk-file count and the per-sample open count. $T$ is the number of years in
+the record; opens per sample were measured over one thousand random samples.}
+\label{tab:layouts}
+\begin{tabular}{lll}
+\tophline
+Property & Interoperable store & Merged store \\
+\middlehline
+Data arrays                    & 23, one per variable                  & 2, one per group \\
+Dynamic array shape            & $(T, 18\,000, 36\,000)$, per variable & $(17, T, 18\,000, 36\,000)$ \\
+Static array shape             & $(18\,000, 36\,000)$, per variable    & $(6, 18\,000, 36\,000)$ \\
+Dynamic chunk shape            & $(1, 512, 512)$                       & $(17, 1, 512, 512)$ \\
+Static chunk shape             & $(512, 512)$                          & $(6, 512, 512)$ \\
+Chunk files, 2000--2015        & 710\,571                              & 43\,459 \\
+Chunk files, 1901--2015        & 5\,012\,319                           & 296\,503 \\
+Chunk file size, median / mean & 4\,kB / 0.1\,MB                       & 72\,kB / 1.4\,MB \\
+Size on disk, 2000--2015       & 66\,GB                                & 59\,GB \\
+Size on disk, 1901--2015       & 435\,GB                               & 387\,GB \\
+Reads per sample               & 41                                    & 2 \\
+Chunk files opened per sample  & 92.7                                  & 9.05 \\
+Per-variable attributes        & preserved                             & dropped \\
+Data types                     & native, per variable                  & one per group; categoricals as float \\
+\bottomhline
+\end{tabular}
+\belowtable{The 17 dynamic variables are the 14 LUH2 fields, population, the
+K{\"o}ppen--Geiger class and the HILDA+ labels; the 6 static variables are elevation, slope,
+aspect and three soil fields.}
+\end{table*}
+
+%% ==================================================================
+%% 4  THE EFFICIENCY STUDY
+%% ==================================================================
+\section{Diagnosing the I/O bottleneck}
+\label{sec:diagnosis}
+
+An Nsight Systems trace \citep{nsight} of the production loop on the five-store layout, with
+NVTX ranges marking each phase of a training step, shows the GPU track empty across the
+recorded window while the data-loading phase of one step runs about 76\,s. Over a longer run
+the pattern is periodic: twelve batches under a second each, then one batch of about 80\,s,
+repeating. Twelve is the reader count, and the period follows it; with twenty readers the slow
+batch lands every twentieth. The whole pool exhausts its queue and refills together. Across a
+full run the GPUs are idle more than 90\,\% of the time.
+
+The trace does not say what the readers block on. The candidates sit at different layers: the
+worker queue, a lock inside the storage library, decompression, byte volume, and the per-file
+charge of the filesystem. Two instruments separate them, one removing the model and one
+removing the dataset. Numbers follow in Sect.~\ref{sec:results}.
+
+\subsection{Diagnostic methodology}
+\label{sec:methodology}
+
+Both instruments measure under the randomly shuffled patch access the training loop
+produces, and both separate cold from warm cache state, which accounts for most of the
+variance between otherwise identical runs.
+
+\subsubsection{Standalone dataloader profiler}
+\label{sec:profiler}
+
+The first instrument replays the training access pattern with model, optimiser and GPU
+removed, drawing the same random place-and-year sequence and timestamping every boundary
+inside the fetch. Each measurement runs in a fresh subprocess. It has three phases.
+
+Phase~1 fetches fifty samples serially and attributes time to each input source. On the
+interoperable store the mean fetch is about 1.25\,s, of which LUH2 takes about 68\,\%, being
+the largest variable group and read at two years per sample. The materialised tensor is
+9.5\,MB, so one reader delivers about 8\,MB\,s$^{-1}$.
+
+Phase~2 splits each call into the store read and the in-memory work that follows: fill,
+normalise, stack, transpose, cast. The read takes about 92\,\% and the in-memory work about
+8\,\%. This capped a proposal to bake the normalisation into a third copy of the dataset;
+measured against the unbaked store, the baked variant returned indistinguishable per-sample
+times, and the copy was never written.
+
+Phase~3 sweeps the reader count. Throughput rises almost linearly at about 0.8 samples\,s
+$^{-1}$ per reader, and at twelve readers it equals the reader count divided by the
+single-thread fetch time. That excludes the worker queue and the other coordination layers;
+the lever is the cost of one fetch.
+
+\subsubsection{Synthetic filesystem probe}
+\label{sec:probe}
+
+The second instrument removes the dataset. It writes $N$ files of size $S$ into a directory on
+the same volume, reads them back in written or shuffled order, and times every open. Sweeping
+$N$ from 1 to $10^4$ and $S$ from 10\,kB to 100\,MB maps the per-open cost against both, and
+holding $N \cdot S$ fixed isolates fragmentation at constant volume. A second configuration
+builds two pools in one directory, $10^5$ and $10^6$ files, read randomly in one interleaved
+sequence so neither is favoured by cache state, to test whether directory size inflates the
+per-open cost. A third reproduces the shape of the real problem: two synthetic stores of about
+30\,GB with matched total bytes, one with 23 subdirectories of roughly 13\,000 files whose
+sizes are drawn from the measured chunk-size distribution and 40 opens per sample, the other
+with one subdirectory of 13\,000 files of about 2.3\,MB and 2 opens per sample, read by twelve
+concurrent workers in alternating order.
+
+Two calibrations support the probe. Volume bandwidth was measured with a 1\,MB block-copy
+benchmark from one stream and from twelve parallel streams. And when the synthetic file sizes
+are drawn from the real chunk-size distribution, the synthetic and real per-open distributions
+agree at every percentile.
+
+\subsection{Experimental setup: MareNostrum 5}
+\label{sec:setup}
+
+All measurements ran on the MareNostrum~5 accelerated partition: two Intel Xeon Platinum
+8460Y+ (80 cores), four H100 64\,GB, 512\,GB DDR5, a 480\,GB node-local NVMe and four NDR200
+adapters per node, under SLURM \citep{slurm}. One task per node and one process per GPU gives
+twenty cores each; at the production setting of twelve readers per GPU a node puts 48 reader
+processes on the storage system.
+
+Data sits on the GPFS scratch volume, shared with every other job on the machine, so both
+bandwidth and the metadata service are contended. The pipeline is PyTorch \citep{pytorch} with
+Accelerate \citep{accelerate} for DDP, and the stores are opened through xarray \citep{xarray}.
+The production configuration is batch 8 per GPU, accumulation 4, twelve readers per GPU,
+prefetch 4 and pinned memory. Four stores are compared, the interoperable at 66\,GB and
+435\,GB and the merged at 59\,GB and 387\,GB over the same two records, plus the 680\,GB
+five-store layout. All cover the historical part of the cube; the released cube runs to 2100,
+so a production store holds a longer record than measured here.
+
+Because the machine is shared, every configuration is repeated, the fastest and slowest
+repetitions are dropped before averaging, jobs are chained so that consecutive jobs alternate
+stores, and no two measurement jobs run concurrently against the same store. Surviving
+repetitions agree to within a few per cent.
+
+\subsection{Findings}
+\label{sec:findings}
+
+\subsubsection{Metadata cost per file opened}
+\label{sec:finding-metadata}
+
+Timing the layers of one chunk read separates the candidates (Table~\ref{tab:per-chunk}). The
+cold filesystem read costs 19--20\,ms and barely moves with compressed chunk size: a 25\,kB and
+a 122\,kB chunk cost the same. Decompression costs 0.3\,ms, about 1\,\% of the total, and
+resolving a chunk index to a path is free. The remaining layer, materialising the labelled
+array at about 16\,ms, is taken up in Sect.~\ref{sec:finding-size}.
+
+The synthetic probe identifies the filesystem term as metadata. With the record cached, an open
+of any file up to about 100\,kB costs about 0.11\,ms, flat as the directory grows from ten to
+ten thousand files. Holding volume at 100\,MB, one file reads in 44\,ms while ten thousand
+10\,kB files take 1082\,ms. On a cache miss the same open costs about 20\,ms at the median and
+23\,ms at p95, matching the real chunk figure, so a cold open costs roughly $200\times$ a warm
+one. Directory size leaves it unchanged: pools of $10^5$ and $10^6$ files, read interleaved,
+agree within 8\,\% at every percentile. Cache occupancy decides.
+
+Byte volume is excluded by arithmetic. The volume sustains about 556\,MB\,s$^{-1}$
+single-stream and 2510\,MB\,s$^{-1}$ over twelve streams; a sample pulls roughly 3\,MB, which
+would take about 5\,ms. The observed fetch is 1.25\,s, some $200\times$ slower.
+
+\subsubsection{Opens per sample as a layout property}
+\label{sec:finding-layout}
+
+Given a roughly fixed charge per open, the per-sample cost follows from how many opens the
+layout forces, and that count is fixed when the store is written. It is the number of
+single-year variable accesses times the straddling factor of Eq.~(\ref{eq:straddle}):
+$41 \times 2.25 \approx 92$ for the interoperable store, measured at 92.7, and
+$4 \times 2.25 = 9$ for the merged store, measured at 9.05.
+
+The production-shape simulation isolates that difference. With matched bytes, matched
+chunk-size distributions and only the per-sample open count differing, twelve concurrent
+workers on a cold cache pay about 660\,ms per sample on the fragmented arrangement against
+about 90\,ms on the consolidated one, reproduced across two independent measurements. Repeating
+at a scale where both file populations stay resident inverts the ordering: the fragmented
+arrangement warms from 39\,ms to 8.6\,ms per sample and overtakes the consolidated one, whose
+larger files still have to be transferred. The gain therefore comes from cache misses on the
+metadata path, which a production-scale store cannot avoid, since a full pass sweeps a working
+set far larger than the cache holds.
+
+\subsubsection{Growth of the penalty with archive size}
+\label{sec:finding-size}
+
+Per-sample fetch time also grows with the total size of the store, though a sample reads the
+same slice either way. Extending the record from sixteen to one hundred and fifteen years costs
+the interoperable store a factor of 4.15 per sample and the merged store 1.64. Cache-miss rate
+turns out to be the wrong explanation: reading the same fourteen-year window from both stores
+gives an identical cold-miss rate (0.994), an identical cold-open cost (25.25\,ms) and a ratio
+of 0.99 in the time spent reading chunk data.
+
+The cause sits in the reader. Requesting the same already-cached slice from both stores through
+the labelled-array layer, with essentially no I/O, runs $6.87\times$ slower against the longer
+record, in proportion to the number of chunks the array holds along time. Slicing through this
+layer builds and prunes a description of the deferred computation, and that description
+enumerates the array's full chunk structure on every access. The cost is therefore proportional
+to the array's total chunk count, and it is paid once per read call.
+
+The layout decides how often. The interoperable store issues 41 reads per sample against the
+merged store's two, so the same per-read penalty is levied twenty times more often, and the
+merging advantage widens with the archive, from $7.6\times$ over sixteen years to
+$19.3\times$ over the full record. Extending a published interoperable store in time slows
+every training run that reads it.
+
+This cost lives in the reading library and can also be attacked there, by indexing the chunked
+arrays directly. That lever is orthogonal to the layout and is out of scope here; every
+measurement in Sect.~\ref{sec:results} uses the same reader on both stores.
+
+\subsubsection{Implications for storing training data on HPC systems}
+\label{sec:finding-principle}
+
+The findings compose into a cost model. A sample pays one metadata charge per chunk file
+opened, where the file count is the number of single-year variable accesses times the
+straddling factor of Eq.~(\ref{eq:straddle}) and the charge is about 20\,ms cold and 0.1\,ms
+warm, plus one reader-side charge per read call, proportional to the array's total chunk count.
+Both leading terms follow from how the layout groups variables into arrays.
+
+The design rules generalise beyond this dataset, format and filesystem. Group the variables a
+sample needs into one array. Choose a spatial chunk side at least twice the patch side, keeping
+the straddling factor near its floor. Size chunk files so that the per-open charge amortises,
+on the order of a megabyte compressed. Target a single-digit open count per sample and treat it
+as the quantity to minimise. And verify that a re-laid-out store returns the same numbers
+before believing any speed-up measured on it.
+
+%t
+\begin{table}[t]
+\caption{Cost of one cold chunk read on the GPFS scratch volume, by layer, from two independent
+measurements on production chunks that agreed to within a millisecond per layer. The filesystem
+read is nearly flat in compressed chunk size, the signature of a metadata round trip.}
+\label{tab:per-chunk}
+\begin{tabular}{lr}
+\tophline
+Layer of a single chunk read & Cold cost (ms) \\
+\middlehline
+Bytes from disk (metadata lookup plus transfer) & 19--20 \\
+Materialising the labelled array                & 16 \\
+Decompression (Blosc/LZ4)                       & 0.3 \\
+Chunk-index lookup                              & ${\sim}0$ \\
+\bottomhline
+\end{tabular}
+\end{table}
+
+%% ==================================================================
+%% 5  THE BRIDGE
+%% ==================================================================
+\section{An automated bridge between representations}
+\label{sec:bridge}
+%% THE INTELLECTUAL NOVELTY. Claim depends on the plan §6.2 decision:
+%% one-directional (FAIR -> training) vs. bidirectional (round-trip).
+\begin{itemize}
+\item Beyond ``we made training faster'': users should not have to choose.
+\item Publish FAIR; derive the training store locally and reproducibly.
+\item Scope: one-directional, with round-trip as demonstrated feature or future work.
+\end{itemize}
+\subsection{Conversion pipeline design}
+\begin{itemize}
+\item Read $\rightarrow$ stack $\rightarrow$ re-chunk $\rightarrow$ write; parallelised for HPC.
+\item Configuration: chunk shape, dtype policy, variable selection, compression.
+\item Manifest (source DOI, version, checksums) makes every derived store traceable.
+\item Conversion cost quantified in Sect.~6.4.
+\end{itemize}
+\subsection{Metadata handling and reconstruction}
+\begin{itemize}
+\item Categorical maps preserved in the manifest for lossless cast-back.
+\item Per-variable attributes kept in a sidecar record, not discarded.
+\item If bidirectional: state what round-trips exactly and what is lossy.
+\item Croissant: demonstrated lightly; full support is future work.
+\end{itemize}
+\subsection{Usage workflow}
+\begin{itemize}
+\item Three steps: fetch the DOI'd store, convert, point the dataloader at it.
+\item Worked example with commands, runtime, and disk footprint.
+\item Guidance on presets for other sampling patterns.
+\end{itemize}
+
+%% ==================================================================
+%% 6  RESULTS AND BENCHMARKS
+%% ==================================================================
+\section{Results: the quantified trade-off}
+\label{sec:results}
+\begin{itemize}
+\item Order: throughput, sensitivity, scale-out, costs.
+\item All numbers from the setup of Sect.~\ref{sec:setup}.
+\end{itemize}
+
+\subsection{Per-sample and end-to-end throughput}
+\label{sec:throughput}
+
+The measurements move from one sample to a full training run. All use the same reader on both
+layouts under the setup of Sect.~\ref{sec:setup}.
+
+\subsubsection{Cost of one sample}
+
+Table~\ref{tab:per-sample} gives the median time to fetch one sample with a single reader and
+no model, over one hundred samples drawn from the same ten-year window in every store, so that
+only the layout and the stored record length vary.
+
+At matched record length the merged layout is $7.6\times$ faster over the sixteen-year record
+(174 against 1329\,ms) and $19.3\times$ faster over the full historical one (286 against
+5513\,ms). The widening is the size effect of Sect.~\ref{sec:finding-size}: extending the
+record costs the interoperable layout $4.15\times$ per sample and the merged layout
+$1.64\times$. Against the five-store production layout, the merged store over the full record
+is about $28\times$ faster per sample (286 against 7970\,ms).
+
+\subsubsection{Delivery rate of the reader pool}
+
+Table~\ref{tab:delivery} puts the full reader pool back, still without the model. Delivery
+scales close to linearly with the reader count on both layouts, so the per-sample gap carries
+through to a seven- to eightfold gap in delivery rate.
+
+What matters is where each layout sits against GPU demand. One H100 completes a batch of eight
+in about 0.15\,s, consuming about 52 samples\,s$^{-1}$. At twelve readers the interoperable
+store delivers 8.7 samples\,s$^{-1}$, roughly six times under that rate, so the GPU starves.
+The merged store delivers 70.5, slightly above it. That reversal moves the limit off the data
+path.
+
+\subsubsection{End-to-end training on one node}
+
+Table~\ref{tab:end-to-end} reports a controlled comparison with the model in the loop, on one
+node and the sixteen-year record, at 200 training, 30 validation and 30 test steps per epoch,
+three repetitions per layout with the two interleaved so that neither is warmed by its
+predecessor. The merged layout completes the same work $4.63\times$ faster, with the training
+and validation phases agreeing to about three per cent.
+
+The shape of the run changes as well. On the interoperable layout the per-batch log keeps the
+periodic structure of the original trace: seventeen to twenty slow batches per epoch on an
+exact twelve-batch cadence, the largest about 34\,s. On the merged layout the periodic stall
+disappears, leaving five, three and one isolated slow batches across the three repetitions, at
+no fixed cadence.
+
+\subsubsection{Wall time of a full production run}
+
+The last measurement is a complete production training: ten epochs on the merged store over the
+full historical record, one node, production batch size and accumulation. It finished in
+8420\,s, or 2.34\,h. The same training on the five per-modality stores took about 55\,h as
+recorded by the team before this work, so the layout change accounts for about $23\times$ on
+the production workload. That figure compares a measurement against the team's own production
+timing; repeating a 55\,h run as a control was beyond the allocation, so the controlled
+$4.63\times$ of Table~\ref{tab:end-to-end} remains the conservative number.
+
+Table~\ref{tab:production} shows how time distributes across batches. At twelve readers the
+median batch is 154\,ms, the GPU's own compute time for eight samples and therefore the floor,
+while the mean is 272\,ms and p95 is 1.3\,s, with 7.7\,\% of batches waiting on a refill.
+Twenty readers leave the floor untouched and pull the mean to 200\,ms and p95 to 215\,ms, with
+1.8\,\% above one second. The residual stalls are the reader-side size term of
+Sect.~\ref{sec:finding-size} showing through at full record length; more readers hide it.
+
+The run converged normally, reaching its best validation loss at epoch eight, and the model
+reproduces 87.4\,\% of land-use pixels in the first predicted year of a fourteen-year rollout,
+declining to 79.2\,\% by the thirteenth. Since both stores return equivalent samples, the
+layout change leaves model quality untouched.
+
+%t
+\begin{table}[t]
+\caption{Median time to fetch one sample, single reader, no model, over one hundred samples
+drawn from the same ten-year window in every store. Only the layout and the stored record
+length differ.}
+\label{tab:per-sample}
+\begin{tabular}{llrr}
+\tophline
+Layout & Record & Size & Median (ms) \\
+\middlehline
+Five per-modality stores & 1850--2020 & 680\,GB & 7970 \\
+Interoperable            & 2000--2015 &  66\,GB & 1329 \\
+Interoperable            & 1901--2015 & 435\,GB & 5513 \\
+Merged                   & 2000--2015 &  59\,GB &  174 \\
+Merged                   & 1901--2015 & 387\,GB &  286 \\
+\bottomhline
+\end{tabular}
+\end{table}
+
+%t
+\begin{table}[t]
+\caption{Delivery rate in samples\,s$^{-1}$ with the model out of the loop, 80 batches per
+configuration on the sixteen-year record. One H100 consumes about 52 samples\,s$^{-1}$ on this
+model at a batch of eight.}
+\label{tab:delivery}
+\begin{tabular}{rrr}
+\tophline
+Reader processes & Interoperable & Merged \\
+\middlehline
+ 1 & 0.8 &  5.9 \\
+ 4 & 3.3 & 25.3 \\
+12 & 8.7 & 70.5 \\
+\bottomhline
+\end{tabular}
+\end{table}
+
+%t
+\begin{table}[t]
+\caption{Controlled end-to-end comparison with the model in the loop, one node, sixteen-year
+record, production configuration. Each epoch runs 200 training, 30 validation and 30 test
+steps; means over three interleaved repetitions per layout.}
+\label{tab:end-to-end}
+\begin{tabular}{lrrr}
+\tophline
+Phase & Interoperable (s) & Merged (s) & Ratio \\
+\middlehline
+Training   & 292.4 & 62.9 & 4.65 \\
+Validation &  61.8 & 13.7 & 4.51 \\
+Total      & 354.1 & 76.5 & 4.63 \\
+\bottomhline
+\end{tabular}
+\end{table}
+
+%t
+\begin{table}[t]
+\caption{Per-batch wall time during the ten-epoch production training on the merged store over
+the full historical record, one node, batch 8 per GPU. The median is the GPU compute time and
+does not move with the reader count; the extra readers buy the tail.}
+\label{tab:production}
+\begin{tabular}{rrrrr}
+\tophline
+Readers & Median (ms) & Mean (ms) & p95 (ms) & Batches $>1$\,s \\
+\middlehline
+12 & 154 & 272 & 1306 & 7.7\,\% \\
+20 & 157 & 200 &  215 & 1.8\,\% \\
+\bottomhline
+\end{tabular}
+\belowtable{At the median the pipeline delivers 51.9 samples\,s$^{-1}$ per GPU; at the mean,
+29.4 with twelve readers and 40.0 with twenty.}
+\end{table}
+
+\subsection{Sensitivity to chunking strategy, store size, and worker count}
+\begin{itemize}
+\item Chunking: where mis-chunking erases the gain.
+\item Store size: the gain grows with the store.
+\item Workers: FAIR store saturates; merged store keeps scaling.
+\end{itemize}
+\subsection{Scale-out behaviour}
+\begin{itemize}
+\item Aggregate read pressure on GPFS as node count grows.
+\item Does the advantage widen or narrow at scale?
+\item Guidance: where each configuration becomes filesystem-limited.
+\end{itemize}
+\subsection{Cost of interoperability, cost of the bridge}
+\begin{itemize}
+\item Price of FAIR: slowdown when training directly on the interoperable store.
+\item Price of the bridge: one-off conversion cost and the duplicate copy.
+\item Summary table: the whole trade-off in one view.
+\end{itemize}
+
+%% ==================================================================
+%% 7  CONCLUSIONS
+%% ==================================================================
+\conclusions  %% \conclusions[modified heading if necessary]
+\begin{itemize}
+\item The trade-off is real and now quantified.
+\item Principle: store layout is the largest lever; metadata dominates over bandwidth.
+\item The bridge resolves it operationally: publish FAIR, derive fast.
+\item The released cube gives the community a substrate to reuse.
+\item Future work: round-trip, in-place conversion, full Croissant, other filesystems.
+\end{itemize}
+
+%% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
+\codedataavailability{
+%% - Data: the 1850--2100 interoperable cube, CC BY 4.0, DOI (repository TBC).
+%% - Code: the pipeline, the conversion (bridge) tooling, and the benchmark
+%%   harness (profiler + synthetic probe), with an archived release DOI.
+%% - Exact versions used for the results in this paper.
+TEXT}
+
+%% No appendix yet. If one is added (e.g. store schemas / chunking configurations),
+%% put \appendix before it and keep \noappendix after the last appendix section.
+\noappendix
+
+\authorcontribution{TEXT} %% mandatory — settle after the lead-authorship decision
+\competinginterests{TEXT} %% mandatory even if no competing interests are present
+\begin{acknowledgements}
+%% CERISE belongs here only, as funding acknowledgement (grant 101082139).
+TEXT
+\end{acknowledgements}
 
 %% REFERENCES
 %% The reference list is compiled as follows:

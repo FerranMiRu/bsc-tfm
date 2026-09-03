@@ -1,0 +1,182 @@
+%% ==================================================================
+%% REFERENCE LIST — ML-ready geospatial data pipeline paper (GMD)
+%% ==================================================================
+%% Hand-formatted \thebibliography block in Copernicus house style, for use
+%% when you do not want to run BibTeX. Include it in the manuscript with:
+%%
+%%     \input{terranostra_pipeline_refs}
+%%
+%% in place of the \bibliographystyle/\bibliography pair.
+%%
+%% Entries are drawn from refs.bib (the TerraBench bibliography) and reduced
+%% to those relevant to a storage/pipeline paper: the seven upstream data
+%% sources, the storage and tooling references, the companion papers, and
+%% the land-use / ML-dataset related work.
+%%
+%% Copernicus format:  Surname, I. and Surname, I.: Title, Journal, vol,
+%%                     pages, https://doi.org/..., year.
+%% Citation commands:  \citet{key} -> Author et al. (Year)
+%%                     \citep{key} -> (Author et al., Year)
+%% ==================================================================
+
+\begin{thebibliography}{}
+
+%% ---------- Companion papers (cite for harmonisation; do not re-derive) ----------
+
+\bibitem[Mozaffari et al.(2026)]{mozaffari2026scalable}
+Mozaffari, A., Casta{\~n}o, M., Materia, S., Tourigny, E., Molina-Sedano, O.,
+Varela-Agrelo, J., Garcia-Gasulla, D., Castrillo Melguizo, M., Acosta, M., and
+Duarte, A.: Scalable Deep Learning Framework for Global High-Resolution Land
+Use Reconstruction, arXiv preprint arXiv:2606.11793,
+https://arxiv.org/abs/2606.11793, accepted for publication, 2026.
+
+\bibitem[Mozaffari et al.(2025a)]{mozaffari2025historical}
+Mozaffari, A., Casta{\~n}o, M., Materia, S., and Duarte, A.: Historical
+Reconstruction and Future Projection of Land Surface Boundary Conditions, in:
+NeurIPS 2025 Workshop on Tackling Climate Change with Machine Learning,
+https://www.climatechange.ai/papers/neurips2025/99, 2025a.
+
+\bibitem[Mozaffari et al.(2025b)]{mozaffari2025reconstruction}
+Mozaffari, A., Materia, S., Huggannavar, V., Teckentrup, L., Ayan, I.,
+Tourigny, E., and Donat, M.: Reconstruction and downscaling of historical land
+surface boundary conditions with Machine Learning, Copernicus Meetings, 2025b.
+
+%% ---------- Storage, formats and tooling ----------
+
+\bibitem[Newman(2024)]{newman2024zarr}
+Newman, D. J.: Zarr Storage Specification Version 2: Cloud-Optimized
+Persistence Using Zarr, Technical Report, NASA Earth Science Data and
+Information System Standards Coordination Office,
+https://doi.org/10.5067/DOC/ESCO/ESDS-RFC-048v1, 2024.
+
+\bibitem[Schulzweida(2019)]{schulzweida2019cdo}
+Schulzweida, U.: CDO User Guide, Zenodo,
+https://doi.org/10.5281/zenodo.3539275, 2019.
+
+\bibitem[Guo and Berkhahn(2016)]{guo2016entityembeddingscategoricalvariables}
+Guo, C. and Berkhahn, F.: Entity Embeddings of Categorical Variables, arXiv
+preprint arXiv:1604.06737, https://arxiv.org/abs/1604.06737, 2016.
+
+%% ---------- The seven upstream sources of the released cube ----------
+
+\bibitem[Winkler et al.(2020)]{winkler2020hilda+}
+Winkler, K., Fuchs, R., Rounsevell, M., and Herold, M.: HILDA+ Global land use
+change between 1960 and 2019 [Dataset], PANGAEA, 2020.
+
+\bibitem[Hurtt et al.(2020)]{hurtt2020harmonization}
+Hurtt, G. C., Chini, L., Sahajpal, R., Frolking, S., Bodirsky, B. L., Calvin,
+K., Doelman, J. C., Fisk, J., Fujimori, S., Goldewijk, K. K., et al.:
+Harmonization of global land-use change and management for the period
+850--2100 (LUH2) for CMIP6, Geosci. Model Dev. Discuss., 2020, 1--65, 2020.
+
+\bibitem[GEBCO Compilation Group(2024)]{GEBCO2024}
+GEBCO Compilation Group: GEBCO 2024 Grid, distributed by GEBCO, British
+Oceanographic Data Centre,
+https://doi.org/10.5285/1c44ce99-0a0d-5f4f-e063-7086abc0ea0f, 2024.
+
+\bibitem[Beck et al.(2018)]{beck2018present}
+Beck, H. E., Zimmermann, N. E., McVicar, T. R., Vergopolan, N., Berg, A., and
+Wood, E. F.: Present and future K{\"o}ppen-Geiger climate classification maps
+at 1-km resolution, Sci. Data, 5, 1--12, 2018.
+
+\bibitem[Beck et al.(2023)]{beck2023high}
+Beck, H. E., McVicar, T. R., Vergopolan, N., Berg, A., Lutsko, N. J., Dufour,
+A., Zeng, Z., Jiang, X., van Dijk, A. I. J. M., and Miralles, D. G.:
+High-resolution (1 km) K{\"o}ppen-Geiger maps for 1901--2099 based on
+constrained CMIP6 projections, Sci. Data, 10, 724, 2023.
+
+\bibitem[Frieler et al.(2017)]{frieler2017assessing}
+Frieler, K., Lange, S., Piontek, F., Reyer, C. P. O., Schewe, J., Warszawski,
+L., Zhao, F., Chini, L., Denvil, S., Emanuel, K., et al.: Assessing the impacts
+of 1.5\,$^\circ$C global warming -- simulation protocol of the Inter-Sectoral
+Impact Model Intercomparison Project (ISIMIP2b), Geosci. Model Dev., 10,
+4321--4345, 2017.
+
+\bibitem[Li et al.(2024a)]{li2024global}
+Li, L., Bisht, G., Hao, D., and Leung, L. R.: Global 1 km land surface
+parameters for kilometer-scale Earth system modeling, Earth Syst. Sci. Data,
+16, 2007--2032, 2024a.
+
+%% ---------- Land-use datasets and related work ----------
+
+\bibitem[Copernicus Climate Change Service(2019)]{c3s_lulc_2019}
+Copernicus Climate Change Service: Land cover classification gridded maps from
+1992 to present derived from satellite observation, Copernicus Climate Change
+Service (C3S) Climate Data Store (CDS),
+https://doi.org/10.24381/cds.006f2c9a, 2019.
+
+\bibitem[Chen et al.(2020)]{chen2020global}
+Chen, M., Vernon, C. R., Graham, N. T., Hejazi, M., Huang, M., Cheng, Y., and
+Calvin, K.: Global land use for 2015--2100 at 0.05$^\circ$ resolution under
+diverse socioeconomic and climate scenarios, Sci. Data, 7, 320, 2020.
+
+\bibitem[Hoffmann et al.(2022)]{hoffmann2022high}
+Hoffmann, P., Reinhart, V., Rechid, D., de Noblet-Ducoudr{\'e}, N., Davin,
+E. L., Asmus, C., Bechtel, B., B{\"o}hner, J., Katragkou, E., and Luyssaert,
+S.: High-resolution land use and land cover dataset for regional climate
+modelling: historical and future changes in Europe, Earth Syst. Sci. Data
+Discuss., 2022, 1--50, 2022.
+
+\bibitem[Luo et al.(2022)]{luo20221}
+Luo, M., Hu, G., Chen, G., Liu, X., Hou, H., and Li, X.: 1 km land use/land
+cover change of China under comprehensive socioeconomic and climate scenarios
+for 2020--2100, Sci. Data, 9, 110, 2022.
+
+%% ---------- ML benchmarks and datasets (framing for Sect. 1.2) ----------
+
+\bibitem[Li et al.(2024b)]{li2024landbench}
+Li, Q., Zhang, C., Shangguan, W., Wei, Z., Yuan, H., Zhu, J., Li, X., Li, L.,
+Li, G., Liu, P., and Dai, Y.: LandBench 1.0: A benchmark dataset and evaluation
+metrics for data-driven land surface variables prediction, Expert Syst. Appl.,
+243, 122917, 2024b.
+
+\bibitem[Sumbul et al.(2019)]{sumbul2019bigearthnet}
+Sumbul, G., Charfuelan, M., Demir, B., and Markl, V.: BigEarthNet: A
+Large-Scale Benchmark Archive for Remote Sensing Image Understanding, arXiv
+preprint arXiv:1902.06148, https://arxiv.org/abs/1902.06148, 2019.
+
+\bibitem[Toker et al.(2022)]{toker2022dynamicearthnet}
+Toker, A., Kondmann, L., Weber, M., Eisenberger, M., Camero, A., Hu, J.,
+Pregel Hoderlein, A., {\c{S}}enaras, {\c{C}}., Davis, T., Cremers, D.,
+Marchisio, G., Zhu, X. X., and Leal-Taix{\'e}, L.: DynamicEarthNet: Daily
+Multi-Spectral Satellite Dataset for Semantic Change Segmentation, arXiv
+preprint arXiv:2203.12560, https://arxiv.org/abs/2203.12560, 2022.
+
+\bibitem[Helber et al.(2019)]{helber2019eurosat}
+Helber, P., Bischke, B., Dengel, A., and Borth, D.: EuroSAT: A Novel Dataset
+and Deep Learning Benchmark for Land Use and Land Cover Classification, arXiv
+preprint arXiv:1709.00029, https://arxiv.org/abs/1709.00029, 2019.
+
+%% ---------- Model architectures (only if referenced in Sect. 2/4) ----------
+
+\bibitem[Ronneberger et al.(2015)]{ronneberger2015u}
+Ronneberger, O., Fischer, P., and Brox, T.: U-Net: Convolutional Networks for
+Biomedical Image Segmentation, in: Medical Image Computing and
+Computer-Assisted Intervention (MICCAI), Springer, 234--241, 2015.
+
+%% ---------- Reanalysis / context (optional) ----------
+
+\bibitem[Hersbach et al.(2020)]{hersbach2020era5}
+Hersbach, H., Bell, B., Berrisford, P., Hirahara, S., Hor{\'a}nyi, A.,
+Mu{\~n}oz-Sabater, J., Nicolas, J., Peubey, C., Radu, R., Schepers, D., et al.:
+The ERA5 global reanalysis, Q. J. Roy. Meteor. Soc., 146, 1999--2049, 2020.
+
+\bibitem[Mu{\~n}oz-Sabater et al.(2021)]{munoz2021era5}
+Mu{\~n}oz-Sabater, J., Dutra, E., Agust{\'i}-Panareda, A., Albergel, C.,
+Arduini, G., Balsamo, G., Boussetta, S., Choulga, M., Harrigan, S., Hersbach,
+H., et al.: ERA5-Land: A state-of-the-art global reanalysis dataset for land
+applications, Earth Syst. Sci. Data, 13, 4349--4383, 2021.
+
+%% ---------- TO ADD: references not yet in refs.bib ----------
+%% These are needed for a storage/I-O paper and must be added before submission:
+%%  - Tinto, O. et al. (2019), J. Comput. Sci. — HPC optimisation of Earth-system codes
+%%  - Abernathey, R. P. et al. (2021), Cloud-Native Repositories / Pangeo ARCO data
+%%  - Hoyer, S. and Hamman, J. (2017), xarray, J. Open Res. Softw.
+%%  - Wilkinson, M. D. et al. (2016), FAIR Guiding Principles, Sci. Data
+%%  - Akhtar, M. et al. (2024), Croissant metadata format for ML datasets
+%%  - Paszke, A. et al. (2019), PyTorch, NeurIPS — DataLoader reference
+%%  - Aizman, A. et al. (2019)/WebDataset — sharded dataset formats
+%%  - GPFS/Lustre metadata-performance reference
+%%  - MareNostrum 5 system description (BSC)
+
+\end{thebibliography}

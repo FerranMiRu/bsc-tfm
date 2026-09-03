@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\begin{document}
+
+\section*{31/07/2026}
+Initial meeting
+
+\begin{itemize}
+    \item Who will be involved?
+    \item Scope / style of the paper 
+
+    \item explain different options  (organization point of view , ) ;  in google as more data is being used, more compute is being invested in the process ; for xample if the data is being used more often, we spend more resource on it , could be a narrative and alternative ? 
+
+    \item a middle-way in between two extreme ends? as an alternative 
+    
+    \item If we can measure the FAIRness by metadata , and score it ; vs. we can measure the speed up ; -> development needed for this . (in Expect project there is a fairness score, if there is DOI ; checking metadata ,  anthology ,... ) 
+    The time-compute needed is for preprocessing of the data ( could be useful for the community, but volume, data and energy could be something) 
+    a pipeline function to indicate that how far we will go in pipeline with separate or collapsed , how much compute needed or speed gain , energy consumed 
+
+    \item There are many aspects regarding interoperability of the data ; as gain seems to be also related to the size of the data. -> as objective overhead is not easy to measure 
+
+    \item A physical limits on the both ends of the (maximum GPU ,  I/O rate) .... 
+    
+    \item Including a pointer to AIF and being part of the  official catalougue 
+
+    \item possible link to datalab (?) 
+    \item guideline ? 
+    
+    \item Time-line of the paper
+    
+    \item discussion somewhere in August \& September () 
+    \item first draft aim for will be decided :D 
+    
+    \item  Scope and development and ambitions 
+        - firs goal : reporting the numbers and experiments , opening the door 
+        - second goal :  more general and large community 
+    \item Target journal (ESSD, GMD , \href{https://www.nature.com/commsaicomp/}{communications on AI and computing} \href{https://www.nature.com/natcomputsci}{nature computational science} \href{https://www.nature.com/nrcomput/}{nature reviews computing} , future generation ...) 
+    \item Who is going to lead? Oriol , Joan, Marina 
+\end{itemize}
+
+
+\section*{11/08/2026}
+Oriol, Joan, Marina.
+
+\paragraph{Discusión}
+
+\begin{itemize}
+    \item Explicar el use case de AI4Land, y en el futuro podemos plantear hacer algo más general con guidelines.
+
+    \item FAIRness metrics? Para comparar nuestro dataset inicial con el final. Se mencionó que en Expect hay una (DOI, metadata, anthology, etc). Nuestros datasets (el inicial también) tendrían resultados muy malos. Tener un DOI depende de si se van a publicar/registrar nuestros datos en el AIF. Los metadatos los tenemos que añadir.
+
+    \item Nuestro dataset actual no tiene metadatos (se pierden en el pre-procesamiento, se podrían inyectar después), así que no es para que lo usen otras personas. Normalmente se guardan por variable/array y en el último paso del procesamiento de Ferran se pierden las variables. Se podrían meter los metadatos dentro de ``variables estáticas" aunque no fuese de manera muy limpia.
+
+    \item En el AIF pipeline se cargan los datos originales con metadatos y luego se puede elegir si procesar o no, elegir qué variables usar. Con este paper si solo damos el dataset final, no tenemos metadatos y es para nuestra aplicación concreta.
+
+    \item También se podría pasar el resultado de Ferran a un tensor final, y esto si que perdería todos los metadatos. Es el caso más extremo. Podemos plantear esto en el paper, y decir que nosotros hemos hecho hasta saturar la GPU, presentar lo nuestro como un caso medio.
+
+    \item Publicar datos? Joan ya comentó con Pasha que el dataverse no es muy viable, preguntar si se buscaron otras soluciones. Si todas las fuentes de datos son públicas (LUH2, HILDA, PNNL, etc), mejor dar el pipeline de preprocesamiento porque si no hay que tenerlos publicados, necesitamos el storage etc. \textbf{Update:} Para obtener un DOI asociado al dataset, se supone que en el dataverse lo podremos publicar sin tener que subir los datos. Eso estará asociado al AIF para que la gente pueda pedir acceso.
+\end{itemize}
+
+\paragraph{Outline del paper}
+
+\begin{itemize}
+    \item Explicar nuestro caso específico AI4Land
+    \item Cómo se generó el dataset inicial, preprocesamiento
+    \item Todo funcionaba pero el rendimiento de i/o era muy bajo
+    \item Experimentos hechos
+    \item Dataset final optimizado
+    \item Comentar tradeoff entre tener los datos separados para diferentes proyectos o tenerlo todo junto
+    \item Opciones más extremas de optimizado: tensor sin nada de metadatos. Para nosotros no es necesario porque ya saturamos la GPU.
+\end{itemize}
+
+\paragraph{Tasks}
+
+\begin{itemize}
+    \item Oriol: revisar TFM para ver si hay experimentos que se tienen que volver a correr
+
+    \item Marina, Ferran, Joan: draft del paper, Marina escribir sobre el pre-procesamiento
+
+    \item Hablar con Pasha si pensaba publicar el dataset final, y si sabía cómo/dónde
+
+    \item En el futuro: hacer json de metadatos para el MultiZarr y SingleZarr (información sobre de dónde sacamos los datos, cómo los preprocesamos, etc para que sea reproducible). Limpiar los scripts de pre-procesamiento para publicarlos.
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,423 @@
+%% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
+%% ---------------------------------
+%% This template should be used for copernicus.cls
+%% The class file and some style files are bundled in the Copernicus Latex Package, which can be downloaded from the different journal webpages.
+%% For further assistance please contact Copernicus Publications at: production@copernicus.org
+%% https://publications.copernicus.org/for_authors/manuscript_preparation.html
+%% Please use the following documentclass and journal abbreviations for preprints and final revised papers.
+%% 2-column papers and preprints
+\documentclass[gmd, manuscript]{copernicus}
+%% Journal abbreviations (please use the same for preprints and final revised papers)
+% Advances in Geosciences (adgeo)
+% Advances in Radio Science (ars)
+% Advances in Science and Research (asr)
+% Advances in Statistical Climatology, Meteorology and Oceanography (ascmo)
+% Aerosol Research (ar)
+% Annales Geophysicae (angeo)
+% Archives Animal Breeding (aab)
+% Atmospheric Chemistry and Physics (acp)
+% Atmospheric Measurement Techniques (amt)
+% Biogeosciences (bg)
+% Climate of the Past (cp)
+% DEUQUA Special Publications (deuquasp)
+% Earth Surface Dynamics (esurf)
+% Earth System Dynamics (esd)
+% Earth System Science Data (essd)
+% E&G Quaternary Science Journal (egqsj)
+% EGUsphere (egusphere) | This is only for EGUsphere preprints submitted without relation to an EGU journal.
+% Earth Observation (eo)
+% European Journal of Mineralogy (ejm)
+% Geochronology (gchron)
+% Geographica Helvetica (gh)
+% Geoscience Communication (gc)
+% Geoscientific Instrumentation, Methods and Data Systems (gi)
+% Geoscientific Model Development (gmd)
+% History of Geo- and Space Sciences (hgss)
+% Hydrology and Earth System Sciences (hess)
+% Journal of Bone and Joint Infection (jbji)
+% Journal of Environmentally Compatible Air Transport System (jecats)
+% Journal of Micropalaeontology (jm)
+% Journal of Sensors and Sensor Systems (jsss)
+% Magnetic Resonance (mr)
+% Mechanical Sciences (ms)
+% Natural Hazards and Earth System Sciences (nhess)
+% Nonlinear Processes in Geophysics (npg)
+% Ocean Science (os)
+% Polarforschung - Journal of the German Society for Polar Research (polf)
+% Proceedings of the International Association of Hydrological Sciences (piahs)
+% Proceedings of the International Ocean Drilling Programme (piodp)
+% Safety of Nuclear Waste Disposal (sand)
+% Scientific Drilling (sd)
+% SOIL (soil)
+% Solid Earth (se)
+% State of the Planet (sp)
+% The Cryosphere (tc)
+% Weather and Climate Dynamics (wcd)
+% Web Ecology (we)
+% Wind Energy Science (wes)
+%% \usepackage commands included in the copernicus.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+\begin{document}
+%% ------------------------------------------------------------------
+%% TITLE — proposed main title (GMD expects tool/pipeline name + version)
+%% ------------------------------------------------------------------
+\title{FAIR or FAST? Interoperability versus training efficiency for machine-learning-ready geospatial data on HPC}
+%% Alternative title candidates — pick one, delete the rest:
+%% (a) From FAIR archive to fast training: storage-layout trade-offs and an
+%%     automated conversion pipeline for ML-ready geospatial data cubes on HPC (v1.0)
+%% (b) Serving machine-learning-ready Earth-system data at scale: interoperable
+%%     and training-optimised Zarr stores, and the bridge between them (v1.0)
+%% (c) TerraNostra-Pipeline v1.0: efficient and FAIR storage of a harmonised
+%%     1850--2100 land-use data cube for machine learning on HPC
+% \Author[affil]{given_name}{surname}
+%% NOTE: PLACEHOLDER AUTHOR ORDER — authors listed ALPHABETICALLY by surname.
+%% Final order to be set after the lead-authorship decision (plan §6.1).
+%% ORCIDs noted in comments; enter them in the Copernicus submission system.
+\Author[1]{Mario}{Acosta}                                        %% ORCID 0000-0001-7054-8168
+\Author[1]{Pierre Antoine}{Bretonnière}                          %%
+\Author[1]{Marina}{Castaño}                                      %% ORCID 0009-0007-6516-4320
+\Author[1]{Miguel}{Castrillo Melguizo}                           %%
+\Author[1]{Amanda}{Duarte}                                       %% ORCID 0000-0002-9340-958X
+\Author[1]{Ferran}{Mirabent Rubinat}                             %%
+\Author[1]{Amirpasha}{Mozaffari}                                 %%  0000-0001-6719-0425
+\Author[1]{Oriol}{Tintó Prims}                                   %%
+\Author[1]{Joan}{Vedrí}                                   %% ORCID 0009-0008-5890-1051
+\affil[1]{Earth Science Department, Barcelona Supercomputing Center, Barcelona, 08034, Spain}
+%% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
+%% If an author is deceased, please add \deceased[$Deceased date if applicable$]{$Author number$} (e.g. \deceased[13 November 2015]{2}) at the end of the affiliations. The author number depends on the placement of the author in the author list, e.g. the third author has number 3.
+%% If authors contributed equally, please add \equalcontrib{$Author numbers$} (e.g. \equalcontrib{1,3}) at the end of the affiliations. The author number depends on the placement of the author in the author list, e.g. the third author has number 3.
+\runningtitle{FAIR or FAST? Interoperability versus training efficiency for machine-learning-ready geospatial data on HPC}
+\runningauthor{Acosta et al.} %% placeholder — matches the alphabetical order above; update once the final first author is decided
+\received{}
+\pubdiscuss{} %% only important for two-stage journals
+\revised{}
+\accepted{}
+\published{}
+%% These dates will be inserted by Copernicus Publications during the typesetting process.
+\firstpage{1}
+\maketitle
+
+
+\begin{abstract}
+\begin{itemize}
+\item Problem: the layout that makes data FAIR is not the layout that trains fast.
+\item Two representations: interoperable Zarr store vs.\ training-optimised merged store.
+\item Result: $\sim$7$\times$ per-sample, $\sim$4.6$\times$ end-to-end, $\sim$40$\times$ projected.
+\item Contribution: an automated bridge, plus the released 1850--2100 land-use cube.
+\end{itemize}
+\end{abstract}
+
+
+\copyrightstatement{TEXT} %% This section is optional and can be used for copyright transfers.
+
+
+%% ==================================================================
+%% 1  INTRODUCTION
+%% ==================================================================
+\introduction  %% \introduction[modified heading if necessary]
+\begin{itemize}
+\item Context: dataloading is now the bottleneck for ML on Earth-system data at HPC scale.
+\item Problem: FAIR stores and fast stores pull in opposite directions.
+\item Gap: the trade-off is unquantified and no bridge exists.
+\item Setting: AI4Land pipeline on MareNostrum 5.
+\end{itemize}
+
+\subsection{The interoperability--efficiency tension for ML-ready geospatial data}
+\begin{itemize}
+\item The two poles: reusability vs.\ throughput.
+\item Why they conflict: many small objects stress the metadata server.
+\item Claim: general to any chunked format, not specific to this dataset.
+\end{itemize}
+
+\subsection{Related work}
+\begin{itemize}
+\item ARCO/Zarr storage for Earth-system data.
+\item I/O optimisation on HPC; GPFS/Lustre metadata studies.
+\item FAIR principles and ML dataset metadata (Croissant).
+\item Dataloading formats at scale (WebDataset, TFRecord).
+\item Our position: the intersection --- trade-off plus tooling.
+\end{itemize}
+
+Historically, Earth observation and climatological data have been distributed in GRIB or NetCDF formats \citep{Gowan2022, Kuluke2021}. However, both present structural limitations when integrated into modern machine learning pipelines. GRIB files read data sequentially, which is inefficient for repeated selective access. This design limits parallel I/O and lazy loading for efficient workflows. Additionally, its metadata must be fully parsed before extracting the data, making the format rigid and not efficient \citep{Gowan2022, Glahn2003}. NetCDF format relies on HDF5 and uses a chunk layout that is fixed at file creation. Its file handles are tied to individual processes, which causes I/O issues when multiple workers access the same dataset. The format also lacks native zero-copy tensor export, meaning data must pass through CPU RAM first, which doubles memory usage and slows training \citep{Huang2023, Russell2006}.
+
+To overcome these limitations, we use Zarr, which natively supports chunked arrays, flexible metadata, and direct memory sharing for AI workflows \citep{Gowan2022}
+
+
+
+
+\subsection{Contributions and paper outline}
+\begin{itemize}
+\item C1: quantified trade-off, with a reusable diagnostic methodology.
+\item C2: an automated bridge between representations.
+\item C3: the released, DOI'd 1850--2100 cube.
+\end{itemize}
+
+
+%% ==================================================================
+%% 2  THE DATASET SUBSTRATE
+%% ==================================================================
+\section{The dataset substrate: a harmonised 1850--2100 land-use cube}
+The dataset we consider in this paper is created from seven separate sources, covering the years 1850 to 2100, and in a 1 km grid. Next, we will detail the processing performed to unify the data from these heterogeneous sources. This is also explained in \textit{citation to ML Earth paper?}
+
+\subsection{Source datasets and provenance}
+
+\textbf{Target Labels:} As a target, we use HILDA+ v1.8 \citep{winkler2020hilda+}, distributed via PANGAEA. This contains global land-use at 1 km resolution for the whole world, for the time period 1960--2020. It also expands back to 1899 using Random Forests. It distinguishes 13 classes, although we narrowed it down to 8 by combining all of the different forest sub-types into a single class. This is done since our predictors do not have enough information to distinguish between these different phenologies.
+Version note: the pipeline uses HILDA+ v1.0; v2.0 (2025) was released after the pipeline was finalised, and versions are kept consistent with \citet{mozaffari2026scalable}.
+
+\textbf{Predictor Variables:}
+\begin{itemize}
+    \item \textbf{LUH2} (historical v2h and future v2f) \citep{hurtt2020harmonization}, obtained through input4MIPs/ESGF. This is a global land-use dataset at $0.25^{\circ} \times 0.25^{\circ}$ ($\sim$31~km) resolution, covering the years 1850--2015. We employ the 12 fractional land-use state variables and two secondary-vegetation parameters (mean age and biomass).
+    \item \textbf{Köppen-Geiger} climate classification maps \citep{beck2018present, beck2023high} from GLoH2O
+    \item \textbf{ISIMIP2b} population data from the ISIMIP HistSoc protocol \citep{frieler2017assessing}
+    \item \textbf{GEBCO 2024} elevation and bathymetry \citep{GEBCO2024}
+    \item \textbf{PNNL} \citep{li2024global} high-resolution global derived slope and aspect, and soil (texture, organic carbon)
+\end{itemize}
+
+
+\subsection{Spatiotemporal coverage and grid}
+To remain consistent across datasets, the input data was aligned to the 1~km WGS84 grid from the HILDA+ dataset.
+
+\textbf{Köppen-Geiger:} Since climatic zones are only available at 30-year intervals, we needed to perform a yearly interpolation that returned valid classes in between the data available. We achieved this by using \textit{stochastic weighted dithering}. For each pixel, we consider the class it has at available time points $t$ and $t+30$. To interpolate for the years in between, we take the starting class and only switch to the ending class if a noise value is lower than a time weight $w(t)$. This weight is assigned so that the probability of switching classes grows linearly across the 30-year interval. We also consider that the pixel will transition a single time in that whole period.
+
+\textbf{ISIMIP2b:} Population data is at $0.5^{\circ} \times 0.5^{\circ}$ resolution and starts at the year 1861. For the spatial issue, we interpolated using population density. Population counts are converted to density ($people/m^2$), conservatively remapped to the target grid, and multiplied by the target cell areas to recover local counts. In terms of the temporal missing data, we used linear back-casting to get data starting on 1850, using the trends from the initial decade (1861–1871) and enforcing a lower limit of zero.
+
+\textbf{PNNL soil data:} In the original dataset there is six-layer vertical soil data. To simplify it, we computed a 2D non-linear depth-weighted average with a decreasing weighting scheme of $w = [0.40, 0.25, 0.15, 0.10, 0.05, 0.05]$.
+
+\textit{Include text on SSP forward extension? As well as tables for the type/units of the data}
+
+\subsection{Licensing and release}
+\begin{itemize}
+\item All seven sources redistributable with attribution; no share-alike or NC terms.
+\item Derived cube released CC BY 4.0 with a DOI (repository TBC).
+\item Per-source terms in Table~\ref{tab:licences}.
+\end{itemize}
+
+%t
+\begin{table*}[t]
+\caption{Upstream sources of the released cube, their role, licence, and
+redistribution status after modification.}
+\label{tab:licences}
+\begin{tabular}{llll}
+\tophline
+Dataset & Role & Licence & Redistribute \\
+\middlehline
+HILDA+ v1.0 \citep{winkler2020hilda+}        & Target labels             & CC BY 4.0                  & Yes \\
+LUH2 v2h/v2f \citep{hurtt2020harmonization}  & Dynamic input             & CC BY 4.0 (CMIP6 terms)    & Yes \\
+K{\"o}ppen--Geiger \citep{beck2018present}   & Dynamic input             & CC BY 4.0                  & Yes \\
+ISIMIP HistSoc population \citep{frieler2017assessing} & Dynamic input   & CC BY 4.0 (ISIMIP2/2b)     & Yes \\
+GEBCO 2024 \citep{GEBCO2024}                 & Static input (elevation)  & Public domain, attribution & Yes \\
+PNNL geophysical \citep{li2024global}        & Static input (slope, aspect) & CC0                     & Yes \\
+PNNL soil \citep{li2024global}               & Static input (texture, organic) & CC0                  & Yes \\
+\bottomhline
+\end{tabular}
+\belowtable{CMIP6 terms for LUH2 were relaxed to CC BY 4.0 in October 2022.
+CC0 is the PNNL DataHub default.}
+\end{table*}
+
+
+%% ==================================================================
+%% 3  THE TWO REPRESENTATIONS FAIR <-> FAST
+%% ==================================================================
+\section{Two representations of one dataset}
+
+In this section we describe the two on-disk built from the same data cube. The interoperable store, which focus on discoverability, accesibility and self-description by preserving all the metadata required for a data reconstruction; and the training-optimised merged store, which has been designed to be more effective in the training process by dropping the non-essential metadata and applying a more efficient layout in terms of I/O. Therefore, both formats store the same data, they are different objects that differ in layout, and metadata strategy, which is the baseline for the trade-off analysis.
+
+\subsection{The interoperable (FAIR) store}
+
+Focusing on the interoperable store, each variable is stored in a different Zarr array. Applying this layout we can preserve data semantic identity and their processing history preserved directly within the variable attributes. This metadata strategy ensures that the data remain understandable and traceable, even without access to the original source or processing scripts. Thus, this design ensures reproducibility, as any consumer can verify how the data were obtained and processed. This layout schema also enables users to inspect and visualize the data easily, by using standard scientific libraries.
+
+This store has been designed to accomplish the FAIR principles:
+\begin{itemize}
+    \item \textbf{Findable}: \textbf{it has been published as a DOI-registered artifact \cite{doi_ref} and indexed in the BSC AI Factory data catalog.}
+    \item \textbf{Accessible}: We have used a layout that enables an easy visualization and manipulation via standard libraries (e.g., \textit{xarray}, \textit{numpy}...);
+    \item \textbf{Interoperable}: through CF-compliant conventions attributes have been standardized;
+    \item \textbf{Reusable}: By inspecting the metadata, every consumer can follow the processing history of the data and its origen, which provide complete context for validation.
+\end{itemize}
+
+\subsection{The training-optimised merged store}
+
+After implementing the AI4Land model training pipeline with the interoperable store, we identified a significant I/O bottleneck that delayed data ingestion. The diagnosis and quantification of this limitation are detailed in Section 4. To address it, we designed a training-optimized layout structured as a single Zarr store containing two coordinate-defined groups: static (non-temporal variables) and dynamic (time-indexed variables). Each group holds exactly one consolidated Zarr array, collapsing all variables into a unified structure. Original variable names are promoted to an explicit coordinate dimension, adding one axis while preserving the original spatial and temporal coordinates. Per-variable descriptors are stripped during this consolidation, as they are redundant for training workflows. This layout prioritizes ingestion throughput over data discoverability, significantly reducing initialization overhead and accelerating batch loading.
+\subsection{What each representation gives up}
+
+To sum up, each format presents a clear trade-off, trading one advantage for another. The interoperable store sacrifices raw I/O throughput to maintain rich, per-variable semantics and a self-describing structure. The training-optimized merged store, in contrast, trades semantic depth and general-purpose usability for speed, collapsing variables into unified groups and dropping non-essential metadata. This consolidation also trades storage efficiency for ingestion performance. The consequences of these design choices are detailed and quantified in Sections 4 and 6.
+
+
+%% REFERENCES
+%% The reference list is compiled as follows:
+%\begin{thebibliography}{}
+\bibliographystyle{copernicus}
+\bibliography{refs}
+%\end{thebibliography}
+%% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
+%% authors experienced with BibTeX only have to include the following two lines:
+%%
+%% \bibliographystyle{copernicus}
+%% \bibliography{example.bib}
+%%
+%% URLs and DOIs can be entered in your BibTeX file as:
+%%
+%% URL = {http://www.xyz.org/~jones/idx_g.htm}
+%% DOI = {10.5194/xyz}
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+%% FIGURES
+%% When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage
+%% between bibliography and first table and/or figure as well as between each table and/or figure.
+% The figure files should be labelled correctly with Arabic numerals (e.g. fig01.jpg, fig02.png).
+%% ONE-COLUMN FIGURES
+%%f
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure}
+%
+%%% TWO-COLUMN FIGURES
+%
+%%f
+%\begin{figure*}[t]
+%\includegraphics[width=12cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure*}
+%
+%
+%%% TABLES
+%%%
+%%% The different columns must be seperated with a & command and should
+%%% end with \\ to identify the column brake.
+%
+%%% ONE-COLUMN TABLE
+%
+%%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table}
+%
+%%% TWO-COLUMN TABLE
+%
+%%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table*}
+%
+%%% LANDSCAPE TABLE
+%
+%%t
+%\begin{sidewaystable*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{sidewaystable*}
+%
+%
+%%% MATHEMATICAL EXPRESSIONS
+%
+%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
+%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
+%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+%%%
+%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
+%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+%%% Vectors are identified in bold italic font using \vec{x}
+%%% Matrices are identified in bold roman font
+%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
+%%% The character * should not be applied as mutliplication sign
+%
+%
+%%% EQUATIONS
+%
+%%% Single-row equation
+%
+%\begin{equation}
+%
+%\end{equation}
+%
+%%% Multiline equation
+%
+%\begin{align}
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8
+%\end{align}
+%
+%
+%%% MATRICES
+%
+%\begin{matrix}
+%x & y & z\\
+%x & y & z\\
+%x & y & z\\
+%\end{matrix}
+%
+%
+%%% ALGORITHM
+%
+%\begin{algorithm}
+%\caption{...}
+%\label{a1}
+%\begin{algorithmic}
+%...
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%%% CHEMICAL FORMULAS AND REACTIONS
+%
+%%% For formulas embedded in the text, please use \chem{}
+%
+%%% The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
+%
+%\begin{reaction}
+%%% \rightarrow should be used for normal (one-way) chemical reactions
+%%% \rightleftharpoons should be used for equilibria
+%%% \leftrightarrow should be used for resonance structures
+%\end{reaction}
+%
+%
+%%% PHYSICAL UNITS
+%%%
+%%% Please use \unit{} and apply the exponential notation (e.g. 20\,\unit{W\,m^{-2}})
+\end{document}
